@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface System : NSObject
+@property (nonatomic, strong) NSString *SystemID;
 
 @end
