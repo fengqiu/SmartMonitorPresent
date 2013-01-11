@@ -10,4 +10,7 @@
 
 @interface User : NSObject
 
+@property (strong, nonatomic) id detailItem;
+
+
 @end
