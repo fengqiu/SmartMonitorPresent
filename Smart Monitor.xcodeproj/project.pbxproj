@@ -1,0 +1,468 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		39B8A2F0169FF09E00B3FEB8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39B8A2EF169FF09E00B3FEB8 /* UIKit.framework */; };
+		39B8A2F2169FF09E00B3FEB8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39B8A2F1169FF09E00B3FEB8 /* Foundation.framework */; };
+		39B8A2F4169FF09E00B3FEB8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39B8A2F3169FF09E00B3FEB8 /* CoreGraphics.framework */; };
+		39B8A2FA169FF09E00B3FEB8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39B8A2F8169FF09E00B3FEB8 /* InfoPlist.strings */; };
+		39B8A2FC169FF09E00B3FEB8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8A2FB169FF09E00B3FEB8 /* main.m */; };
+		39B8A300169FF09E00B3FEB8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8A2FF169FF09E00B3FEB8 /* AppDelegate.m */; };
+		39B8A302169FF09E00B3FEB8 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 39B8A301169FF09E00B3FEB8 /* Default.png */; };
+		39B8A304169FF09E00B3FEB8 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39B8A303169FF09E00B3FEB8 /* Default@2x.png */; };
+		39B8A306169FF09E00B3FEB8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39B8A305169FF09E00B3FEB8 /* Default-568h@2x.png */; };
+		39B8A309169FF09E00B3FEB8 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 39B8A307169FF09E00B3FEB8 /* MainStoryboard.storyboard */; };
+		39B8A30C169FF09E00B3FEB8 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8A30B169FF09E00B3FEB8 /* MasterViewController.m */; };
+		39B8A30F169FF09E00B3FEB8 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8A30E169FF09E00B3FEB8 /* DetailViewController.m */; };
+		39B8A317169FF09F00B3FEB8 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39B8A316169FF09F00B3FEB8 /* SenTestingKit.framework */; };
+		39B8A318169FF09F00B3FEB8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39B8A2EF169FF09E00B3FEB8 /* UIKit.framework */; };
+		39B8A319169FF09F00B3FEB8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39B8A2F1169FF09E00B3FEB8 /* Foundation.framework */; };
+		39B8A321169FF09F00B3FEB8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39B8A31F169FF09F00B3FEB8 /* InfoPlist.strings */; };
+		39B8A324169FF09F00B3FEB8 /* Smart_MonitorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8A323169FF09F00B3FEB8 /* Smart_MonitorTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		39B8A31A169FF09F00B3FEB8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 39B8A2E2169FF09D00B3FEB8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 39B8A2EA169FF09D00B3FEB8;
+			remoteInfo = "Smart Monitor";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		39B8A2EB169FF09D00B3FEB8 /* Smart Monitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smart Monitor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		39B8A2EF169FF09E00B3FEB8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		39B8A2F1169FF09E00B3FEB8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		39B8A2F3169FF09E00B3FEB8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		39B8A2F7169FF09E00B3FEB8 /* Smart Monitor-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Smart Monitor-Info.plist"; sourceTree = "<group>"; };
+		39B8A2F9169FF09E00B3FEB8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		39B8A2FB169FF09E00B3FEB8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		39B8A2FD169FF09E00B3FEB8 /* Smart Monitor-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smart Monitor-Prefix.pch"; sourceTree = "<group>"; };
+		39B8A2FE169FF09E00B3FEB8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		39B8A2FF169FF09E00B3FEB8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		39B8A301169FF09E00B3FEB8 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		39B8A303169FF09E00B3FEB8 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		39B8A305169FF09E00B3FEB8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		39B8A308169FF09E00B3FEB8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		39B8A30A169FF09E00B3FEB8 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		39B8A30B169FF09E00B3FEB8 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		39B8A30D169FF09E00B3FEB8 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		39B8A30E169FF09E00B3FEB8 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		39B8A315169FF09F00B3FEB8 /* Smart MonitorTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Smart MonitorTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		39B8A316169FF09F00B3FEB8 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		39B8A31E169FF09F00B3FEB8 /* Smart MonitorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Smart MonitorTests-Info.plist"; sourceTree = "<group>"; };
+		39B8A320169FF09F00B3FEB8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		39B8A322169FF09F00B3FEB8 /* Smart_MonitorTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Smart_MonitorTests.h; sourceTree = "<group>"; };
+		39B8A323169FF09F00B3FEB8 /* Smart_MonitorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Smart_MonitorTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		39B8A2E8169FF09D00B3FEB8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39B8A2F0169FF09E00B3FEB8 /* UIKit.framework in Frameworks */,
+				39B8A2F2169FF09E00B3FEB8 /* Foundation.framework in Frameworks */,
+				39B8A2F4169FF09E00B3FEB8 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		39B8A311169FF09F00B3FEB8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39B8A317169FF09F00B3FEB8 /* SenTestingKit.framework in Frameworks */,
+				39B8A318169FF09F00B3FEB8 /* UIKit.framework in Frameworks */,
+				39B8A319169FF09F00B3FEB8 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		39B8A2E0169FF09D00B3FEB8 = {
+			isa = PBXGroup;
+			children = (
+				39B8A2F5169FF09E00B3FEB8 /* Smart Monitor */,
+				39B8A31C169FF09F00B3FEB8 /* Smart MonitorTests */,
+				39B8A2EE169FF09E00B3FEB8 /* Frameworks */,
+				39B8A2EC169FF09D00B3FEB8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		39B8A2EC169FF09D00B3FEB8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				39B8A2EB169FF09D00B3FEB8 /* Smart Monitor.app */,
+				39B8A315169FF09F00B3FEB8 /* Smart MonitorTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		39B8A2EE169FF09E00B3FEB8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				39B8A2EF169FF09E00B3FEB8 /* UIKit.framework */,
+				39B8A2F1169FF09E00B3FEB8 /* Foundation.framework */,
+				39B8A2F3169FF09E00B3FEB8 /* CoreGraphics.framework */,
+				39B8A316169FF09F00B3FEB8 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		39B8A2F5169FF09E00B3FEB8 /* Smart Monitor */ = {
+			isa = PBXGroup;
+			children = (
+				39B8A2FE169FF09E00B3FEB8 /* AppDelegate.h */,
+				39B8A2FF169FF09E00B3FEB8 /* AppDelegate.m */,
+				39B8A307169FF09E00B3FEB8 /* MainStoryboard.storyboard */,
+				39B8A30A169FF09E00B3FEB8 /* MasterViewController.h */,
+				39B8A30B169FF09E00B3FEB8 /* MasterViewController.m */,
+				39B8A30D169FF09E00B3FEB8 /* DetailViewController.h */,
+				39B8A30E169FF09E00B3FEB8 /* DetailViewController.m */,
+				39B8A2F6169FF09E00B3FEB8 /* Supporting Files */,
+			);
+			path = "Smart Monitor";
+			sourceTree = "<group>";
+		};
+		39B8A2F6169FF09E00B3FEB8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				39B8A2F7169FF09E00B3FEB8 /* Smart Monitor-Info.plist */,
+				39B8A2F8169FF09E00B3FEB8 /* InfoPlist.strings */,
+				39B8A2FB169FF09E00B3FEB8 /* main.m */,
+				39B8A2FD169FF09E00B3FEB8 /* Smart Monitor-Prefix.pch */,
+				39B8A301169FF09E00B3FEB8 /* Default.png */,
+				39B8A303169FF09E00B3FEB8 /* Default@2x.png */,
+				39B8A305169FF09E00B3FEB8 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		39B8A31C169FF09F00B3FEB8 /* Smart MonitorTests */ = {
+			isa = PBXGroup;
+			children = (
+				39B8A322169FF09F00B3FEB8 /* Smart_MonitorTests.h */,
+				39B8A323169FF09F00B3FEB8 /* Smart_MonitorTests.m */,
+				39B8A31D169FF09F00B3FEB8 /* Supporting Files */,
+			);
+			path = "Smart MonitorTests";
+			sourceTree = "<group>";
+		};
+		39B8A31D169FF09F00B3FEB8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				39B8A31E169FF09F00B3FEB8 /* Smart MonitorTests-Info.plist */,
+				39B8A31F169FF09F00B3FEB8 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		39B8A2EA169FF09D00B3FEB8 /* Smart Monitor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 39B8A327169FF09F00B3FEB8 /* Build configuration list for PBXNativeTarget "Smart Monitor" */;
+			buildPhases = (
+				39B8A2E7169FF09D00B3FEB8 /* Sources */,
+				39B8A2E8169FF09D00B3FEB8 /* Frameworks */,
+				39B8A2E9169FF09D00B3FEB8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Smart Monitor";
+			productName = "Smart Monitor";
+			productReference = 39B8A2EB169FF09D00B3FEB8 /* Smart Monitor.app */;
+			productType = "com.apple.product-type.application";
+		};
+		39B8A314169FF09F00B3FEB8 /* Smart MonitorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 39B8A32A169FF09F00B3FEB8 /* Build configuration list for PBXNativeTarget "Smart MonitorTests" */;
+			buildPhases = (
+				39B8A310169FF09F00B3FEB8 /* Sources */,
+				39B8A311169FF09F00B3FEB8 /* Frameworks */,
+				39B8A312169FF09F00B3FEB8 /* Resources */,
+				39B8A313169FF09F00B3FEB8 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				39B8A31B169FF09F00B3FEB8 /* PBXTargetDependency */,
+			);
+			name = "Smart MonitorTests";
+			productName = "Smart MonitorTests";
+			productReference = 39B8A315169FF09F00B3FEB8 /* Smart MonitorTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		39B8A2E2169FF09D00B3FEB8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Service-Indeed";
+			};
+			buildConfigurationList = 39B8A2E5169FF09D00B3FEB8 /* Build configuration list for PBXProject "Smart Monitor" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 39B8A2E0169FF09D00B3FEB8;
+			productRefGroup = 39B8A2EC169FF09D00B3FEB8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				39B8A2EA169FF09D00B3FEB8 /* Smart Monitor */,
+				39B8A314169FF09F00B3FEB8 /* Smart MonitorTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		39B8A2E9169FF09D00B3FEB8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39B8A2FA169FF09E00B3FEB8 /* InfoPlist.strings in Resources */,
+				39B8A302169FF09E00B3FEB8 /* Default.png in Resources */,
+				39B8A304169FF09E00B3FEB8 /* Default@2x.png in Resources */,
+				39B8A306169FF09E00B3FEB8 /* Default-568h@2x.png in Resources */,
+				39B8A309169FF09E00B3FEB8 /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		39B8A312169FF09F00B3FEB8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39B8A321169FF09F00B3FEB8 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		39B8A313169FF09F00B3FEB8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		39B8A2E7169FF09D00B3FEB8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39B8A2FC169FF09E00B3FEB8 /* main.m in Sources */,
+				39B8A300169FF09E00B3FEB8 /* AppDelegate.m in Sources */,
+				39B8A30C169FF09E00B3FEB8 /* MasterViewController.m in Sources */,
+				39B8A30F169FF09E00B3FEB8 /* DetailViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		39B8A310169FF09F00B3FEB8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39B8A324169FF09F00B3FEB8 /* Smart_MonitorTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		39B8A31B169FF09F00B3FEB8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 39B8A2EA169FF09D00B3FEB8 /* Smart Monitor */;
+			targetProxy = 39B8A31A169FF09F00B3FEB8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		39B8A2F8169FF09E00B3FEB8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				39B8A2F9169FF09E00B3FEB8 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		39B8A307169FF09E00B3FEB8 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				39B8A308169FF09E00B3FEB8 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		39B8A31F169FF09F00B3FEB8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				39B8A320169FF09F00B3FEB8 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		39B8A325169FF09F00B3FEB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		39B8A326169FF09F00B3FEB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		39B8A328169FF09F00B3FEB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Smart Monitor/Smart Monitor-Prefix.pch";
+				INFOPLIST_FILE = "Smart Monitor/Smart Monitor-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		39B8A329169FF09F00B3FEB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Smart Monitor/Smart Monitor-Prefix.pch";
+				INFOPLIST_FILE = "Smart Monitor/Smart Monitor-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		39B8A32B169FF09F00B3FEB8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Smart Monitor.app/Smart Monitor";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Smart Monitor/Smart Monitor-Prefix.pch";
+				INFOPLIST_FILE = "Smart MonitorTests/Smart MonitorTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		39B8A32C169FF09F00B3FEB8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Smart Monitor.app/Smart Monitor";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Smart Monitor/Smart Monitor-Prefix.pch";
+				INFOPLIST_FILE = "Smart MonitorTests/Smart MonitorTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		39B8A2E5169FF09D00B3FEB8 /* Build configuration list for PBXProject "Smart Monitor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				39B8A325169FF09F00B3FEB8 /* Debug */,
+				39B8A326169FF09F00B3FEB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		39B8A327169FF09F00B3FEB8 /* Build configuration list for PBXNativeTarget "Smart Monitor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				39B8A328169FF09F00B3FEB8 /* Debug */,
+				39B8A329169FF09F00B3FEB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		39B8A32A169FF09F00B3FEB8 /* Build configuration list for PBXNativeTarget "Smart MonitorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				39B8A32B169FF09F00B3FEB8 /* Debug */,
+				39B8A32C169FF09F00B3FEB8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 39B8A2E2169FF09D00B3FEB8 /* Project object */;
+}
