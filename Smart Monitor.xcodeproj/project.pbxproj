@@ -24,6 +24,19 @@
 		39B8A319169FF09F00B3FEB8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39B8A2F1169FF09E00B3FEB8 /* Foundation.framework */; };
 		39B8A321169FF09F00B3FEB8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39B8A31F169FF09F00B3FEB8 /* InfoPlist.strings */; };
 		39B8A324169FF09F00B3FEB8 /* Smart_MonitorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8A323169FF09F00B3FEB8 /* Smart_MonitorTests.m */; };
+		39B8A32F169FF19700B3FEB8 /* LoginDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8A32E169FF19700B3FEB8 /* LoginDetails.m */; };
+		39B8A340169FFA9A00B3FEB8 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8A33B169FFA9A00B3FEB8 /* User.m */; };
+		39B8A341169FFA9A00B3FEB8 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8A33B169FFA9A00B3FEB8 /* User.m */; };
+		39B8A342169FFA9A00B3FEB8 /* System.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8A33D169FFA9A00B3FEB8 /* System.m */; };
+		39B8A343169FFA9A00B3FEB8 /* System.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8A33D169FFA9A00B3FEB8 /* System.m */; };
+		39B8A344169FFA9A00B3FEB8 /* CoordinatePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8A33F169FFA9A00B3FEB8 /* CoordinatePoint.m */; };
+		39B8A345169FFA9A00B3FEB8 /* CoordinatePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8A33F169FFA9A00B3FEB8 /* CoordinatePoint.m */; };
+		39B8A34C169FFAA400B3FEB8 /* GetUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8A347169FFAA400B3FEB8 /* GetUser.m */; };
+		39B8A34D169FFAA400B3FEB8 /* GetUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8A347169FFAA400B3FEB8 /* GetUser.m */; };
+		39B8A34E169FFAA400B3FEB8 /* GetSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8A349169FFAA400B3FEB8 /* GetSystem.m */; };
+		39B8A34F169FFAA400B3FEB8 /* GetSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8A349169FFAA400B3FEB8 /* GetSystem.m */; };
+		39B8A350169FFAA400B3FEB8 /* GetCoordinatePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8A34B169FFAA400B3FEB8 /* GetCoordinatePoint.m */; };
+		39B8A351169FFAA400B3FEB8 /* GetCoordinatePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8A34B169FFAA400B3FEB8 /* GetCoordinatePoint.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +74,20 @@
 		39B8A320169FF09F00B3FEB8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		39B8A322169FF09F00B3FEB8 /* Smart_MonitorTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Smart_MonitorTests.h; sourceTree = "<group>"; };
 		39B8A323169FF09F00B3FEB8 /* Smart_MonitorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Smart_MonitorTests.m; sourceTree = "<group>"; };
+		39B8A32D169FF19700B3FEB8 /* LoginDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginDetails.h; sourceTree = "<group>"; };
+		39B8A32E169FF19700B3FEB8 /* LoginDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginDetails.m; sourceTree = "<group>"; };
+		39B8A33A169FFA9A00B3FEB8 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		39B8A33B169FFA9A00B3FEB8 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		39B8A33C169FFA9A00B3FEB8 /* System.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = System.h; sourceTree = "<group>"; };
+		39B8A33D169FFA9A00B3FEB8 /* System.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = System.m; sourceTree = "<group>"; };
+		39B8A33E169FFA9A00B3FEB8 /* CoordinatePoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoordinatePoint.h; sourceTree = "<group>"; };
+		39B8A33F169FFA9A00B3FEB8 /* CoordinatePoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoordinatePoint.m; sourceTree = "<group>"; };
+		39B8A346169FFAA400B3FEB8 /* GetUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetUser.h; sourceTree = "<group>"; };
+		39B8A347169FFAA400B3FEB8 /* GetUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetUser.m; sourceTree = "<group>"; };
+		39B8A348169FFAA400B3FEB8 /* GetSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetSystem.h; sourceTree = "<group>"; };
+		39B8A349169FFAA400B3FEB8 /* GetSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetSystem.m; sourceTree = "<group>"; };
+		39B8A34A169FFAA400B3FEB8 /* GetCoordinatePoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetCoordinatePoint.h; sourceTree = "<group>"; };
+		39B8A34B169FFAA400B3FEB8 /* GetCoordinatePoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetCoordinatePoint.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,13 +147,9 @@
 		39B8A2F5169FF09E00B3FEB8 /* Smart Monitor */ = {
 			isa = PBXGroup;
 			children = (
-				39B8A2FE169FF09E00B3FEB8 /* AppDelegate.h */,
-				39B8A2FF169FF09E00B3FEB8 /* AppDelegate.m */,
-				39B8A307169FF09E00B3FEB8 /* MainStoryboard.storyboard */,
-				39B8A30A169FF09E00B3FEB8 /* MasterViewController.h */,
-				39B8A30B169FF09E00B3FEB8 /* MasterViewController.m */,
-				39B8A30D169FF09E00B3FEB8 /* DetailViewController.h */,
-				39B8A30E169FF09E00B3FEB8 /* DetailViewController.m */,
+				39B8A339169FFA2800B3FEB8 /* Model */,
+				39B8A338169FFA2600B3FEB8 /* Webservice */,
+				39B8A337169FFA2100B3FEB8 /* Controller */,
 				39B8A2F6169FF09E00B3FEB8 /* Supporting Files */,
 			);
 			path = "Smart Monitor";
@@ -163,6 +186,48 @@
 				39B8A31F169FF09F00B3FEB8 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		39B8A337169FFA2100B3FEB8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				39B8A2FE169FF09E00B3FEB8 /* AppDelegate.h */,
+				39B8A2FF169FF09E00B3FEB8 /* AppDelegate.m */,
+				39B8A307169FF09E00B3FEB8 /* MainStoryboard.storyboard */,
+				39B8A32D169FF19700B3FEB8 /* LoginDetails.h */,
+				39B8A32E169FF19700B3FEB8 /* LoginDetails.m */,
+				39B8A30A169FF09E00B3FEB8 /* MasterViewController.h */,
+				39B8A30B169FF09E00B3FEB8 /* MasterViewController.m */,
+				39B8A30D169FF09E00B3FEB8 /* DetailViewController.h */,
+				39B8A30E169FF09E00B3FEB8 /* DetailViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		39B8A338169FFA2600B3FEB8 /* Webservice */ = {
+			isa = PBXGroup;
+			children = (
+				39B8A346169FFAA400B3FEB8 /* GetUser.h */,
+				39B8A347169FFAA400B3FEB8 /* GetUser.m */,
+				39B8A348169FFAA400B3FEB8 /* GetSystem.h */,
+				39B8A349169FFAA400B3FEB8 /* GetSystem.m */,
+				39B8A34A169FFAA400B3FEB8 /* GetCoordinatePoint.h */,
+				39B8A34B169FFAA400B3FEB8 /* GetCoordinatePoint.m */,
+			);
+			name = Webservice;
+			sourceTree = "<group>";
+		};
+		39B8A339169FFA2800B3FEB8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				39B8A33A169FFA9A00B3FEB8 /* User.h */,
+				39B8A33B169FFA9A00B3FEB8 /* User.m */,
+				39B8A33C169FFA9A00B3FEB8 /* System.h */,
+				39B8A33D169FFA9A00B3FEB8 /* System.m */,
+				39B8A33E169FFA9A00B3FEB8 /* CoordinatePoint.h */,
+				39B8A33F169FFA9A00B3FEB8 /* CoordinatePoint.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,6 +344,13 @@
 				39B8A300169FF09E00B3FEB8 /* AppDelegate.m in Sources */,
 				39B8A30C169FF09E00B3FEB8 /* MasterViewController.m in Sources */,
 				39B8A30F169FF09E00B3FEB8 /* DetailViewController.m in Sources */,
+				39B8A32F169FF19700B3FEB8 /* LoginDetails.m in Sources */,
+				39B8A340169FFA9A00B3FEB8 /* User.m in Sources */,
+				39B8A342169FFA9A00B3FEB8 /* System.m in Sources */,
+				39B8A344169FFA9A00B3FEB8 /* CoordinatePoint.m in Sources */,
+				39B8A34C169FFAA400B3FEB8 /* GetUser.m in Sources */,
+				39B8A34E169FFAA400B3FEB8 /* GetSystem.m in Sources */,
+				39B8A350169FFAA400B3FEB8 /* GetCoordinatePoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +359,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				39B8A324169FF09F00B3FEB8 /* Smart_MonitorTests.m in Sources */,
+				39B8A341169FFA9A00B3FEB8 /* User.m in Sources */,
+				39B8A343169FFA9A00B3FEB8 /* System.m in Sources */,
+				39B8A345169FFA9A00B3FEB8 /* CoordinatePoint.m in Sources */,
+				39B8A34D169FFAA400B3FEB8 /* GetUser.m in Sources */,
+				39B8A34F169FFAA400B3FEB8 /* GetSystem.m in Sources */,
+				39B8A351169FFAA400B3FEB8 /* GetCoordinatePoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
