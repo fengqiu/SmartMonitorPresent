@@ -8,6 +8,7 @@
 
 #import "LoginDetails.h"
 #import "MasterViewController.h"
+#import "User.h"
 
 @interface LoginDetails ()
 
@@ -50,7 +51,21 @@
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignKeyboard)];
     [self.view addGestureRecognizer:tap];//runs the method to resign all responders
+
+    // 向控制器的array中添加假用户
+    User *loginUser=[[User alloc] initWithUsername:@"aaa" pwd:@"123"];
+    [self.userArray addObject:loginUser];
     
+    self.navigationController.navigationBarHidden=YES;
+    UIImage *navBarImage = [[UIImage imageNamed:@"navbar.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(27, 27, 27, 27)];
+    [self.navigationBar setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
+    //self.navigationBar
+    
+    UIImage *shareButtonImage = [[UIImage imageNamed:@"header_bg.png"] resizableImageWithCapInsets:
+                                 UIEdgeInsetsMake(68, 68, 68, 68)];
+    self.backgroundImageView.image = shareButtonImage;
+    //self.backgroundImageView.center = self.center;
+
 }
 
 -(void) textFieldDidEndEditing:(UITextField *)textField
@@ -71,10 +86,8 @@
         {
             textField.placeholder = @"用户名";
         }
-    }
-   
+    }   
 }
-
 
 -(void) textFieldDidBeginEditing:(UITextField *)textField
 {
@@ -101,6 +114,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+// 登录方法
 - (IBAction)Login:(id)sender {
     // 判断用户名或者密码是否为空
     if (self.txtUsername.text.length==0||self.txtPwd.text.length==0) {
@@ -109,15 +123,36 @@
     }
     else
     {
-        // 通过segue跳转页面
-        [self performSegueWithIdentifier:@"goToMaster" sender:sender];
+        if (self.userArray.count==0) {
+            UIAlertView *alertView=[[UIAlertView alloc] initWithTitle:@"用户名或密码不正确" message:@"请重新键入用户名或密码" delegate:self cancelButtonTitle:@"好,我知道了" otherButtonTitles:nil];
+            [alertView show];
+        }
+        else
+        {
+            User *tempuser=[self.userArray objectAtIndex:0];
+            
+            // 判断用户名和密码是否相同
+            if ([self.txtUsername.text isEqualToString:tempuser.username]&&[self.txtPwd.text isEqualToString:tempuser.pwd]) {
+                // 通过segue跳转页面
+                [self performSegueWithIdentifier:@"goToMaster" sender:sender];
+            }
+            else
+            {
+                UIAlertView *alertView=[[UIAlertView alloc] initWithTitle:@"用户名或密码不正确" message:@"请重新键入用户名或密码" delegate:self cancelButtonTitle:@"好,我知道了" otherButtonTitles:nil];
+                [alertView show];
+            }
+        }
     }
-    
+}
 
-    
-}
-- (IBAction)LoginAction:(id)sender {
-    
-    
-}
+//-(BOOL)shouldAutomaticallyForwardRotationMethods
+//{
+//    return NO;
+//}
+//
+//-(BOOL)shouldAutorotateToInterfaceOrientation:(UIIinterfaceOrientation)interfaceOrientation
+//{
+//    return true;
+//}
+
 @end

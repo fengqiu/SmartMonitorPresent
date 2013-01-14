@@ -8,7 +8,7 @@
 #import "MasterViewController.h"
 #import <UIKit/UIKit.h>
 
-@interface LoginDetails : UIViewController<UITextFieldDelegate>
+@interface LoginDetails : UIViewController
 
 - (IBAction)LoginAction:(id)sender;
 
@@ -16,6 +16,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtUsername;
 @property (weak, nonatomic) IBOutlet UITextField *txtPwd;
 @property (weak, nonatomic) IBOutlet UIButton *btnLogin;
+@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
+
 
 
 

@@ -39,6 +39,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.navigationController.navigationBarHidden=NO;
+    self.navigationController.navigationItem.hidesBackButton=YES;
+    self.navigationItem.accessibilityElementsHidden=YES;
+    self.navigationItem.hidesBackButton=YES;
+    
     _CustomerID = [[NSMutableArray alloc] init];
     [_CustomerID addObject:@"HR"];
     [self.tableView reloadData];
