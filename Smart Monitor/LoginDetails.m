@@ -14,7 +14,7 @@
 @end
 
 @implementation LoginDetails
-
+@synthesize txtUsername,txtPwd;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -31,6 +31,8 @@
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_cork.png"]];
     
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignKeyboard)];
+    [self.view addGestureRecognizer:tap];//runs the method to resign all responders
 
     
     
@@ -38,9 +40,34 @@
     [self.txtUsername setBackground:textFieldImage];
     [self.txtPwd setBackground:textFieldImage];
     [self.btnLogin setBackgroundImage:textFieldImage forState:UIControlStateNormal];
-    
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+}
+
+-(void) textFieldDidEndEditing:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    //removes keyboard
+}
+
+
+-(void) textFieldDidBeginEditing:(UITextField *)textField
+{
+    textField.placeholder=@"";
+    //clears textfield when editing begins
+}
+
+-(BOOL) textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+-(void)resignKeyboard
+{
+    [txtUsername resignFirstResponder];
+    [txtPwd resignFirstResponder];
+    //resigns both keyboards
 }
 
 - (void)didReceiveMemoryWarning

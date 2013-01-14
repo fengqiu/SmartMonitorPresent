@@ -8,7 +8,7 @@
 #import "MasterViewController.h"
 #import <UIKit/UIKit.h>
 
-@interface LoginDetails : UIViewController
+@interface LoginDetails : UIViewController<UITextFieldDelegate>
 
 - (IBAction)LoginAction:(id)sender;
 
