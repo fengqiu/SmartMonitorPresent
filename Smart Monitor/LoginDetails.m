@@ -28,7 +28,12 @@
 
 - (void)viewDidLoad
 {
-   
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_cork.png"]];
+    UIImage *textFieldImage = [[UIImage imageNamed:@"search_field.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
+    [self.txtUsername setBackground:textFieldImage];
+    [self.txtPwd setBackground:textFieldImage];
+    [self.btnLogin setBackgroundImage:textFieldImage forState:UIControlStateNormal];
+    
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
