@@ -36,6 +36,7 @@
 		39B8A34F169FFAA400B3FEB8 /* GetSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8A349169FFAA400B3FEB8 /* GetSystem.m */; };
 		39B8A350169FFAA400B3FEB8 /* GetCoordinatePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8A34B169FFAA400B3FEB8 /* GetCoordinatePoint.m */; };
 		39B8A351169FFAA400B3FEB8 /* GetCoordinatePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8A34B169FFAA400B3FEB8 /* GetCoordinatePoint.m */; };
+		CE03D54A16A3DA4600C846C9 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE03D54816A3DA4600C846C9 /* MainStoryboard.storyboard */; };
 		CEFC864A16A017F400A374E5 /* bg_cork.png in Resources */ = {isa = PBXBuildFile; fileRef = CEFC863616A017F400A374E5 /* bg_cork.png */; };
 		CEFC864B16A017F400A374E5 /* bg_cork.png in Resources */ = {isa = PBXBuildFile; fileRef = CEFC863616A017F400A374E5 /* bg_cork.png */; };
 		CEFC864C16A017F400A374E5 /* bg_cork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEFC863716A017F400A374E5 /* bg_cork@2x.png */; };
@@ -126,6 +127,7 @@
 		39B8A349169FFAA400B3FEB8 /* GetSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetSystem.m; sourceTree = "<group>"; };
 		39B8A34A169FFAA400B3FEB8 /* GetCoordinatePoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetCoordinatePoint.h; sourceTree = "<group>"; };
 		39B8A34B169FFAA400B3FEB8 /* GetCoordinatePoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetCoordinatePoint.m; sourceTree = "<group>"; };
+		CE03D54916A3DA4600C846C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		CEFC863616A017F400A374E5 /* bg_cork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_cork.png; sourceTree = "<group>"; };
 		CEFC863716A017F400A374E5 /* bg_cork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_cork@2x.png"; sourceTree = "<group>"; };
 		CEFC863816A017F400A374E5 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 		39B8A337169FFA2100B3FEB8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CE03D54816A3DA4600C846C9 /* MainStoryboard.storyboard */,
 				39B8A2FE169FF09E00B3FEB8 /* AppDelegate.h */,
 				39B8A2FF169FF09E00B3FEB8 /* AppDelegate.m */,
 				39B8A32D169FF19700B3FEB8 /* LoginDetails.h */,
@@ -410,6 +413,7 @@
 				CEFC866C16A017F400A374E5 /* search_field@2x.png in Resources */,
 				CEFC866E16A017F400A374E5 /* search_text.png in Resources */,
 				CEFC867016A017F400A374E5 /* search_text@2x.png in Resources */,
+				CE03D54A16A3DA4600C846C9 /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +521,14 @@
 				39B8A320169FF09F00B3FEB8 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		CE03D54816A3DA4600C846C9 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE03D54916A3DA4600C846C9 /* en */,
+			);
+			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
