@@ -12,4 +12,9 @@
 
 - (IBAction)LoginAction:(id)sender;
 
+
+@property (weak, nonatomic) IBOutlet UITextField *txtUsername;
+@property (weak, nonatomic) IBOutlet UITextField *txtPwd;
+@property (weak, nonatomic) IBOutlet UIButton *btnLogin;
+
 @end
