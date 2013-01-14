@@ -11,11 +11,21 @@
 
 @interface LoginDetails ()
 
+@property (nonatomic,strong) NSMutableArray *userArray;
+
 @end
 
 @implementation LoginDetails
 @synthesize txtUsername,txtPwd;
+@synthesize userArray=_userArray;
 
+-(NSMutableArray *)userArray
+{
+    if (_userArray==nil) {
+        _userArray =[[NSMutableArray alloc] init];
+    }
+    return _userArray;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,7 +38,10 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
+	// Do any additional setup after loading the view.
     
+    // 添加背景图片
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_cork.png"]];
     
     //runs the method to resign all responders
@@ -42,8 +55,10 @@
     [self.txtUsername setBackground:textFieldImage];
     [self.txtPwd setBackground:textFieldImage];
     [self.btnLogin setBackgroundImage:textFieldImage forState:UIControlStateNormal];
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignKeyboard)];
+    [self.view addGestureRecognizer:tap];//runs the method to resign all responders
+    
 }
 
 -(void) textFieldDidEndEditing:(UITextField *)textField
@@ -83,7 +98,18 @@
 }
 
 - (IBAction)Login:(id)sender {
+    // 判断用户名或者密码是否为空
+    if (self.txtUsername.text.length==0||self.txtPwd.text.length==0) {
+        UIAlertView *alertView=[[UIAlertView alloc] initWithTitle:@"用户名或密码不能为空" message:@"请键入用户名或密码" delegate:self cancelButtonTitle:@"好,我知道了" otherButtonTitles:nil];
+		[alertView show];        
+    }
+    else
+    {
+        // 通过segue跳转页面
         [self performSegueWithIdentifier:@"goToMaster" sender:sender];
+    }
+    
+
     
 }
 - (IBAction)LoginAction:(id)sender {
