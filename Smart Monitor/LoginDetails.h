@@ -17,5 +17,5 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtPwd;
 @property (weak, nonatomic) IBOutlet UIButton *btnLogin;
 
-
+-(void) resignKeyboard;
 @end

@@ -77,15 +77,16 @@
                         </subviews>
                         <color key="backgroundColor" red="0.99215692281723022" green="0.9960784912109375" blue="0.9960784912109375" alpha="0.83999999999999997" colorSpace="deviceRGB"/>
                         <constraints>
-                            <constraint firstItem="9CS-A1-hdq" firstAttribute="trailing" secondItem="vBd-hO-GXm" secondAttribute="trailing" type="default" id="4Sa-1B-vE4"/>
-                            <constraint firstItem="vBd-hO-GXm" firstAttribute="leading" secondItem="JcA-S8-gzJ" secondAttribute="leading" constant="79" id="IZL-wK-tcA"/>
-                            <constraint firstItem="gNb-Ou-i6T" firstAttribute="leading" secondItem="JcA-S8-gzJ" secondAttribute="leading" constant="8" id="Lfa-JL-k0v"/>
+                            <constraint firstItem="rba-Rc-QaF" firstAttribute="top" secondItem="JcA-S8-gzJ" secondAttribute="top" constant="224" id="Al2-5H-8AA"/>
+                            <constraint firstItem="vBd-hO-GXm" firstAttribute="centerX" secondItem="9CS-A1-hdq" secondAttribute="centerX" type="default" id="Fla-Eu-ZDu"/>
+                            <constraint firstItem="vBd-hO-GXm" firstAttribute="leading" secondItem="9CS-A1-hdq" secondAttribute="leading" type="default" id="Jcb-j3-ljH"/>
                             <constraint firstItem="9CS-A1-hdq" firstAttribute="top" secondItem="JcA-S8-gzJ" secondAttribute="top" constant="93" id="M2B-e4-A7n"/>
-                            <constraint firstItem="rba-Rc-QaF" firstAttribute="top" secondItem="JcA-S8-gzJ" secondAttribute="top" constant="209" id="YHu-oa-5jd"/>
+                            <constraint firstItem="gNb-Ou-i6T" firstAttribute="leading" secondItem="JcA-S8-gzJ" secondAttribute="leading" constant="8" id="RDR-YG-y8U"/>
+                            <constraint firstItem="rba-Rc-QaF" firstAttribute="leading" secondItem="JcA-S8-gzJ" secondAttribute="leading" constant="79" id="Z6l-Gg-Miy"/>
                             <constraint firstItem="gNb-Ou-i6T" firstAttribute="top" secondItem="JcA-S8-gzJ" secondAttribute="top" constant="46" id="fAP-Mt-9kl"/>
                             <constraint firstItem="rba-Rc-QaF" firstAttribute="centerX" secondItem="JcA-S8-gzJ" secondAttribute="centerX" type="default" id="h37-zq-aau"/>
-                            <constraint firstItem="vBd-hO-GXm" firstAttribute="top" secondItem="JcA-S8-gzJ" secondAttribute="top" constant="149" id="wWU-Ys-HER"/>
-                        </constraints>
+                            <constraint firstItem="vBd-hO-GXm" firstAttribute="centerX" secondItem="JcA-S8-gzJ" secondAttribute="centerX" type="default" id="orJ-zG-ZtK"/>
+                            <constraint firstItem="vBd-hO-GXm" firstAttribute="top" secondItem="9CS-A1-hdq" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="vZq-6C-lQY"/>
                     </view>
                     <navigationItem key="navigationItem" id="nX9-mn-xpI"/>
                     <connections>
@@ -98,7 +99,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aT6-fv-YuT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-160" y="-14"/>
-        </scene>
+            <point key="canvasLocation" x="-155" y="82"/>
         <!--Master View Controller - Master-->
         <scene sceneID="18">
             <objects>
