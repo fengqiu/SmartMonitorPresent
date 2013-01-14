@@ -39,13 +39,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    //initialise (初始化） everything
     _CustomerID = [[NSMutableArray alloc] init];
     [_CustomerID addObject:@"HR"];
+    //从调tableview
     [self.tableView reloadData];
     {
 	// Do any additional setup after loading the view, typically from a nib.
     //self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
     //UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     //self.navigationItem.rightBarButtonItem = addButton;
     }
@@ -127,6 +128,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    //传变量给ShowDetail见面
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
             NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
             NSString *CustomerID= [_CustomerID objectAtIndex:indexPath.row];

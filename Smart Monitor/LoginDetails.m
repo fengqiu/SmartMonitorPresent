@@ -31,8 +31,10 @@
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_cork.png"]];
     
+    //runs the method to resign all responders
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignKeyboard)];
-    [self.view addGestureRecognizer:tap];//runs the method to resign all responders
+    //connect "tap" and "ViewController"
+    [self.view addGestureRecognizer:tap];
 
     
     
@@ -46,15 +48,17 @@
 
 -(void) textFieldDidEndEditing:(UITextField *)textField
 {
-    [textField resignFirstResponder];
     //removes keyboard
+    [textField resignFirstResponder];
+    
 }
 
 
 -(void) textFieldDidBeginEditing:(UITextField *)textField
 {
-    textField.placeholder=@"";
     //clears textfield when editing begins
+    textField.placeholder=@"";
+    
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
@@ -65,15 +69,17 @@
 
 -(void)resignKeyboard
 {
+     //resigns both keyboards
     [txtUsername resignFirstResponder];
     [txtPwd resignFirstResponder];
-    //resigns both keyboards
+   
 }
 
 - (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    [super didReceiveMemoryWarning];
+
 }
 
 - (IBAction)Login:(id)sender {
