@@ -53,7 +53,7 @@
     [self.view addGestureRecognizer:tap];//runs the method to resign all responders
 
     // 向控制器的array中添加假用户
-    User *loginUser=[[User alloc] initWithUsername:@"aaa" pwd:@"123"];
+    User *loginUser=[[User alloc] initWithUsername:@"aaa" password:@"123"];
     [self.userArray addObject:loginUser];
     
     self.navigationController.navigationBarHidden=YES;
@@ -132,7 +132,7 @@
             User *tempuser=[self.userArray objectAtIndex:0];
             
             // 判断用户名和密码是否相同
-            if ([self.txtUsername.text isEqualToString:tempuser.username]&&[self.txtPwd.text isEqualToString:tempuser.pwd]) {
+            if ([self.txtUsername.text isEqualToString:tempuser.username]&&[self.txtPwd.text isEqualToString:tempuser.password]) {
                 // 通过segue跳转页面
                 [self performSegueWithIdentifier:@"goToMaster" sender:sender];
             }

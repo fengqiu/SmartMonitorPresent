@@ -11,14 +11,14 @@
 @implementation User
 
 @synthesize username=_username;
-@synthesize pwd=_pwd;
+@synthesize password=_password;
 
 // 对象初始化方法
--(id)initWithUsername:(NSString *)username pwd:(NSString *)pwd
+-(id)initWithUsername:(NSString *)username password:(NSString *)password
 {
     if ((self=[super init])) {
         self.username=username;
-        self.pwd=pwd;
+        self.password=password;
     }
     return self;
 }

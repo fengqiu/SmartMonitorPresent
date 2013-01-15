@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GetUser : NSObject
+@interface GetUser : NSObject<NSXMLParserDelegate>
+
+@property (nonatomic,strong) NSMutableArray *userArray;
+
+-(NSMutableArray *) getUserArray:(NSString *)username;
 
 @end

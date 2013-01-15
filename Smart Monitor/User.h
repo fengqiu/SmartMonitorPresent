@@ -13,9 +13,9 @@
 @property (strong, nonatomic) id detailItem;
 
 @property (nonatomic,strong) NSString *username;
-@property (nonatomic,strong) NSString *pwd;
+@property (nonatomic,strong) NSString *password;
 
 // 初始化方法
--(id)initWithUsername:(NSString *)username pwd:(NSString *)pwd;
+-(id)initWithUsername:(NSString *)username password:(NSString *)password;
 
 @end
