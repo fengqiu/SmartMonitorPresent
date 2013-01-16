@@ -17,7 +17,6 @@
 		39B8A304169FF09E00B3FEB8 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39B8A303169FF09E00B3FEB8 /* Default@2x.png */; };
 		39B8A306169FF09E00B3FEB8 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39B8A305169FF09E00B3FEB8 /* Default-568h@2x.png */; };
 		39B8A30C169FF09E00B3FEB8 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8A30B169FF09E00B3FEB8 /* MasterViewController.m */; };
-		39B8A30F169FF09E00B3FEB8 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8A30E169FF09E00B3FEB8 /* DetailViewController.m */; };
 		39B8A317169FF09F00B3FEB8 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39B8A316169FF09F00B3FEB8 /* SenTestingKit.framework */; };
 		39B8A318169FF09F00B3FEB8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39B8A2EF169FF09E00B3FEB8 /* UIKit.framework */; };
 		39B8A319169FF09F00B3FEB8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39B8A2F1169FF09E00B3FEB8 /* Foundation.framework */; };
@@ -36,6 +35,7 @@
 		39B8A34F169FFAA400B3FEB8 /* GetSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8A349169FFAA400B3FEB8 /* GetSystem.m */; };
 		39B8A350169FFAA400B3FEB8 /* GetCoordinatePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8A34B169FFAA400B3FEB8 /* GetCoordinatePoint.m */; };
 		39B8A351169FFAA400B3FEB8 /* GetCoordinatePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8A34B169FFAA400B3FEB8 /* GetCoordinatePoint.m */; };
+		39E6294E16A69788003CEC4A /* SystemDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E6294D16A69788003CEC4A /* SystemDetails.m */; };
 		CE01E9BC16A6709F008DC85B /* smartlink.png in Resources */ = {isa = PBXBuildFile; fileRef = CE01E9BB16A6709F008DC85B /* smartlink.png */; };
 		CE01E9BD16A6709F008DC85B /* smartlink.png in Resources */ = {isa = PBXBuildFile; fileRef = CE01E9BB16A6709F008DC85B /* smartlink.png */; };
 		CE03D54A16A3DA4600C846C9 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE03D54816A3DA4600C846C9 /* MainStoryboard.storyboard */; };
@@ -110,8 +110,6 @@
 		39B8A305169FF09E00B3FEB8 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		39B8A30A169FF09E00B3FEB8 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		39B8A30B169FF09E00B3FEB8 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		39B8A30D169FF09E00B3FEB8 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		39B8A30E169FF09E00B3FEB8 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		39B8A315169FF09F00B3FEB8 /* Smart MonitorTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Smart MonitorTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39B8A316169FF09F00B3FEB8 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		39B8A31E169FF09F00B3FEB8 /* Smart MonitorTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Smart MonitorTests-Info.plist"; sourceTree = "<group>"; };
@@ -132,6 +130,8 @@
 		39B8A349169FFAA400B3FEB8 /* GetSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetSystem.m; sourceTree = "<group>"; };
 		39B8A34A169FFAA400B3FEB8 /* GetCoordinatePoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetCoordinatePoint.h; sourceTree = "<group>"; };
 		39B8A34B169FFAA400B3FEB8 /* GetCoordinatePoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetCoordinatePoint.m; sourceTree = "<group>"; };
+		39E6294C16A69787003CEC4A /* SystemDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemDetails.h; sourceTree = "<group>"; };
+		39E6294D16A69788003CEC4A /* SystemDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemDetails.m; sourceTree = "<group>"; };
 		CE01E9BB16A6709F008DC85B /* smartlink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smartlink.png; sourceTree = "<group>"; };
 		CE03D54916A3DA4600C846C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		CE0DF39116A6742F0023F56C /* Ocean.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ocean.jpg; sourceTree = "<group>"; };
@@ -270,8 +270,8 @@
 				39B8A32E169FF19700B3FEB8 /* LoginDetails.m */,
 				39B8A30A169FF09E00B3FEB8 /* MasterViewController.h */,
 				39B8A30B169FF09E00B3FEB8 /* MasterViewController.m */,
-				39B8A30D169FF09E00B3FEB8 /* DetailViewController.h */,
-				39B8A30E169FF09E00B3FEB8 /* DetailViewController.m */,
+				39E6294C16A69787003CEC4A /* SystemDetails.h */,
+				39E6294D16A69788003CEC4A /* SystemDetails.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -491,7 +491,6 @@
 				39B8A2FC169FF09E00B3FEB8 /* main.m in Sources */,
 				39B8A300169FF09E00B3FEB8 /* AppDelegate.m in Sources */,
 				39B8A30C169FF09E00B3FEB8 /* MasterViewController.m in Sources */,
-				39B8A30F169FF09E00B3FEB8 /* DetailViewController.m in Sources */,
 				39B8A32F169FF19700B3FEB8 /* LoginDetails.m in Sources */,
 				39B8A340169FFA9A00B3FEB8 /* User.m in Sources */,
 				39B8A342169FFA9A00B3FEB8 /* System.m in Sources */,
@@ -501,6 +500,7 @@
 				39B8A350169FFAA400B3FEB8 /* GetCoordinatePoint.m in Sources */,
 				CE0DF3A216A67E500023F56C /* SystemParameter.m in Sources */,
 				CE0DF3A616A67E900023F56C /* GetSystemParameter.m in Sources */,
+				39E6294E16A69788003CEC4A /* SystemDetails.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

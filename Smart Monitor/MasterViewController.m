@@ -12,7 +12,7 @@
 
 @interface MasterViewController ()
    @property NSMutableArray *CustomerID;
-    //sores the ID of all systems
+    //stores the ID of all systems
 
 // 用户名
 //@property (nonatomic,strong)
@@ -140,7 +140,7 @@
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
             NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
             NSString *CustomerIDstr= [self.CustomerID objectAtIndex:indexPath.row];
-        [[segue destinationViewController] setDetailItem:CustomerIDstr];
+        //[[segue destinationViewController] setDetailItem:CustomerIDstr];
     }
 }
 
