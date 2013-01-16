@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "CorePlot-CocoaTouch.h"
+
+
 @interface Trends : UIViewController
 @property (strong, nonatomic) IBOutlet CPTGraphHostingView *GraphView;
 
