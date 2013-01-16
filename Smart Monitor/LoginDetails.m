@@ -54,6 +54,14 @@
     //connect "tap" and "ViewController"
     [self.view addGestureRecognizer:tap];
 
+    // 向控制器的array中添加假用户
+    User *loginUser=[[User alloc] initWithUsername:@"aaa" password:@"123"];
+    [self.userArray addObject:loginUser];
+    
+    self.navigationController.navigationBarHidden=YES;
+    UIImage *navBarImage = [[UIImage imageNamed:@"navbar.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(27, 27, 27, 27)];
+    [self.navigationBar setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
+    //self.navigationBar
     
     UIImage *shareButtonImage = [[UIImage imageNamed:@"header_bg.png"] resizableImageWithCapInsets:
                                  UIEdgeInsetsMake(68, 68, 68, 68)];

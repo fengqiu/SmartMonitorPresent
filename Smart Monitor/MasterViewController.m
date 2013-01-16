@@ -43,10 +43,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //initialise (初始化） everything
-    _CustomerID = [[NSMutableArray alloc] init];
-    [_CustomerID addObject:@"HR"];
-    //从调tableview
+    
+    //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Ocean.jpg"]];
+    //UIImage *navBarImage = [[UIImage imageNamed:@"navbar.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(27, 27, 27, 27)];
+    //[self.navigationController.navigationBar setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
+    
+    
+    self.navigationController.navigationBarHidden=NO;
+    self.navigationController.navigationItem.hidesBackButton=YES;
+    self.navigationItem.accessibilityElementsHidden=YES;
+    self.navigationItem.hidesBackButton=YES;
+    
+     self.CustomerID = [[NSMutableArray alloc] init];
+    [self.CustomerID addObject:@"HR"];
     [self.tableView reloadData];
     {
 	// Do any additional setup after loading the view, typically from a nib.
