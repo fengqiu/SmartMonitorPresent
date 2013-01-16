@@ -151,6 +151,14 @@
     }
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"goToMaster"]) {
+        [[segue destinationViewController] setUsername:self.txtUsername.text];
+    }
+}
+
+
 //-(BOOL)shouldAutomaticallyForwardRotationMethods
 //{
 //    return NO;
