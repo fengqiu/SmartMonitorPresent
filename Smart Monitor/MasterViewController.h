@@ -7,17 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "User.h"
 #import "System.h"
 
 @interface MasterViewController : UITableViewController
 
-@property (nonatomic, strong) User * UserDetails;
+@property (nonatomic, strong) NSString *username;
 //stores the login details of the user which logged in
-
-
 
 -(void) SetAllSystemInformation;
 //downloads all the information needed from the webservice and inserts it into the allSystems NSmutable array
+
+
 
 @end

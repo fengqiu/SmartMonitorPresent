@@ -40,6 +40,8 @@
 		CE01E9BD16A6709F008DC85B /* smartlink.png in Resources */ = {isa = PBXBuildFile; fileRef = CE01E9BB16A6709F008DC85B /* smartlink.png */; };
 		CE03D54A16A3DA4600C846C9 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE03D54816A3DA4600C846C9 /* MainStoryboard.storyboard */; };
 		CE0DF39216A6742F0023F56C /* Ocean.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CE0DF39116A6742F0023F56C /* Ocean.jpg */; };
+		CE0DF3A216A67E500023F56C /* SystemParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0DF3A116A67E500023F56C /* SystemParameter.m */; };
+		CE0DF3A616A67E900023F56C /* GetSystemParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = CE0DF3A516A67E900023F56C /* GetSystemParameter.m */; };
 		CEFC864A16A017F400A374E5 /* bg_cork.png in Resources */ = {isa = PBXBuildFile; fileRef = CEFC863616A017F400A374E5 /* bg_cork.png */; };
 		CEFC864B16A017F400A374E5 /* bg_cork.png in Resources */ = {isa = PBXBuildFile; fileRef = CEFC863616A017F400A374E5 /* bg_cork.png */; };
 		CEFC864C16A017F400A374E5 /* bg_cork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEFC863716A017F400A374E5 /* bg_cork@2x.png */; };
@@ -133,6 +135,10 @@
 		CE01E9BB16A6709F008DC85B /* smartlink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smartlink.png; sourceTree = "<group>"; };
 		CE03D54916A3DA4600C846C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		CE0DF39116A6742F0023F56C /* Ocean.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ocean.jpg; sourceTree = "<group>"; };
+		CE0DF3A016A67E500023F56C /* SystemParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemParameter.h; sourceTree = "<group>"; };
+		CE0DF3A116A67E500023F56C /* SystemParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemParameter.m; sourceTree = "<group>"; };
+		CE0DF3A416A67E900023F56C /* GetSystemParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetSystemParameter.h; sourceTree = "<group>"; };
+		CE0DF3A516A67E900023F56C /* GetSystemParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetSystemParameter.m; sourceTree = "<group>"; };
 		CEFC863616A017F400A374E5 /* bg_cork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_cork.png; sourceTree = "<group>"; };
 		CEFC863716A017F400A374E5 /* bg_cork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_cork@2x.png"; sourceTree = "<group>"; };
 		CEFC863816A017F400A374E5 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
@@ -279,6 +285,8 @@
 				39B8A349169FFAA400B3FEB8 /* GetSystem.m */,
 				39B8A34A169FFAA400B3FEB8 /* GetCoordinatePoint.h */,
 				39B8A34B169FFAA400B3FEB8 /* GetCoordinatePoint.m */,
+				CE0DF3A416A67E900023F56C /* GetSystemParameter.h */,
+				CE0DF3A516A67E900023F56C /* GetSystemParameter.m */,
 			);
 			name = Webservice;
 			sourceTree = "<group>";
@@ -292,6 +300,8 @@
 				39B8A33D169FFA9A00B3FEB8 /* System.m */,
 				39B8A33E169FFA9A00B3FEB8 /* CoordinatePoint.h */,
 				39B8A33F169FFA9A00B3FEB8 /* CoordinatePoint.m */,
+				CE0DF3A016A67E500023F56C /* SystemParameter.h */,
+				CE0DF3A116A67E500023F56C /* SystemParameter.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -489,6 +499,8 @@
 				39B8A34C169FFAA400B3FEB8 /* GetUser.m in Sources */,
 				39B8A34E169FFAA400B3FEB8 /* GetSystem.m in Sources */,
 				39B8A350169FFAA400B3FEB8 /* GetCoordinatePoint.m in Sources */,
+				CE0DF3A216A67E500023F56C /* SystemParameter.m in Sources */,
+				CE0DF3A616A67E900023F56C /* GetSystemParameter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

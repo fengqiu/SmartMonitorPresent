@@ -20,7 +20,7 @@
 @end
 
 @implementation MasterViewController
-@synthesize UserDetails;
+//@synthesize UserDetails;
 @synthesize CustomerID=_CustomerID;
 
 -(void) SetAllSystemInformation
@@ -43,11 +43,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Ocean.jpg"]];
-    //UIImage *navBarImage = [[UIImage imageNamed:@"navbar.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(27, 27, 27, 27)];
-    //[self.navigationController.navigationBar setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
-    
     
     self.navigationController.navigationBarHidden=NO;
     self.navigationController.navigationItem.hidesBackButton=YES;
