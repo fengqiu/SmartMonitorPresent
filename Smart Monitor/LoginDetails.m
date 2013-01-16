@@ -43,21 +43,16 @@
     
     // 添加背景图片
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_cork.png"]];
+    UIImage *textFieldImage = [[UIImage imageNamed:@"search_field.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
+    [self.txtUsername setBackground:textFieldImage];
+    [self.txtPwd setBackground:textFieldImage];
+    [self.btnLogin setBackgroundImage:textFieldImage forState:UIControlStateNormal];
     
     //runs the method to resign all responders
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignKeyboard)];
     //connect "tap" and "ViewController"
     [self.view addGestureRecognizer:tap];
 
-    
-    
-    UIImage *textFieldImage = [[UIImage imageNamed:@"search_field.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
-    [self.txtUsername setBackground:textFieldImage];
-    [self.txtPwd setBackground:textFieldImage];
-    [self.btnLogin setBackgroundImage:textFieldImage forState:UIControlStateNormal];
-    
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignKeyboard)];
-    [self.view addGestureRecognizer:tap];//runs the method to resign all responders
     
 }
 
@@ -66,6 +61,22 @@
     //removes keyboard
     [textField resignFirstResponder];
     
+    //removes keyboard
+    if ([textField isEqual:txtPwd])
+    {
+        if (textField.text.length==0)
+        {
+            textField.placeholder = @"密码";
+        }
+    }
+    else
+    {
+        if (textField.text.length==0)
+        {
+            textField.placeholder = @"用户名";
+        }
+    }
+   
 }
 
 
