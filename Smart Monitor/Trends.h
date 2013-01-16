@@ -10,7 +10,16 @@
 #import "CorePlot-CocoaTouch.h"
 
 
-@interface Trends : UIViewController
+@interface Trends : UIViewController<CPTScatterPlotDelegate,CPTPlotDataSource>
 @property (strong, nonatomic) IBOutlet CPTGraphHostingView *GraphView;
+
+
+-(void) initPlot;
+
+-(void)configureGraph;
+
+-(void)configurePlots;
+
+-(void)configureAxes;
 
 @end
