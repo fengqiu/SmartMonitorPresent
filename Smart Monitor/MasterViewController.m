@@ -22,6 +22,7 @@
 @implementation MasterViewController
 //@synthesize UserDetails;
 @synthesize CustomerID=_CustomerID;
+@synthesize username=_username;
 
 -(void) SetAllSystemInformation
 {
@@ -50,7 +51,7 @@
     self.navigationItem.hidesBackButton=YES;
     
      self.CustomerID = [[NSMutableArray alloc] init];
-    [self.CustomerID addObject:@"HR"];
+    [self.CustomerID addObject:self.username];
     [self.tableView reloadData];
     {
 	// Do any additional setup after loading the view, typically from a nib.

@@ -17,7 +17,12 @@
 @end
 
 @implementation LoginDetails
-@synthesize txtUsername,txtPwd;
+
+@synthesize txtUsername=_txtUsername;
+@synthesize txtPwd=_txtPwd;
+@synthesize btnLogin=_btnLogin;
+@synthesize navigationBar=_navigationBar;
+@synthesize backgroundImageView=_backgroundImageView;
 @synthesize userArray=_userArray;
 
 -(NSMutableArray *)userArray
@@ -73,7 +78,7 @@
     [textField resignFirstResponder];
     
     //removes keyboard
-    if ([textField isEqual:txtPwd])
+    if ([textField isEqual:self.txtPwd])
     {
         if (textField.text.length==0)
         {
@@ -103,8 +108,8 @@
 
 -(void)resignKeyboard
 {
-    [txtUsername resignFirstResponder];
-    [txtPwd resignFirstResponder];
+    [self.txtUsername resignFirstResponder];
+    [self.txtPwd resignFirstResponder];
     //resigns both keyboards
 }
 

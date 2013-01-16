@@ -24,7 +24,7 @@
 @synthesize currentString=_currentString;
 @synthesize isparse=_isparse;
 
-NSXMLParser		*parser;
+NSXMLParser	*parser;
 
 -(NSMutableArray *)getSystemArray:(NSString *)username
 {
