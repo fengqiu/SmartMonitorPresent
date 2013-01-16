@@ -12,6 +12,6 @@
 
 @property (nonatomic,strong) NSMutableArray *userArray;
 
--(NSMutableArray *) getUserArray;
+-(BOOL *)checkUser:(NSString *)username password:(NSString *)password;
 
 @end

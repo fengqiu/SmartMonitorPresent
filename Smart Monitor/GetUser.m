@@ -14,6 +14,7 @@
 @property (nonatomic,strong) User *user;
 @property (nonatomic,strong) NSMutableString *currentString;
 @property (nonatomic) BOOL isparse;
+@property (nonatomic) BOOL isLogin;
 
 @end
 
@@ -23,11 +24,19 @@
 @synthesize user=_user;
 @synthesize currentString=_currentString;
 @synthesize isparse=_isparse;
+@synthesize isLogin=_isLogin;
 
 NSXMLParser		*parser;
 
--(NSMutableArray *) getUserArray
-{    
+-(BOOL *)checkUser:(NSString *)username password:(NSString *)password;
+{
+    // post提交的参数，格式如下
+    // User_ID=string&User_Pwd=string&IME=string
+   // NSString *postParam=[NSString ];
+    
+    
+    
+    
     NSString *weburl;
     if (!weburl) {
         weburl=[[NSString alloc] init];
@@ -44,7 +53,7 @@ NSXMLParser		*parser;
     data=nil;
     parser=nil;
     
-    return  self.userArray;
+    return  YES;
     
     self.userArray=nil;
 }
