@@ -10,8 +10,18 @@
 
 @implementation System
 
+@synthesize systemID=_systemID;
+@synthesize systemName=_systemName;
+@synthesize systemDesc=_systemDesc;
 
-
-
+-(id)initWithSystemID:(NSString *)systemID systemName:(NSString *)systemName systemDesc:(NSString *)systemDesc 
+{
+    if ((self=[super init])) {
+        self.systemID=systemID;
+        self.systemName=systemName;
+        self.systemDesc=systemDesc;
+    }
+    return self;
+}
 
 @end

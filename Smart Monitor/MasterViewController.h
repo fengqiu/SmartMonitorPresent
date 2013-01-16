@@ -16,6 +16,7 @@
 //stores the login details of the user which logged in
 
 
+
 -(void) SetAllSystemInformation;
 //downloads all the information needed from the webservice and inserts it into the allSystems NSmutable array
 
