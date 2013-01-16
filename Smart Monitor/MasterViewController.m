@@ -7,12 +7,12 @@
 //
 
 #import "MasterViewController.h"
-#import "DetailViewController.h"
+#import "SystemDetails.h"
 #import "GetSystem.h"
 
 @interface MasterViewController ()
    @property NSMutableArray *CustomerID;
-    //sores the ID of all systems
+    //stores the ID of all systems
 
 // 用户名
 //@property (nonatomic,strong)
@@ -56,7 +56,6 @@
     {
 	// Do any additional setup after loading the view, typically from a nib.
     //self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
     //UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     //self.navigationItem.rightBarButtonItem = addButton;
     }
@@ -138,10 +137,11 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    //传变量给ShowDetail见面
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
             NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
             NSString *CustomerIDstr= [self.CustomerID objectAtIndex:indexPath.row];
-        [[segue destinationViewController] setDetailItem:CustomerIDstr];
+        [[segue destinationViewController] setSystemNames:CustomerIDstr];
     }
 }
 

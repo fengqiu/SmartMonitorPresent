@@ -54,8 +54,10 @@
     [self.txtPwd setBackground:textFieldImage];
     [self.btnLogin setBackgroundImage:textFieldImage forState:UIControlStateNormal];
     
+    //runs the method to resign all responders
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignKeyboard)];
-    [self.view addGestureRecognizer:tap];//runs the method to resign all responders
+    //connect "tap" and "ViewController"
+    [self.view addGestureRecognizer:tap];
 
     // 向控制器的array中添加假用户
     User *loginUser=[[User alloc] initWithUsername:@"aaa" password:@"123"];
@@ -75,6 +77,7 @@
 
 -(void) textFieldDidEndEditing:(UITextField *)textField
 {
+    //removes keyboard
     [textField resignFirstResponder];
     
     //removes keyboard
@@ -96,8 +99,9 @@
 
 -(void) textFieldDidBeginEditing:(UITextField *)textField
 {
-    textField.placeholder=@"";
     //clears textfield when editing begins
+    textField.placeholder=@"";
+    
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
@@ -115,8 +119,9 @@
 
 - (void)didReceiveMemoryWarning
 {
-    [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    [super didReceiveMemoryWarning];
+
 }
 
 // 登录方法
