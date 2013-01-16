@@ -10,4 +10,7 @@
 
 @interface SystemDetails : UITableViewController
 
+@property (strong, nonatomic) NSString * SystemNames;
+
+
 @end

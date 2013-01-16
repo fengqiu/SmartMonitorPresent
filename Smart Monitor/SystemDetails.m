@@ -14,6 +14,7 @@
 
 @implementation SystemDetails
 
+@synthesize SystemNames;
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -59,7 +60,7 @@
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+    cell.textLabel.text = self.SystemNames;
     // Configure the cell...
     
     return cell;

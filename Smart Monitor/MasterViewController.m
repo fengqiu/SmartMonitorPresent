@@ -7,7 +7,7 @@
 //
 
 #import "MasterViewController.h"
-#import "DetailViewController.h"
+#import "SystemDetails.h"
 #import "GetSystem.h"
 
 @interface MasterViewController ()
@@ -140,7 +140,7 @@
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
             NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
             NSString *CustomerIDstr= [self.CustomerID objectAtIndex:indexPath.row];
-        //[[segue destinationViewController] setDetailItem:CustomerIDstr];
+        [[segue destinationViewController] setSystemNames:CustomerIDstr];
     }
 }
 
