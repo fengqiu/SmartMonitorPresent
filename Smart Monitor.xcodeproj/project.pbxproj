@@ -37,6 +37,7 @@
 		39B8A351169FFAA400B3FEB8 /* GetCoordinatePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8A34B169FFAA400B3FEB8 /* GetCoordinatePoint.m */; };
 		39D3328216A69F0100651EA1 /* CorePlot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D3325816A69EDC00651EA1 /* CorePlot.framework */; };
 		39D3328416A69F1400651EA1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39D3328316A69F1400651EA1 /* QuartzCore.framework */; };
+		39D3328716A6A06B00651EA1 /* Trends.m in Sources */ = {isa = PBXBuildFile; fileRef = 39D3328616A6A06B00651EA1 /* Trends.m */; };
 		39E6294E16A69788003CEC4A /* SystemDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E6294D16A69788003CEC4A /* SystemDetails.m */; };
 		CE01E9BC16A6709F008DC85B /* smartlink.png in Resources */ = {isa = PBXBuildFile; fileRef = CE01E9BB16A6709F008DC85B /* smartlink.png */; };
 		CE01E9BD16A6709F008DC85B /* smartlink.png in Resources */ = {isa = PBXBuildFile; fileRef = CE01E9BB16A6709F008DC85B /* smartlink.png */; };
@@ -4626,6 +4627,8 @@
 		39D3320816A69ED600651EA1 /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
 		39D3320916A69ED600651EA1 /* License.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = License.txt; sourceTree = "<group>"; };
 		39D3328316A69F1400651EA1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		39D3328516A6A06B00651EA1 /* Trends.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trends.h; sourceTree = "<group>"; };
+		39D3328616A6A06B00651EA1 /* Trends.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trends.m; sourceTree = "<group>"; };
 		39E6294C16A69787003CEC4A /* SystemDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemDetails.h; sourceTree = "<group>"; };
 		39E6294D16A69788003CEC4A /* SystemDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemDetails.m; sourceTree = "<group>"; };
 		CE01E9BB16A6709F008DC85B /* smartlink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smartlink.png; sourceTree = "<group>"; };
@@ -4764,6 +4767,8 @@
 			isa = PBXGroup;
 			children = (
 				CE03D54816A3DA4600C846C9 /* MainStoryboard.storyboard */,
+				39D3328516A6A06B00651EA1 /* Trends.h */,
+				39D3328616A6A06B00651EA1 /* Trends.m */,
 				39B8A2FE169FF09E00B3FEB8 /* AppDelegate.h */,
 				39B8A2FF169FF09E00B3FEB8 /* AppDelegate.m */,
 				39B8A32D169FF19700B3FEB8 /* LoginDetails.h */,
@@ -10101,6 +10106,7 @@
 				CE0DF3A216A67E500023F56C /* SystemParameter.m in Sources */,
 				CE0DF3A616A67E900023F56C /* GetSystemParameter.m in Sources */,
 				39E6294E16A69788003CEC4A /* SystemDetails.m in Sources */,
+				39D3328716A6A06B00651EA1 /* Trends.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

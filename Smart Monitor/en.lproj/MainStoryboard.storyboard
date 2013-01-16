@@ -210,15 +210,15 @@
             </objects>
             <point key="canvasLocation" x="797" y="-13"/>
         </scene>
-        <!--View Controller - 趋势-->
+        <!--Trends - 趋势-->
         <scene sceneID="lev-ox-Lmc">
             <objects>
-                <viewController id="lGc-eq-EIM" sceneMemberID="viewController">
+                <viewController id="lGc-eq-EIM" customClass="Trends" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4eX-Xr-VaY">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UUW-WM-11q">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UUW-WM-11q" customClass="CPTGraphHostingView">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -231,10 +231,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="趋势" id="07r-Ta-QvC"/>
+                    <connections>
+                        <outlet property="GraphView" destination="UUW-WM-11q" id="zJy-gG-bUi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l5y-lz-DVQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1244" y="-13"/>
+            <point key="canvasLocation" x="1242" y="-7"/>
         </scene>
     </scenes>
     <resources>
