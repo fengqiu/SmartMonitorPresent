@@ -14,10 +14,8 @@
 @property (nonatomic, strong) NSString *systemID;
 @property (nonatomic, strong) NSString *systemName;
 @property (nonatomic, strong) NSString *systemDesc;
-@property (nonatomic, strong) NSString *systemAccount;
-@property (nonatomic, strong) NSString *systemPwd;
 
 // 初始化方法
--(id)initWithSystemID:(NSString *)systemID systemName:(NSString *)systemName systemDesc:(NSString *)systemDesc systemAccount:(NSString *)systemAccount systemPWd:(NSString *)systemPwd;
+-(id)initWithSystemID:(NSString *)systemID systemName:(NSString *)systemName systemDesc:(NSString *)systemDesc;
 
 @end

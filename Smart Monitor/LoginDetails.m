@@ -43,7 +43,7 @@
 	// Do any additional setup after loading the view.
     
     // 添加背景图片
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_cork.png"]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Ocean.jpg"]];
     UIImage *textFieldImage = [[UIImage imageNamed:@"search_field.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
     [self.txtUsername setBackground:textFieldImage];
     [self.txtPwd setBackground:textFieldImage];

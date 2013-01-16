@@ -36,7 +36,10 @@
 		39B8A34F169FFAA400B3FEB8 /* GetSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8A349169FFAA400B3FEB8 /* GetSystem.m */; };
 		39B8A350169FFAA400B3FEB8 /* GetCoordinatePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8A34B169FFAA400B3FEB8 /* GetCoordinatePoint.m */; };
 		39B8A351169FFAA400B3FEB8 /* GetCoordinatePoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B8A34B169FFAA400B3FEB8 /* GetCoordinatePoint.m */; };
+		CE01E9BC16A6709F008DC85B /* smartlink.png in Resources */ = {isa = PBXBuildFile; fileRef = CE01E9BB16A6709F008DC85B /* smartlink.png */; };
+		CE01E9BD16A6709F008DC85B /* smartlink.png in Resources */ = {isa = PBXBuildFile; fileRef = CE01E9BB16A6709F008DC85B /* smartlink.png */; };
 		CE03D54A16A3DA4600C846C9 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE03D54816A3DA4600C846C9 /* MainStoryboard.storyboard */; };
+		CE0DF39216A6742F0023F56C /* Ocean.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CE0DF39116A6742F0023F56C /* Ocean.jpg */; };
 		CEFC864A16A017F400A374E5 /* bg_cork.png in Resources */ = {isa = PBXBuildFile; fileRef = CEFC863616A017F400A374E5 /* bg_cork.png */; };
 		CEFC864B16A017F400A374E5 /* bg_cork.png in Resources */ = {isa = PBXBuildFile; fileRef = CEFC863616A017F400A374E5 /* bg_cork.png */; };
 		CEFC864C16A017F400A374E5 /* bg_cork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CEFC863716A017F400A374E5 /* bg_cork@2x.png */; };
@@ -127,7 +130,9 @@
 		39B8A349169FFAA400B3FEB8 /* GetSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetSystem.m; sourceTree = "<group>"; };
 		39B8A34A169FFAA400B3FEB8 /* GetCoordinatePoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetCoordinatePoint.h; sourceTree = "<group>"; };
 		39B8A34B169FFAA400B3FEB8 /* GetCoordinatePoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetCoordinatePoint.m; sourceTree = "<group>"; };
+		CE01E9BB16A6709F008DC85B /* smartlink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = smartlink.png; sourceTree = "<group>"; };
 		CE03D54916A3DA4600C846C9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		CE0DF39116A6742F0023F56C /* Ocean.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ocean.jpg; sourceTree = "<group>"; };
 		CEFC863616A017F400A374E5 /* bg_cork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_cork.png; sourceTree = "<group>"; };
 		CEFC863716A017F400A374E5 /* bg_cork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_cork@2x.png"; sourceTree = "<group>"; };
 		CEFC863816A017F400A374E5 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
@@ -294,6 +299,8 @@
 		CEFC863416A017D500A374E5 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				CE0DF39116A6742F0023F56C /* Ocean.jpg */,
+				CE01E9BB16A6709F008DC85B /* smartlink.png */,
 				CEFC863616A017F400A374E5 /* bg_cork.png */,
 				CEFC863716A017F400A374E5 /* bg_cork@2x.png */,
 				CEFC863816A017F400A374E5 /* button.png */,
@@ -414,6 +421,8 @@
 				CEFC866E16A017F400A374E5 /* search_text.png in Resources */,
 				CEFC867016A017F400A374E5 /* search_text@2x.png in Resources */,
 				CE03D54A16A3DA4600C846C9 /* MainStoryboard.storyboard in Resources */,
+				CE01E9BC16A6709F008DC85B /* smartlink.png in Resources */,
+				CE0DF39216A6742F0023F56C /* Ocean.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +451,7 @@
 				CEFC866D16A017F400A374E5 /* search_field@2x.png in Resources */,
 				CEFC866F16A017F400A374E5 /* search_text.png in Resources */,
 				CEFC867116A017F400A374E5 /* search_text@2x.png in Resources */,
+				CE01E9BD16A6709F008DC85B /* smartlink.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,7 +26,7 @@
 
 NSXMLParser		*parser;
 
--(NSMutableArray *) getUserArray:(NSString *)username
+-(NSMutableArray *) getUserArray
 {    
     NSString *weburl;
     if (!weburl) {
@@ -45,6 +45,8 @@ NSXMLParser		*parser;
     parser=nil;
     
     return  self.userArray;
+    
+    self.userArray=nil;
 }
 
 #pragma mark - NSXMLParserDelegate
@@ -52,14 +54,14 @@ NSXMLParser		*parser;
 // 开始解析到节点
 -(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
 {
-    if ([elementName isEqualToString:@"account"]) {        
+    if ([elementName isEqualToString:@"NewDataSet"]) {
         self.userArray=[[NSMutableArray alloc] initWithCapacity:50];
         self.user=[[User alloc] init];
         self.currentString=[NSMutableString string];
         [self.currentString setString:@""];
         self.isparse=YES;
     }
-    else if ([elementName isEqualToString:@"password"])
+    else if ([elementName isEqualToString:@"account"]||[elementName isEqualToString:@"password"])
     {
         self.isparse=YES;
     }
@@ -75,8 +77,7 @@ NSXMLParser		*parser;
 
 -(void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
 {
-    if ([elementName isEqualToString:@"ds"]) {
-        [self.userArray addObject:self.user];
+    if ([elementName isEqualToString:@"NewDataSet"]) {        
         self.user=nil;
         self.currentString=nil;
     }
@@ -87,6 +88,10 @@ NSXMLParser		*parser;
     else if ([elementName isEqualToString:@"password"])
     {
         self.user.password=self.currentString;
+    }
+    else if ([elementName isEqualToString:@"ds"])
+    {
+        [self.userArray addObject:self.user];
     }
     self.isparse=NO;
 }

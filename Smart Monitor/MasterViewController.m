@@ -10,14 +10,18 @@
 #import "DetailViewController.h"
 #import "GetSystem.h"
 
-@interface MasterViewController () {
-    NSMutableArray *_CustomerID;
+@interface MasterViewController ()
+   @property NSMutableArray *CustomerID;
     //sores the ID of all systems
-}
+
+// 用户名
+//@property (nonatomic,strong)
+
 @end
 
 @implementation MasterViewController
 @synthesize UserDetails;
+@synthesize CustomerID=_CustomerID;
 
 -(void) SetAllSystemInformation
 {
@@ -40,13 +44,18 @@
 {
     [super viewDidLoad];
     
+    //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Ocean.jpg"]];
+    //UIImage *navBarImage = [[UIImage imageNamed:@"navbar.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(27, 27, 27, 27)];
+    //[self.navigationController.navigationBar setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
+    
+    
     self.navigationController.navigationBarHidden=NO;
     self.navigationController.navigationItem.hidesBackButton=YES;
     self.navigationItem.accessibilityElementsHidden=YES;
     self.navigationItem.hidesBackButton=YES;
     
-    _CustomerID = [[NSMutableArray alloc] init];
-    [_CustomerID addObject:@"HR"];
+     self.CustomerID = [[NSMutableArray alloc] init];
+    [self.CustomerID addObject:@"HR"];
     [self.tableView reloadData];
     {
 	// Do any additional setup after loading the view, typically from a nib.
@@ -82,7 +91,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _CustomerID.count;
+    return self.CustomerID.count;
 }
 
 
@@ -100,9 +109,9 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
-    NSString *customerID = [_CustomerID objectAtIndex:indexPath.row];
+    NSString *customerIDtxt = [self.CustomerID objectAtIndex:indexPath.row];
     //NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = customerID;
+    cell.textLabel.text = customerIDtxt;
     return cell;
 }
 
@@ -135,8 +144,8 @@
 {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
             NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-            NSString *CustomerID= [_CustomerID objectAtIndex:indexPath.row];
-        [[segue destinationViewController] setDetailItem:CustomerID];
+            NSString *CustomerIDstr= [self.CustomerID objectAtIndex:indexPath.row];
+        [[segue destinationViewController] setDetailItem:CustomerIDstr];
     }
 }
 
