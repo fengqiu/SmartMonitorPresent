@@ -28,25 +28,50 @@ NSXMLParser	*parser;
 
 -(NSMutableArray *)getSystemArray:(NSString *)username
 {
-    NSString *weburl;
-    if (!weburl) {
-        weburl=[[NSString alloc] init];
-    }
-    weburl=@"";
-    //weburl= [NSString  stringWithFormat:@"http://www.webxml.com.cn/WebServices/WeatherWebService.asmx/getWeatherbyCityName?theCityName=%@",username];
-    NSURL *urllocation=[NSURL URLWithString:weburl];
-    NSData *data=[[NSData alloc] initWithContentsOfURL:urllocation];
-    parser=[[NSXMLParser alloc] initWithData:data];
+    // A post请求服务
+    // post提交的参数，格式如下
+    NSString *postParam=nil;
+    postParam=[[NSString alloc] initWithFormat:@"User_ID=%@&User_Pwd=&IME=9774d56d682e549c",username];
+    
+    //将NSSrring格式的参数转换格式为NSData，POST提交必须用NSData数据。
+    NSData *postData = [postParam dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
+    
+    //定义NSMutableURLRequest
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    
+    //设置提交目的url
+    [request setURL:[NSURL URLWithString:@"http://180.166.19.26:8088/WebServices/StockWebService.asmx/Login"]];
+    
+    //设置提交方式为 POST
+    [request setHTTPMethod:@"POST"];
+    //设置http-header:Content-Type
+    //这里设置为 application/x-www-form-urlencoded ，如果设置为其它的，比如text/html;charset=utf-8，或者 text/html 等，都会出错。不知道什么原因。
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    //设置http-header:Content-Length
+    [request setValue:[NSString stringWithFormat:@"%d",[postData length]] forHTTPHeaderField:@"Content-Length"];
+    //设置需要post提交的内容
+    [request setHTTPBody:postData];
+    
+    // B 获取返回xml数据
+    NSError *error= [[NSError alloc] init];
+    NSURLResponse *response;
+    NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    
+    // C 解析xml数据
+    parser=[[NSXMLParser alloc] initWithData:urlData];
     parser.delegate=self;
     [parser parse];
     
-    weburl=nil;
-    data=nil;
+    // 释放内存
+    postParam=nil;
+    postData=nil;
+    request=nil;
+    error=nil;
+    response=nil;
+    urlData=nil;
     parser=nil;
     
-    return  self.systemArray;
-    
-    self.systemArray=nil;
+    return self.systemArray;
 }
 
 #pragma mark - NSXMLParserDelegate
@@ -57,7 +82,9 @@ NSXMLParser	*parser;
     // 当获取到整个DataSet的开始节点
     if ([elementName isEqualToString:@"NewDataSet"]) {
         // 初始化属性
-        self.systemArray=[[NSMutableArray alloc] initWithCapacity:50];
+        if (!self.systemArray) {
+             self.systemArray=[[NSMutableArray alloc] initWithCapacity:50];
+        }
         self.system=[[System alloc] init];
         self.currentString=[[NSString alloc] init];
         self.currentString=@"";

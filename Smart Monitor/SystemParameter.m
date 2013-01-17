@@ -10,4 +10,15 @@
 
 @implementation SystemParameter
 
+-(id)initWithSystemID:(NSString *)systemID systemParameterType:(NSString *)systemParameterType quantity:(NSString *)quantity systemDate:(NSString *)systemDate
+{
+    if ((self=[super init])) {
+        self.systemID=systemID;
+        self.systemParameterType=systemParameterType;
+        self.quantity=quantity;
+        self.systemDate=systemDate;
+    }
+    return  self;
+}
+
 @end
