@@ -224,9 +224,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="UUW-WM-11q" firstAttribute="top" secondItem="4eX-Xr-VaY" secondAttribute="top" constant="20" symbolic="YES" type="default" id="8bR-gG-5Xq"/>
                             <constraint firstItem="UUW-WM-11q" firstAttribute="trailing" secondItem="4eX-Xr-VaY" secondAttribute="trailing" type="default" id="967-Ja-lph"/>
                             <constraint firstItem="UUW-WM-11q" firstAttribute="bottom" secondItem="4eX-Xr-VaY" secondAttribute="bottom" type="default" id="Cj0-U3-fbT"/>
-                            <constraint firstItem="UUW-WM-11q" firstAttribute="top" secondItem="4eX-Xr-VaY" secondAttribute="top" constant="127" id="fGC-Gw-ybO"/>
                             <constraint firstItem="UUW-WM-11q" firstAttribute="leading" secondItem="4eX-Xr-VaY" secondAttribute="leading" type="default" id="p78-Tk-5NV"/>
                         </constraints>
                     </view>
@@ -244,6 +244,37 @@
         <image name="divider_bar.png" width="697" height="13"/>
         <image name="smartlink.png" width="132" height="51"/>
     </resources>
+    <classes>
+        <class className="CPTGraphHostingView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPTGraphHostingView.h"/>
+        </class>
+        <class className="LoginDetails" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginDetails.h"/>
+            <relationships>
+                <relationship kind="action" name="Login:"/>
+                <relationship kind="outlet" name="backgroundImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="btnLogin" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
+                <relationship kind="outlet" name="txtPwd" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="txtUsername" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="MasterViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MasterViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="SystemDetails" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SystemDetails.h"/>
+        </class>
+        <class className="Trends" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Trends.h"/>
+            <relationships>
+                <relationship kind="outlet" name="GraphView" candidateClass="CPTGraphHostingView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
