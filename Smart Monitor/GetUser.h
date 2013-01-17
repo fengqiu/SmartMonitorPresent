@@ -10,8 +10,6 @@
 
 @interface GetUser : NSObject<NSXMLParserDelegate>
 
-@property (nonatomic,strong) NSMutableArray *userArray;
-
--(BOOL *)checkUser:(NSString *)username password:(NSString *)password;
+-(BOOL)checkUser:(NSString *)username password:(NSString *)password;
 
 @end

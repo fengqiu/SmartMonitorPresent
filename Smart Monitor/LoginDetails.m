@@ -9,10 +9,11 @@
 #import "LoginDetails.h"
 #import "MasterViewController.h"
 #import "User.h"
+#import "GetUser.h"
 
 @interface LoginDetails ()
 
-@property (nonatomic,strong) NSMutableArray *userArray;
+@property (nonatomic,strong) GetUser *getisUser;
 
 @end
 
@@ -23,15 +24,15 @@
 @synthesize btnLogin=_btnLogin;
 @synthesize navigationBar=_navigationBar;
 @synthesize backgroundImageView=_backgroundImageView;
-@synthesize userArray=_userArray;
+@synthesize getisUser=_getisUser;
 
--(NSMutableArray *)userArray
-{
-    if (_userArray==nil) {
-        _userArray =[[NSMutableArray alloc] init];
-    }
-    return _userArray;
-}
+//-(GetUser *)getisUser
+//{
+//    if (_getisUser) {
+//        _getisUser=[[GetUser alloc] init];
+//    }
+//    return _getisUser;
+//}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -60,8 +61,8 @@
     [self.view addGestureRecognizer:tap];
 
     // 向控制器的array中添加假用户
-    User *loginUser=[[User alloc] initWithUsername:@"aaa" password:@"123"];
-    [self.userArray addObject:loginUser];
+//    User *loginUser=[[User alloc] initWithUsername:@"aaa" password:@"123"];
+//    [self.userArray addObject:loginUser];
     
     self.navigationController.navigationBarHidden=YES;
     UIImage *navBarImage = [[UIImage imageNamed:@"navbar.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(27, 27, 27, 27)];
@@ -101,7 +102,6 @@
 {
     //clears textfield when editing begins
     textField.placeholder=@"";
-    
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
@@ -133,24 +133,35 @@
     }
     else
     {
-        if (self.userArray.count==0) {
-            UIAlertView *alertView=[[UIAlertView alloc] initWithTitle:@"用户名或密码不正确" message:@"请重新键入用户名或密码" delegate:self cancelButtonTitle:@"好,我知道了" otherButtonTitles:nil];
-            [alertView show];
+        
+        self.getisUser = [[GetUser alloc] init];
+       // GetUser * test = self.getisUser;
+       // GetUser * aaa=[[GetUser alloc] init];
+       // BOOL flageee=[aaa checkUser:@"admin" password:@"123456"];
+        BOOL flage=[self.getisUser checkUser:self.txtUsername.text password:self.txtPwd.text];
+        if (flage) {
+            // 通过segue跳转页面
+            [self performSegueWithIdentifier:@"goToMaster" sender:sender];
         }
         else
         {
-            User *tempuser=[self.userArray objectAtIndex:0];
+            UIAlertView *alertView=[[UIAlertView alloc] initWithTitle:@"用户名或密码不正确" message:@"请重新键入用户名或密码" delegate:self cancelButtonTitle:@"好,我知道了" otherButtonTitles:nil];
+            [alertView show];
             
-            // 判断用户名和密码是否相同
-            if ([self.txtUsername.text isEqualToString:tempuser.username]&&[self.txtPwd.text isEqualToString:tempuser.password]) {
-                // 通过segue跳转页面
-                [self performSegueWithIdentifier:@"goToMaster" sender:sender];
-            }
-            else
-            {
-                UIAlertView *alertView=[[UIAlertView alloc] initWithTitle:@"用户名或密码不正确" message:@"请重新键入用户名或密码" delegate:self cancelButtonTitle:@"好,我知道了" otherButtonTitles:nil];
-                [alertView show];
-            }
+//            
+//            
+//            
+//            User *tempuser=[self.userArray objectAtIndex:0];
+//            
+//            // 判断用户名和密码是否相同
+//            if ([self.txtUsername.text isEqualToString:tempuser.username]&&[self.txtPwd.text isEqualToString:tempuser.password]) {
+//
+//            }
+//            else
+//            {
+//                UIAlertView *alertView=[[UIAlertView alloc] initWithTitle:@"用户名或密码不正确" message:@"请重新键入用户名或密码" delegate:self cancelButtonTitle:@"好,我知道了" otherButtonTitles:nil];
+//                [alertView show];
+//            }
         }
     }
 }

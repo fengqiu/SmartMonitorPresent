@@ -18,7 +18,7 @@
 
 
 
--(NSMutableArray *)userArray;
+
 -(void) resignKeyboard;
 
 @end
