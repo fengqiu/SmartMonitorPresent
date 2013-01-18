@@ -10,7 +10,7 @@
 
 @interface System : NSObject
 
-// 属性分别有 系统id 系统名称 系统描述 系统账号 系统密码
+// 属性分别有 系统id 系统名称 系统描述 
 @property (nonatomic, strong) NSString *systemID;
 @property (nonatomic, strong) NSString *systemName;
 @property (nonatomic, strong) NSString *systemDesc;
