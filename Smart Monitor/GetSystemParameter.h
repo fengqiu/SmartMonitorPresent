@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GetSystemParameter : NSObject
+@interface GetSystemParameter : NSObject<NSXMLParserDelegate>
+
+@property (nonatomic,strong) NSMutableArray *systemParameterArray;
+
+-(NSMutableArray *)getSystemParameterArray:(NSString *)systemID;
 
 @end
