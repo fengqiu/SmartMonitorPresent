@@ -89,8 +89,13 @@ NSXMLParser	*parser;
     parser.delegate=self;
     [parser parse];
     
-    weburl=nil;
-    data=nil;
+    // 释放内存
+    postParam=nil;
+    postData=nil;
+    request=nil;
+    error=nil;
+    response=nil;
+    urlData=nil;
     parser=nil;
     return  self.systemArray;
     
@@ -106,7 +111,9 @@ NSXMLParser	*parser;
     // 当获取到整个DataSet的开始节点
     if ([elementName isEqualToString:@"NewDataSet"]) {
         // 初始化属性
-        self.systemArray=[[NSMutableArray alloc] initWithCapacity:50];
+        if (!self.systemArray) {
+             self.systemArray=[[NSMutableArray alloc] initWithCapacity:50];
+        }
         self.system=[[System alloc] init];
         self.currentString=[[NSString alloc] init];
         self.currentString=@"";

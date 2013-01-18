@@ -73,10 +73,6 @@ NSXMLParser		*parser;
     
     //将NSSrring格式的参数转换格式为NSData，POST提交必须用NSData数据。
     NSData *postData = [postParam dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
-    
-    //计算POST提交数据的长度
-    NSString *postLength = [NSString stringWithFormat:@"%d",[postData length]];
-    NSLog(@"postLength=%@",postLength);
 
     //定义NSMutableURLRequest
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
@@ -90,20 +86,30 @@ NSXMLParser		*parser;
     //这里设置为 application/x-www-form-urlencoded ，如果设置为其它的，比如text/html;charset=utf-8，或者 text/html 等，都会出错。不知道什么原因。
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     //设置http-header:Content-Length
-    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:[NSString stringWithFormat:@"%d",[postData length]] forHTTPHeaderField:@"Content-Length"];
     //设置需要post提交的内容
     [request setHTTPBody:postData];
     
-
+    // B 获取返回xml数据
     NSError *error= [[NSError alloc] init];
     NSURLResponse *response;
     NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    NSString *resultdata=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
-    NSLog(@"response data:%@",resultdata);
+    // NSString *resultdata=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
+    // NSLog(@"response data:%@",resultdata);
+    
+    // C 解析xml数据
     parser=[[NSXMLParser alloc] initWithData:urlData];
     parser.delegate=self;
     [parser parse];
 
+    // 释放内存
+    postParam=nil;
+    postData=nil;
+    request=nil;
+    error=nil;
+    response=nil;
+    urlData=nil;
+    
     return self.isLogin;
     self.isLogin=NO;
      */
@@ -122,6 +128,7 @@ NSXMLParser		*parser;
 // 获取到节点中的字符串
 -(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
+    //监控返回  boolean
     if (self.isparse) {
         if ([@"true" isEqualToString:string]) {
             self.isLogin=YES;

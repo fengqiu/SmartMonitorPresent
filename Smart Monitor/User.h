@@ -10,8 +10,7 @@
 
 @interface User : NSObject
 
-@property (strong, nonatomic) id detailItem;
-
+// 属性分别有 用户名 密码
 @property (nonatomic,strong) NSString *username;
 @property (nonatomic,strong) NSString *password;
 
