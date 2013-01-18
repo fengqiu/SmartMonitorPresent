@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39B5796816A94C55000553EF /* DatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 39B5796716A94C55000553EF /* DatePicker.m */; };
 		39B8A2F0169FF09E00B3FEB8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39B8A2EF169FF09E00B3FEB8 /* UIKit.framework */; };
 		39B8A2F2169FF09E00B3FEB8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39B8A2F1169FF09E00B3FEB8 /* Foundation.framework */; };
 		39B8A2F4169FF09E00B3FEB8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39B8A2F3169FF09E00B3FEB8 /* CoreGraphics.framework */; };
@@ -98,6 +99,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		39B5796616A94C55000553EF /* DatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePicker.h; sourceTree = "<group>"; };
+		39B5796716A94C55000553EF /* DatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePicker.m; sourceTree = "<group>"; };
 		39B8A2EB169FF09D00B3FEB8 /* Smart Monitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smart Monitor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39B8A2EF169FF09E00B3FEB8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		39B8A2F1169FF09E00B3FEB8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -350,6 +353,8 @@
 			isa = PBXGroup;
 			children = (
 				CE03D54816A3DA4600C846C9 /* MainStoryboard.storyboard */,
+				39B5796616A94C55000553EF /* DatePicker.h */,
+				39B5796716A94C55000553EF /* DatePicker.m */,
 				39D3328516A6A06B00651EA1 /* Trends.h */,
 				39D3328616A6A06B00651EA1 /* Trends.m */,
 				39B8A2FE169FF09E00B3FEB8 /* AppDelegate.h */,
@@ -672,6 +677,7 @@
 				CE0DF3A616A67E900023F56C /* GetSystemParameter.m in Sources */,
 				39E6294E16A69788003CEC4A /* SystemDetails.m in Sources */,
 				39D3328716A6A06B00651EA1 /* Trends.m in Sources */,
+				39B5796816A94C55000553EF /* DatePicker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
