@@ -12,7 +12,7 @@
 
 @interface Trends : UIViewController<CPTScatterPlotDelegate,CPTPlotDataSource>
 @property (strong, nonatomic) IBOutlet CPTGraphHostingView *GraphView;
-
+@property (strong,nonatomic) NSMutableArray *Dates;
 
 -(void) initPlot;
 
@@ -21,5 +21,9 @@
 -(void)configurePlots;
 
 -(void)configureAxes;
+
+-(void) configureXAxis : (CPTXYAxis *) xAxis;
+
+-(void) configureYAxes : (CPTXYAxis *) yAxis;
 
 @end
