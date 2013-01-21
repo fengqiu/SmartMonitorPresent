@@ -9,12 +9,16 @@
 #import "Trends.h"
 
 @interface Trends ()
+{
+    bool EndorStart;
+}
 
 @end
 
 @implementation Trends
 
 @synthesize GraphView,Dates;
+@synthesize Picker;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,16 +33,19 @@
 {
     [super viewDidAppear:animated];
     Dates = [[NSMutableArray alloc] init];
-    NSDate *today = [[NSDate alloc] initWithTimeIntervalSinceNow:0];
+    NSDate *today = [[NSDate alloc] initWithTimeIntervalSinceNow:1728000];
     for (int i=0; i<10; i++)
     {
         [Dates addObject:today];
     }
+    //hides the date picker
+    Picker.hidden = YES;
     [self initPlot];
 }
 
 - (void)viewDidLoad
 {
+
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
@@ -48,6 +55,11 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
+
+
 
 -(void)initPlot {
     [self configureGraph];
@@ -227,6 +239,59 @@
     }
     yAxis.axisLabels = FakeData;
     yAxis.majorTickLocations = Locations;
+    
+}
+
+- (IBAction)DateEntry:(id)sender
+{
+    if (Picker.hidden)
+    {
+        CATransition *animation = [CATransition animation];
+        [animation setDelegate:self];
+        // Set the type and if appropriate direction of the transition,
+        [animation setType:kCATransitionMoveIn];
+        [animation setSubtype:kCATransitionFromTop];
+        // Set the duration and timing function of the transtion -- duration is passed in as a parameter, use ease in/ease out as the timing function
+        [animation setDuration:0.2];
+        [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]];
+        [[Picker layer] addAnimation:animation forKey:@"transitionViewAnimation"];
+        
+        Picker.hidden = FALSE;
+    
+        [[Picker layer] removeAnimationForKey:@"transitionViewAnimation"];
+        animation = nil;
+    }
+    
+    if ([sender tag]==1)
+    {
+        EndorStart = true;
+    }
+    else if ([sender tag] == 2)
+    {
+        EndorStart = false;
+    }
+    
+}
+
+- (IBAction)plot:(id)sender
+{
+    
+}
+
+- (IBAction)PickerValueChanged:(id)sender
+{
+    NSDate *EnteredDateFromPicker = [sender date];
+    NSDateFormatter *google = [[NSDateFormatter alloc] init];
+    [google setDateFormat:@"yy-MM-dd"];
+
+    //Entered date retreived
+    
+    if (EndorStart) {
+        self.EndDate.text = [google stringFromDate:EnteredDateFromPicker];
+    }
+    else
+        self.startDate.text = [google stringFromDate:EnteredDateFromPicker];
+    EnteredDateFromPicker = nil;
     
 }
 

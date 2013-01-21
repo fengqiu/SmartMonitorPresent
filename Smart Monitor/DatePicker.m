@@ -41,7 +41,7 @@
     [self SettingDate];
     
     //events
-    [DatePicker addTarget:self action:@selector(dateSelected:) forControlEvents:UIControlEventValueChanged];
+    [self.DatePicker addTarget:self action:@selector(dateChanged:) forControlEvents:UIControlEventValueChanged];
     
 	// Do any additional setup after loading the view.
 }
