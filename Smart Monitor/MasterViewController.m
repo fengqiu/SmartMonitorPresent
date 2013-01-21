@@ -9,20 +9,22 @@
 #import "MasterViewController.h"
 #import "SystemDetails.h"
 #import "GetSystem.h"
+#import "System.h"
 
 @interface MasterViewController ()
-   @property NSMutableArray *CustomerID;
-    //stores the ID of all systems
 
-// 用户名
-//@property (nonatomic,strong)
+// 属性为  系统集合  GetSystem类
+@property NSMutableArray *systemArray;
+@property GetSystem *getAllSystem;
 
 @end
 
 @implementation MasterViewController
-//@synthesize UserDetails;
-@synthesize CustomerID=_CustomerID;
+
+//@synthesize 属性;
+@synthesize systemArray=_systemArray;
 @synthesize username=_username;
+@synthesize getAllSystem=_getAllSystem;
 
 -(void) SetAllSystemInformation
 {
@@ -45,20 +47,20 @@
 {
     [super viewDidLoad];
     
+    // self.navigationController.navigationItem.hidesBackButton=YES;
+    // self.navigationItem.accessibilityElementsHidden=YES;
+    
+    // 显示导航栏  返回按钮
     self.navigationController.navigationBarHidden=NO;
-    self.navigationController.navigationItem.hidesBackButton=YES;
-    self.navigationItem.accessibilityElementsHidden=YES;
     self.navigationItem.hidesBackButton=YES;
     
-     self.CustomerID = [[NSMutableArray alloc] init];
-    [self.CustomerID addObject:self.username];
-    [self.tableView reloadData];
-    {
-	// Do any additional setup after loading the view, typically from a nib.
-    //self.navigationItem.leftBarButtonItem = self.editButtonItem;
-    //UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    //self.navigationItem.rightBarButtonItem = addButton;
+    // 初始化 GetSystem类
+    if (!self.getAllSystem) {
+        self.getAllSystem=[[GetSystem alloc] init];
     }
+    
+    // 调用getAllSystem 的获取array的方法
+    self.systemArray=[self.getAllSystem  getSystemArray:self.username];
 }
 
 - (void)didReceiveMemoryWarning
@@ -86,9 +88,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.CustomerID.count;
+    return self.systemArray.count;
 }
-
 
 //editting styles
 //-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -97,16 +98,13 @@
 //    [tableView reloadData];
 //}
 
-
-
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    
-    NSString *customerIDtxt = [self.CustomerID objectAtIndex:indexPath.row];
-    //NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = customerIDtxt;
+    if (self.systemArray.count>0) {
+        System *systemobj = [self.systemArray objectAtIndex:indexPath.row];
+        cell.textLabel.text = systemobj.systemDesc;
+    }
     return cell;
 }
 
@@ -140,8 +138,8 @@
     //传变量给ShowDetail见面
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
             NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-            NSString *CustomerIDstr= [self.CustomerID objectAtIndex:indexPath.row];
-        [[segue destinationViewController] setSystemNames:CustomerIDstr];
+            System *systemobj= [self.systemArray objectAtIndex:indexPath.row];
+        [[segue destinationViewController] setSystemID:systemobj.systemID];
     }
 }
 

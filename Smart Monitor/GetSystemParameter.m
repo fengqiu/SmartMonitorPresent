@@ -49,14 +49,14 @@ NSXMLParser	*parser;
     [urlRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [urlRequest setHTTPMethod:@"POST"];
     [urlRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
-    NSLog(@"urlRequest %@",urlRequest);
+    //NSLog(@"urlRequest %@",urlRequest);
     
     //请求
     NSError *error= [[NSError alloc] init];
     NSURLResponse *response;
     NSData *urlData=[NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
     NSString *resultdata=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
-    NSLog(@"response data:%@",resultdata);
+    //NSLog(@"response data:%@",resultdata);
     
     
     parser=[[NSXMLParser alloc] initWithData:urlData];
@@ -89,6 +89,12 @@ NSXMLParser	*parser;
         self.systemParameter=[[SystemParameter alloc] init];
         self.currentString=[[NSString alloc] init];
         self.currentString=@"";
+    }
+    else if ([elementName isEqualToString:@"ds"])
+    {
+        if (!self.systemParameter) {
+            self.systemParameter=[[SystemParameter alloc] init];
+        }
     }
     // 当碰到需要的数据的节点
     else if ([elementName isEqualToString:@"id"]||[elementName isEqualToString:@"sys_id"]||[elementName isEqualToString:@"type"]||[elementName isEqualToString:@"date"]||[elementName isEqualToString:@"qty"])
@@ -126,12 +132,16 @@ NSXMLParser	*parser;
     {
         self.systemParameter.systemDate=self.currentString;
     }
-//    else if ([elementName isEqualToString:@"qty"])
-//    {
-//        [self.systemParameter.quantity addObject:self.system];
-//    }
+    else if ([elementName isEqualToString:@"qty"])
+    {
+        self.systemParameter.quantity=self.currentString;
+    }
+    else if ([elementName isEqualToString:@"ds"])
+    {
+        [self.systemParameterArray addObject:self.systemParameter];
+        self.systemParameter=nil;
+    }
     self.isparse=NO;
 }
-
 
 @end
