@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DatePicker : UIViewController
+@interface DatePicker : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@property (strong, nonatomic) IBOutlet UITableView *TableView;
 
+
+@property (strong, nonatomic) IBOutlet UIDatePicker *DatePicker;
+
+
+
+-(void) SettingDate;
+- (void) AdjustTableViewSize;
 @end
