@@ -235,14 +235,28 @@
                                     <segue destination="kh5-pd-rwj" kind="push" id="ZfY-Ly-m4I"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="us3-z9-rFv">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="69" id="p3b-Tz-w80"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="button">
+                                    <color key="titleColor" red="0.52156862749999999" green="0.1985840687" blue="0.2232058344" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="us3-z9-rFv" firstAttribute="bottom" secondItem="UFb-73-9fH" secondAttribute="bottom" type="default" id="6Xx-Kq-QeF"/>
                             <constraint firstItem="UUW-WM-11q" firstAttribute="trailing" secondItem="4eX-Xr-VaY" secondAttribute="trailing" type="default" id="967-Ja-lph"/>
                             <constraint firstItem="UUW-WM-11q" firstAttribute="bottom" secondItem="4eX-Xr-VaY" secondAttribute="bottom" type="default" id="Cj0-U3-fbT"/>
                             <constraint firstItem="UFb-73-9fH" firstAttribute="leading" secondItem="4eX-Xr-VaY" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="EOE-Ey-BHB"/>
+                            <constraint firstItem="us3-z9-rFv" firstAttribute="baseline" secondItem="UFb-73-9fH" secondAttribute="baseline" type="default" id="FZf-Nz-aHk"/>
+                            <constraint firstAttribute="trailing" secondItem="us3-z9-rFv" secondAttribute="trailing" constant="66" id="VMb-CB-jgs"/>
                             <constraint firstItem="UFb-73-9fH" firstAttribute="top" secondItem="4eX-Xr-VaY" secondAttribute="top" constant="20" symbolic="YES" type="default" id="bAJ-19-Mzw"/>
                             <constraint firstItem="UUW-WM-11q" firstAttribute="top" secondItem="4eX-Xr-VaY" secondAttribute="top" constant="73" id="c4D-od-H7y"/>
+                            <constraint firstItem="us3-z9-rFv" firstAttribute="top" secondItem="4eX-Xr-VaY" secondAttribute="top" constant="20" symbolic="YES" type="default" id="edf-rH-R1k"/>
                             <constraint firstItem="UUW-WM-11q" firstAttribute="leading" secondItem="4eX-Xr-VaY" secondAttribute="leading" type="default" id="p78-Tk-5NV"/>
                         </constraints>
                     </view>
@@ -310,7 +324,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="327" id="9NB-FT-7vc"/>
-                                    <constraint firstAttribute="height" constant="248" id="I0S-99-A65"/>
+                                    <constraint firstAttribute="height" constant="287" id="IIm-HJ-2Am"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Save" id="syB-FK-CUs">
@@ -403,7 +417,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Im8-WL-QTj" firstAttribute="centerX" secondItem="hvW-9c-Zih" secondAttribute="centerX" type="default" id="1os-54-tSf"/>
+                            <constraint firstItem="Im8-WL-QTj" firstAttribute="centerX" secondItem="hyT-Kp-uXu" secondAttribute="centerX" type="default" id="AyG-JI-Vmq"/>
                             <constraint firstItem="hyT-Kp-uXu" firstAttribute="leading" secondItem="1Hl-rX-e90" secondAttribute="leading" type="default" id="BX5-cd-qq5"/>
                             <constraint firstItem="vHd-Wb-5Zc" firstAttribute="leading" secondItem="1Hl-rX-e90" secondAttribute="leading" type="default" id="GJZ-pD-0B5"/>
                             <constraint firstItem="hvW-9c-Zih" firstAttribute="top" secondItem="1Hl-rX-e90" secondAttribute="top" type="default" id="MDU-7T-vpp"/>
@@ -432,43 +446,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="divider_bar.png" width="697" height="13"/>
         <image name="smartlink.png" width="132" height="51"/>
     </resources>
-    <classes>
-        <class className="CPTGraphHostingView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPTGraphHostingView.h"/>
-        </class>
-        <class className="DatePicker" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DatePicker.h"/>
-            <relationships>
-                <relationship kind="outlet" name="DatePicker" candidateClass="UIDatePicker"/>
-                <relationship kind="outlet" name="TableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="LoginDetails" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginDetails.h"/>
-            <relationships>
-                <relationship kind="outlet" name="backgroundImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="btnLogin" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
-                <relationship kind="outlet" name="txtPwd" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtUsername" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="MasterViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MasterViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="SystemDetails" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SystemDetails.h"/>
-        </class>
-        <class className="Trends" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/Trends.h"/>
-            <relationships>
-                <relationship kind="outlet" name="GraphView" candidateClass="CPTGraphHostingView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
