@@ -48,14 +48,14 @@ NSXMLParser		*parser;
     [urlRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [urlRequest setHTTPMethod:@"POST"];
     [urlRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
-    NSLog(@"urlRequest %@",urlRequest);
+    //NSLog(@"urlRequest %@",urlRequest);
     
     //请求
     NSError *error= [[NSError alloc] init];
     NSURLResponse *response;
     NSData *urlData=[NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
     NSString *resultdata=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
-    NSLog(@"response data:%@",resultdata);
+    //NSLog(@"response data:%@",resultdata);
     
     
     parser=[[NSXMLParser alloc] initWithData:urlData];

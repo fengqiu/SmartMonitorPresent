@@ -7,14 +7,23 @@
 //
 
 #import "SystemDetails.h"
+#import "SystemParameter.h"
+#import "GetSystemParameter.h"
 
 @interface SystemDetails ()
+
+// 属性为  系统参数集合  GetSystemParameter类
+@property NSMutableArray *systemParameterArray;
+@property GetSystemParameter *getAllSystemParameter;
 
 @end
 
 @implementation SystemDetails
 
-@synthesize SystemNames;
+@synthesize SystemID=_SystemID;
+@synthesize systemParameterArray=_systemParameterArray;
+@synthesize getAllSystemParameter=_getAllSystemParameter;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -33,6 +42,14 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    // 初始化 GetSystemParameter类
+    if (!self.getAllSystemParameter) {
+        self.getAllSystemParameter=[[GetSystemParameter alloc] init];
+    }
+    
+    // 调用getAllSystem 的获取array的方法
+    self.systemParameterArray=[self.getAllSystemParameter getSystemParameterArray:self.SystemID];
 }
 
 - (void)didReceiveMemoryWarning
@@ -53,16 +70,17 @@
 {
 
     // Return the number of rows in the section.
-    return 1;
+    return self.systemParameterArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    cell.textLabel.text = self.SystemNames;
-    // Configure the cell...
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailCell" forIndexPath:indexPath];
+    if (self.systemParameterArray.count>0) {
+        SystemParameter *systemParameterObj = [self.systemParameterArray objectAtIndex:indexPath.row];
+        cell.textLabel.text = systemParameterObj.systemParameter;
+        cell.detailTextLabel.text=systemParameterObj.quantity;
+    }
     return cell;
 }
 

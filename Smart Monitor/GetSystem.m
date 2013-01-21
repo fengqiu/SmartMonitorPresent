@@ -49,15 +49,14 @@ NSXMLParser	*parser;
     [urlRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
     [urlRequest setHTTPMethod:@"POST"];
     [urlRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
-    NSLog(@"urlRequest %@",urlRequest);
+    //NSLog(@"urlRequest %@",urlRequest);
     
     //请求
     NSError *error= [[NSError alloc] init];
     NSURLResponse *response;
     NSData *urlData=[NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
     NSString *resultdata=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
-    NSLog(@"response data:%@",resultdata);
-    
+    //NSLog(@"response data:%@",resultdata);
     
     parser=[[NSXMLParser alloc] initWithData:urlData];
     parser.delegate=self;
@@ -73,34 +72,8 @@ NSXMLParser	*parser;
     urlData=nil;
     resultdata=nil;    
     parser=nil;
-    
+
     return self.systemArray;
-    
-    /*
-    NSString *weburl;
-    if (!weburl) {
-        weburl=[[NSString alloc] init];
-    }
-    weburl=@"";
-    //weburl= [NSString  stringWithFormat:@"http://www.webxml.com.cn/WebServices/WeatherWebService.asmx/getWeatherbyCityName?theCityName=%@",username];
-    NSURL *urllocation=[NSURL URLWithString:weburl];
-    NSData *data=[[NSData alloc] initWithContentsOfURL:urllocation];
-    parser=[[NSXMLParser alloc] initWithData:data];
-    parser.delegate=self;
-    [parser parse];
-    
-    // 释放内存
-    postParam=nil;
-    postData=nil;
-    request=nil;
-    error=nil;
-    response=nil;
-    urlData=nil;
-    parser=nil;
-    return  self.systemArray;
-    
-    self.systemArray=nil;
-     */
 }
 
 #pragma mark - NSXMLParserDelegate
@@ -117,6 +90,12 @@ NSXMLParser	*parser;
         self.system=[[System alloc] init];
         self.currentString=[[NSString alloc] init];
         self.currentString=@"";
+    }
+    else if ([elementName isEqualToString:@"ds"])
+    {
+        if (!self.system) {
+            self.system=[[System alloc] init];
+        }
     }
     // 当碰到需要的数据的节点
     else if ([elementName isEqualToString:@"id"]||[elementName isEqualToString:@"name"]||[elementName isEqualToString:@"desc"])
@@ -157,6 +136,7 @@ NSXMLParser	*parser;
     else if ([elementName isEqualToString:@"ds"])
     {
         [self.systemArray addObject:self.system];
+        self.system=nil;
     }
     self.isparse=NO;
 }
