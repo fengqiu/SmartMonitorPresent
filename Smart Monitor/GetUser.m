@@ -39,8 +39,8 @@ NSXMLParser		*parser;
     
     //请求发送到的路径
     NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMessage length]];
-    NSURL *url = [NSURL URLWithString:@"http://183.129.206.88:8083/WebService_SmartlLink.asmx"];
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
+    NSURL *weburl = [NSURL URLWithString:@"http://183.129.206.88:8083/WebService_SmartlLink.asmx"];
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:weburl];
             
     //以下对请求信息添加属性前四句是必有的，
     [urlRequest addValue: @"application/soap+xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
@@ -57,62 +57,23 @@ NSXMLParser		*parser;
     NSString *resultdata=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
     //NSLog(@"response data:%@",resultdata);
     
-    
     parser=[[NSXMLParser alloc] initWithData:urlData];
     parser.delegate=self;
     [parser parse];
-        
-    return self.isLogin;
     
-
     
-    /*
-    // post提交的参数，格式如下
-    NSString *postParam=nil;
-    postParam=[[NSString alloc] initWithFormat:@"User_ID=%@&User_Pwd=%@&IME=9774d56d682e549c",username,password];
-    
-    //将NSSrring格式的参数转换格式为NSData，POST提交必须用NSData数据。
-    NSData *postData = [postParam dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:YES];
-
-    //定义NSMutableURLRequest
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    
-    //设置提交目的url
-    [request setURL:[NSURL URLWithString:@"http://183.129.206.88:8083/WebService_SmartlLink.asmx/Login"]];
-    
-    //设置提交方式为 POST
-    [request setHTTPMethod:@"POST"];
-    //设置http-header:Content-Type
-    //这里设置为 application/x-www-form-urlencoded ，如果设置为其它的，比如text/html;charset=utf-8，或者 text/html 等，都会出错。不知道什么原因。
-    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    //设置http-header:Content-Length
-    [request setValue:[NSString stringWithFormat:@"%d",[postData length]] forHTTPHeaderField:@"Content-Length"];
-    //设置需要post提交的内容
-    [request setHTTPBody:postData];
-    
-    // B 获取返回xml数据
-    NSError *error= [[NSError alloc] init];
-    NSURLResponse *response;
-    NSData *urlData=[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-    // NSString *resultdata=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
-    // NSLog(@"response data:%@",resultdata);
-    
-    // C 解析xml数据
-    parser=[[NSXMLParser alloc] initWithData:urlData];
-    parser.delegate=self;
-    [parser parse];
-
     // 释放内存
-    postParam=nil;
-    postData=nil;
-    request=nil;
+    soapMessage=nil;
+    msgLength=nil;
+    weburl=nil;
     error=nil;
+    urlRequest=nil;
     response=nil;
     urlData=nil;
+    resultdata=nil;
+    parser=nil;
     
     return self.isLogin;
-    self.isLogin=NO;
-     */
 }
 
 #pragma mark - NSXMLParserDelegate

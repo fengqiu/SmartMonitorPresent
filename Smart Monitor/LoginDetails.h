@@ -16,9 +16,6 @@
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
-
-
-
 -(void) resignKeyboard;
 
 @end

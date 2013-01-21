@@ -17,7 +17,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-584" y="64"/>
+            <point key="canvasLocation" x="-609" y="51"/>
         </scene>
         <!--Login Details-->
         <scene sceneID="szy-sX-K19">
@@ -145,7 +145,7 @@
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="phq-AM-6qj">
                                             <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
@@ -164,13 +164,13 @@
                             <outlet property="delegate" destination="12" id="15"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="系统列表" id="36"/>
+                    <navigationItem key="navigationItem" title="返回" id="36"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="17" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="333" y="-13"/>
+            <point key="canvasLocation" x="342" y="-13"/>
         </scene>
-        <!--System Details - 系统详细信息-->
+        <!--System Details - 返回-->
         <scene sceneID="glX-Nj-mh3">
             <objects>
                 <tableViewController id="Gou-eK-E1z" customClass="SystemDetails" sceneMemberID="viewController">
@@ -209,7 +209,7 @@
                             <outlet property="delegate" destination="Gou-eK-E1z" id="Z1T-WF-Mki"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="系统详细信息" id="qIY-Ts-C16"/>
+                    <navigationItem key="navigationItem" title="返回" id="qIY-Ts-C16"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IYt-Jh-2sX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -348,6 +348,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <class className="LoginDetails" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginDetails.h"/>
             <relationships>
+                <relationship kind="action" name="Login:"/>
                 <relationship kind="outlet" name="backgroundImageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="btnLogin" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
