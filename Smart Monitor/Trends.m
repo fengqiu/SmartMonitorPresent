@@ -124,8 +124,7 @@
     [Graph.plotAreaFrame setPaddingRight:15.0f];
     [Graph.plotAreaFrame setPaddingTop:15.0f];
     [Graph.plotAreaFrame setPaddingBottom:70.0f];
-    
-    
+        
 }
 
 -(void)configurePlots

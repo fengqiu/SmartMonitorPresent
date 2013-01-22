@@ -26,13 +26,6 @@
 @synthesize backgroundImageView=_backgroundImageView;
 @synthesize getisUser=_getisUser;
 
-//-(GetUser *)getisUser
-//{
-//    if (_getisUser) {
-//        _getisUser=[[GetUser alloc] init];
-//    }
-//    return _getisUser;
-//}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -50,30 +43,21 @@
     
     // 添加背景图片
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Ocean.jpg"]];
+    
+    // 添加文本框  登陆按钮的背景图片
     UIImage *textFieldImage = [[UIImage imageNamed:@"search_field.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
     [self.txtUsername setBackground:textFieldImage];
     [self.txtPwd setBackground:textFieldImage];
     [self.btnLogin setBackgroundImage:textFieldImage forState:UIControlStateNormal];
+    self.btnLogin.titleLabel.font=[UIFont fontWithName:@"宋体" size:6.0];
     
     //runs the method to resign all responders
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignKeyboard)];
     //connect "tap" and "ViewController"
     [self.view addGestureRecognizer:tap];
 
-    // 向控制器的array中添加假用户
-//    User *loginUser=[[User alloc] initWithUsername:@"aaa" password:@"123"];
-//    [self.userArray addObject:loginUser];
-    
+    // 隐藏导航栏
     self.navigationController.navigationBarHidden=YES;
-    UIImage *navBarImage = [[UIImage imageNamed:@"navbar.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(27, 27, 27, 27)];
-    [self.navigationBar setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
-    //self.navigationBar
-    
-    UIImage *shareButtonImage = [[UIImage imageNamed:@"header_bg.png"] resizableImageWithCapInsets:
-                                 UIEdgeInsetsMake(68, 68, 68, 68)];
-    self.backgroundImageView.image = shareButtonImage;
-    //self.backgroundImageView.center = self.center;
-
 }
 
 -(void) textFieldDidEndEditing:(UITextField *)textField
@@ -132,14 +116,13 @@
 		[alertView show];        
     }
     else
-    {
-        
+    {        
         self.getisUser = [[GetUser alloc] init];
-       // GetUser * test = self.getisUser;
-       // GetUser * aaa=[[GetUser alloc] init];
-       // BOOL flageee=[aaa checkUser:@"admin" password:@"123456"];
         BOOL flage=[self.getisUser checkUser:self.txtUsername.text password:self.txtPwd.text];
         if (flage) {
+            // 释放内存
+            self.getisUser=nil;
+            
             // 通过segue跳转页面
             [self performSegueWithIdentifier:@"goToMaster" sender:sender];
         }
@@ -147,21 +130,6 @@
         {
             UIAlertView *alertView=[[UIAlertView alloc] initWithTitle:@"用户名或密码不正确" message:@"请重新键入用户名或密码" delegate:self cancelButtonTitle:@"好,我知道了" otherButtonTitles:nil];
             [alertView show];
-            
-//            
-//            
-//            
-//            User *tempuser=[self.userArray objectAtIndex:0];
-//            
-//            // 判断用户名和密码是否相同
-//            if ([self.txtUsername.text isEqualToString:tempuser.username]&&[self.txtPwd.text isEqualToString:tempuser.password]) {
-//
-//            }
-//            else
-//            {
-//                UIAlertView *alertView=[[UIAlertView alloc] initWithTitle:@"用户名或密码不正确" message:@"请重新键入用户名或密码" delegate:self cancelButtonTitle:@"好,我知道了" otherButtonTitles:nil];
-//                [alertView show];
-//            }
         }
     }
 }
@@ -172,7 +140,6 @@
         [[segue destinationViewController] setUsername:self.txtUsername.text];
     }
 }
-
 
 //-(BOOL)shouldAutomaticallyForwardRotationMethods
 //{

@@ -57,8 +57,7 @@ NSXMLParser	*parser;
     NSData *urlData=[NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
     NSString *resultdata=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
     //NSLog(@"response data:%@",resultdata);
-    
-    
+        
     parser=[[NSXMLParser alloc] initWithData:urlData];
     parser.delegate=self;
     [parser parse];

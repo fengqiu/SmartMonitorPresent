@@ -53,6 +53,22 @@
     // 显示导航栏  返回按钮
     self.navigationController.navigationBarHidden=NO;
     self.navigationItem.hidesBackButton=YES;
+    //[self.navigationItem.
+    
+    // 设置 navigationBar内容  style
+    int height = self.navigationController.navigationBar.frame.size.height;
+    int width = self.navigationController.navigationBar.frame.size.width;        
+    UILabel *navLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, height)];
+    navLabel.textColor = [UIColor whiteColor];
+    navLabel.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+    navLabel.text=@"系统列表";
+    [navLabel setFont:[UIFont fontWithName:@"宋体" size:35.0]];
+    navLabel.font=[navLabel.font fontWithSize:22];
+    navLabel.backgroundColor=[UIColor clearColor];
+    navLabel.textAlignment= NSTextAlignmentCenter;
+    self.navigationItem.titleView = navLabel;
+    self.navigationItem.backBarButtonItem.title=@"返回";
+    
     
     // 初始化 GetSystem类
     if (!self.getAllSystem) {
@@ -103,6 +119,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     if (self.systemArray.count>0) {
         System *systemobj = [self.systemArray objectAtIndex:indexPath.row];
+        [cell.textLabel setFont:[UIFont fontWithName:@"宋体" size:26.0]];
         cell.textLabel.text = systemobj.systemDesc;
     }
     return cell;
