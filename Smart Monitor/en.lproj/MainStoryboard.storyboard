@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -43,10 +43,9 @@
                                     <action selector="Login:" destination="uRH-SH-GUu" eventType="touchUpInside" id="uXg-Tv-zer"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="用户名" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9CS-A1-hdq">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="用户名" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9CS-A1-hdq">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="DMx-9w-GXD"/>
                                     <constraint firstAttribute="width" constant="200" id="ZVf-uJ-I1T"/>
                                 </constraints>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -56,10 +55,7 @@
                                     <outlet property="delegate" destination="uRH-SH-GUu" id="QEL-f4-zZl"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vBd-hO-GXm">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="VzW-VJ-1wV"/>
-                                </constraints>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vBd-hO-GXm">
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -67,24 +63,12 @@
                                     <outlet property="delegate" destination="uRH-SH-GUu" id="nVG-hx-pbh"/>
                                 </connections>
                             </textField>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="divider_bar.png" translatesAutoresizingMaskIntoConstraints="NO" id="gNb-Ou-i6T">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="303" id="KGH-Zj-86N"/>
-                                    <constraint firstAttribute="height" constant="9" id="mFO-lV-Xkx"/>
-                                </constraints>
-                            </imageView>
                             <navigationBar hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="56K-B3-dvb">
                                 <items>
                                     <navigationItem title="掌上监控" id="i7a-Gx-MEx"/>
                                 </items>
                             </navigationBar>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="svA-Kj-PoQ">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="52" id="e3X-80-Opk"/>
-                                    <constraint firstAttribute="width" constant="92" id="hmD-1E-Q9T"/>
-                                </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="smartlink.png" translatesAutoresizingMaskIntoConstraints="NO" id="U3k-bD-uoz">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="237" image="smartlink.png" translatesAutoresizingMaskIntoConstraints="NO" id="U3k-bD-uoz">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="126" id="4eo-2O-TZe"/>
                                     <constraint firstAttribute="height" constant="45" id="fh8-RW-oC7"/>
@@ -94,7 +78,6 @@
                         <color key="backgroundColor" red="0.99215692281723022" green="0.9960784912109375" blue="0.9960784912109375" alpha="0.83999999999999997" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="vBd-hO-GXm" firstAttribute="trailing" secondItem="9CS-A1-hdq" secondAttribute="trailing" type="default" id="2WI-K0-TuL"/>
-                            <constraint firstItem="9CS-A1-hdq" firstAttribute="centerX" secondItem="gNb-Ou-i6T" secondAttribute="centerX" type="default" id="39m-cX-Y0H"/>
                             <constraint firstItem="56K-B3-dvb" firstAttribute="trailing" secondItem="JcA-S8-gzJ" secondAttribute="trailing" type="default" id="7ju-Hc-63m"/>
                             <constraint firstItem="56K-B3-dvb" firstAttribute="top" secondItem="JcA-S8-gzJ" secondAttribute="top" type="default" id="90U-6T-2oF"/>
                             <constraint firstItem="vBd-hO-GXm" firstAttribute="trailing" secondItem="rba-Rc-QaF" secondAttribute="trailing" type="default" id="99x-cr-ERv"/>
@@ -102,11 +85,8 @@
                             <constraint firstItem="U3k-bD-uoz" firstAttribute="top" secondItem="JcA-S8-gzJ" secondAttribute="top" constant="78" id="JrJ-6d-5da"/>
                             <constraint firstItem="U3k-bD-uoz" firstAttribute="centerX" secondItem="56K-B3-dvb" secondAttribute="centerX" type="default" id="JwQ-v2-RZS"/>
                             <constraint firstItem="9CS-A1-hdq" firstAttribute="top" secondItem="JcA-S8-gzJ" secondAttribute="top" constant="173" id="KIt-ad-vVc"/>
+                            <constraint firstItem="9CS-A1-hdq" firstAttribute="centerX" secondItem="U3k-bD-uoz" secondAttribute="centerX" type="default" id="aQC-iz-bFI"/>
                             <constraint firstItem="vBd-hO-GXm" firstAttribute="top" secondItem="9CS-A1-hdq" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="bGz-ZS-x4j"/>
-                            <constraint firstItem="svA-Kj-PoQ" firstAttribute="leading" secondItem="JcA-S8-gzJ" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="gtZ-xN-OkP"/>
-                            <constraint firstItem="svA-Kj-PoQ" firstAttribute="top" secondItem="JcA-S8-gzJ" secondAttribute="top" constant="60" id="hyR-Gp-RRN"/>
-                            <constraint firstItem="gNb-Ou-i6T" firstAttribute="top" secondItem="U3k-bD-uoz" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="jgE-SZ-wOD"/>
-                            <constraint firstItem="U3k-bD-uoz" firstAttribute="centerX" secondItem="gNb-Ou-i6T" secondAttribute="centerX" type="default" id="l58-FS-vIc"/>
                             <constraint firstItem="vBd-hO-GXm" firstAttribute="leading" secondItem="rba-Rc-QaF" secondAttribute="leading" type="default" id="qbQ-Xs-3En"/>
                             <constraint firstAttribute="bottom" secondItem="rba-Rc-QaF" secondAttribute="bottom" constant="172" id="uJ9-Dh-Ytc"/>
                             <constraint firstItem="vBd-hO-GXm" firstAttribute="leading" secondItem="9CS-A1-hdq" secondAttribute="leading" type="default" id="vAa-a2-CpK"/>
@@ -114,8 +94,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="nX9-mn-xpI"/>
                     <connections>
-                        <outlet property="backgroundImageView" destination="svA-Kj-PoQ" id="BQo-9L-CmM"/>
                         <outlet property="btnLogin" destination="rba-Rc-QaF" id="jnk-W1-hA9"/>
+                        <outlet property="logoImage" destination="U3k-bD-uoz" id="nqa-J5-9Vt"/>
                         <outlet property="navigationBar" destination="56K-B3-dvb" id="VUP-T3-1Gr"/>
                         <outlet property="txtPwd" destination="vBd-hO-GXm" id="gjZ-N4-BVl"/>
                         <outlet property="txtUsername" destination="9CS-A1-hdq" id="OcF-fs-7t1"/>
@@ -234,7 +214,7 @@
                                     <!--2013-01-21 07:45:21 +0000-->
                                 </date>
                                 <timeZone key="timeZone" name="America/Los_Angeles">
-                                    <mutableData key="data">
+                                    <data key="data">
 VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
 y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
 5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
@@ -252,7 +232,7 @@ f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
-</mutableData>
+</data>
                                 </timeZone>
                                 <connections>
                                     <action selector="PickerValueChanged:" destination="lGc-eq-EIM" eventType="valueChanged" id="XcN-tg-9hW"/>
@@ -354,7 +334,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </scene>
     </scenes>
     <resources>
-        <image name="divider_bar.png" width="697" height="13"/>
         <image name="smartlink.png" width="132" height="51"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
