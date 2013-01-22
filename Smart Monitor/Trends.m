@@ -38,10 +38,42 @@
     {
         [Dates addObject:today];
     }
+    //adding tap gesture to dismiss datepicker
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(HidePicker)];
+    //connect "tap" and "ViewController"
+    [self.view addGestureRecognizer:tap];
+    
     //hides the date picker
     Picker.hidden = YES;
     [self initPlot];
 }
+
+
+-(void) HidePicker
+{
+    if (!Picker.hidden)
+    {
+        CATransition *animation = [CATransition animation];
+        [animation setDelegate:self];
+        // Set the type and if appropriate direction of the transition,
+        [animation setType:kCATransitionMoveIn];
+        [animation setSubtype:kCATransitionFromBottom];
+        // Set the duration and timing function of the transtion -- duration is passed in as a parameter, use ease in/ease out as the timing function
+        [animation setDuration:0.5];
+        [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]];
+        [[Picker layer] addAnimation:animation forKey:@"transitionViewAnimation"];
+        
+        Picker.hidden = true;
+        
+        [[Picker layer] removeAnimationForKey:@"transitionViewAnimation"];
+        animation = nil;
+
+    }
+    
+}
+
+
+
 
 - (void)viewDidLoad
 {
@@ -273,6 +305,9 @@
     
 }
 
+
+
+
 - (IBAction)plot:(id)sender
 {
     
@@ -291,6 +326,7 @@
     }
     else
         self.startDate.text = [google stringFromDate:EnteredDateFromPicker];
+    
     EnteredDateFromPicker = nil;
     
 }
