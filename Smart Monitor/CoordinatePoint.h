@@ -14,8 +14,6 @@
 @property (nonatomic, strong) NSNumber *_quantity;
 @property (nonatomic, strong) NSString *_systemDate;
 
-
-
 // 初始化方法
 -(id)initWithQuantity:(NSString *)quantity systemDate:(NSString *)systemDate;
 

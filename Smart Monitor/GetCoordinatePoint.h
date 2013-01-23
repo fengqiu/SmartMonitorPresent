@@ -24,8 +24,7 @@
 @property (strong , nonatomic) NSString* DateTo;
 @property (strong , nonatomic) NSString* DateFrom;
 
-
-
 -(void) GetCoordinatePoints:(NSString *) SystemID DataType:(NSString *) type;
 -(id) initWithPropertiesTo:(NSString *)to from:(NSString*) From;
+
 @end

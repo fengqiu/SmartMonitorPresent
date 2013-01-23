@@ -61,7 +61,6 @@ NSXMLParser		*parser;
     parser.delegate=self;
     [parser parse];
     
-    
     // 释放内存
     soapMessage=nil;
     msgLength=nil;

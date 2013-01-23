@@ -9,8 +9,8 @@
 #import "CoordinatePoint.h"
 
 @implementation CoordinatePoint
-@synthesize _systemDate,_quantity;
 
+@synthesize _systemDate,_quantity;
 
 -(id)initWithQuantity:(NSString *)quantity systemDate:(NSString *)systemDate
 {
@@ -23,8 +23,6 @@
         //convert to nsnumber type to be used later
         _quantity= [NSNumber numberWithInt:[quantity intValue]];
     }
-    
-    
     return self;
 }
 

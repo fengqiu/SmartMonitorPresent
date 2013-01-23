@@ -12,7 +12,6 @@
 #import "CoordinatePoint.h"
 #import "SystemParameter.h"
 
-
 @interface Trends : UIViewController<CPTScatterPlotDelegate,CPTPlotDataSource>
 @property (strong,nonatomic) IBOutlet CPTGraphHostingView *GraphView;
 @property (strong,nonatomic) NSMutableArray *Dates;
@@ -23,6 +22,7 @@
 @property (strong,nonatomic) NSDate *to;
 @property (strong,nonatomic) SystemParameter *PassedInfo;
 @property (strong, nonatomic) IBOutlet UIDatePicker *DatePicker;
+@property (weak, nonatomic) IBOutlet UIButton *btnSearch;
 
 -(void) initPlot;
 

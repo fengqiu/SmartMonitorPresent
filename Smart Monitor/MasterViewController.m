@@ -26,18 +26,6 @@
 @synthesize username=_username;
 @synthesize getAllSystem=_getAllSystem;
 
--(void) SetAllSystemInformation
-{
-    //GetSystem *GetSystemInformation = [[GetSystem alloc] init];
-    //initialises a instance of getsystem
-    
-    //put it all into a class and then into our array.
-    
-    
-    //run a function in GetSystem to get information
-    
-}
-
 - (void)awakeFromNib
 {
     [super awakeFromNib];
@@ -47,15 +35,11 @@
 {
     [super viewDidLoad];
     
-    // self.navigationController.navigationItem.hidesBackButton=YES;
-    // self.navigationItem.accessibilityElementsHidden=YES;
-    
     // 显示导航栏  返回按钮
     self.navigationController.navigationBarHidden=NO;
     self.navigationItem.hidesBackButton=YES;
-    //[self.navigationItem.
     
-    // 设置 navigationBar内容  style
+    // 设置 navigationBar 的title内容  style
     int height = self.navigationController.navigationBar.frame.size.height;
     int width = self.navigationController.navigationBar.frame.size.width;        
     UILabel *navLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, height)];
@@ -69,6 +53,12 @@
     self.navigationItem.titleView = navLabel;
     self.navigationItem.backBarButtonItem.title=@"返回";
     
+    // 设置返回按钮
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc]
+                                   initWithTitle: @"返回"
+                                   style: UIBarButtonItemStyleBordered
+                                   target: nil action: nil];    
+    [self.navigationItem setBackBarButtonItem: backButton];
     
     // 初始化 GetSystem类
     if (!self.getAllSystem) {
@@ -121,6 +111,7 @@
         System *systemobj = [self.systemArray objectAtIndex:indexPath.row];
         [cell.textLabel setFont:[UIFont fontWithName:@"宋体" size:26.0]];
         cell.textLabel.text = systemobj.systemDesc;
+        systemobj=nil;
     }
     return cell;
 }
@@ -157,6 +148,7 @@
             NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
             System *systemobj= [self.systemArray objectAtIndex:indexPath.row];
         [[segue destinationViewController] setSystemID:systemobj.systemID];
+        systemobj=nil;
     }
 }
 

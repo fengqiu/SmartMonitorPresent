@@ -14,10 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *txtPwd;
 @property (weak, nonatomic) IBOutlet UIButton *btnLogin;
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
-@property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
-
 @property (weak, nonatomic) IBOutlet UIImageView *logoImage;
-
 
 -(void) resignKeyboard;
 

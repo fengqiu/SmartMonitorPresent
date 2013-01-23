@@ -37,28 +37,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     // 设置 navigationBar内容  style
     int height = self.navigationController.navigationBar.frame.size.height;
     int width = self.navigationController.navigationBar.frame.size.width;
     UILabel *navLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, height)];
     navLabel.textColor = [UIColor whiteColor];
-    navLabel.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
-    
+    navLabel.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];    
     [navLabel setFont:[UIFont fontWithName:@"宋体" size:35.0]];
     navLabel.text=@"系统详细信息";
     navLabel.font=[navLabel.font fontWithSize:22];
     navLabel.backgroundColor=[UIColor clearColor];
     navLabel.textAlignment= NSTextAlignmentCenter;
     self.navigationItem.titleView = navLabel;
-    self.navigationItem.backBarButtonItem.title=@"返回";
-    //self.navigationItem.backBarButtonItem.
+    
+    // 设置返回按钮
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc]
+                                   initWithTitle: @"返回"
+                                   style: UIBarButtonItemStyleBordered
+                                   target: nil action: nil];
+    [self.navigationItem setBackBarButtonItem: backButton];
     
     // 初始化 GetSystemParameter类
     if (!self.getAllSystemParameter) {
@@ -74,7 +72,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -97,8 +94,9 @@
         SystemParameter *systemParameterObj = [self.systemParameterArray objectAtIndex:indexPath.row];
         [cell.textLabel setFont:[UIFont fontWithName:@"宋体" size:17.0]];
         cell.textLabel.text = systemParameterObj.systemParameter;
-        NSLog(@"currentstringxxx: %@",systemParameterObj.systemDate);
+        //NSLog(@"currentstringxxx: %@",systemParameterObj.systemDate);
         cell.detailTextLabel.text=systemParameterObj.quantity;
+        systemParameterObj=nil;
     }
     return cell;
 }
@@ -155,8 +153,6 @@
      */
 }
 
-
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     //传变量给ShowDetail见面
@@ -164,6 +160,7 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         SystemParameter *ParameterInfo= [self.systemParameterArray objectAtIndex:indexPath.row];
         [[segue destinationViewController] setPassedInfo:ParameterInfo];
+        indexPath=nil;
     }
 }
 

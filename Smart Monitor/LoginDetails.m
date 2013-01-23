@@ -23,7 +23,6 @@
 @synthesize txtPwd=_txtPwd;
 @synthesize btnLogin=_btnLogin;
 @synthesize navigationBar=_navigationBar;
-@synthesize backgroundImageView=_backgroundImageView;
 @synthesize getisUser=_getisUser;
 @synthesize logoImage=_logoImage;
 
@@ -43,12 +42,8 @@
     
     // 添加背景图片
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"53640.jpg"]];
-    
-    // 添加文本框  登陆按钮的背景图片
-    //UIImage *textFieldImage = [[UIImage imageNamed:@"search_field.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
-    //[self.txtUsername setBackground:textFieldImage];
-    //[self.txtPwd setBackground:textFieldImage];
-    //[self.btnLogin setBackgroundImage:textFieldImage forState:UIControlStateNormal];
+
+    // 设置登录按钮的字体大小
     self.btnLogin.titleLabel.font=[UIFont fontWithName:@"宋体" size:6.0];
     self.btnLogin.titleLabel.font=[self.btnLogin.titleLabel.font fontWithSize:17.0];
     
@@ -60,25 +55,16 @@
     // 隐藏导航栏
     self.navigationController.navigationBarHidden=YES;
     
-    // 设置默认文字
+    // 设置文本框默认文字字体大小
     self.txtUsername.placeholder=@"用户名";
     self.txtUsername.font=[UIFont fontWithName:@"宋体" size:5.0];
     self.txtUsername.font=[self.txtUsername.font fontWithSize:15.0];
     self.txtPwd.placeholder=@"密码";
     self.txtPwd.font=[UIFont fontWithName:@"宋体" size:5.0];
     self.txtPwd.font=[self.txtPwd.font fontWithSize:15.0];
-    
-//    CALayer *imglayer = self.logoImage.layer;   //获取ImageView的层
-//    imglayer.shouldRasterize = YES;
-//    [imglayer set setMasksToBounds:YES];
-//    [imglayer setCornerRadius:6.0];
-//    
-//    self.logoImage.layer.cornerRadius = 6;
-//    imageView.layer.cornerRadius = 6;
-  //  imageView.layer.masksToBounds = YES;
 }
 
--(void) textFieldDidEndEditing:(UITextField *)textField
+-(void)textFieldDidEndEditing:(UITextField *)textField
 {
     //removes keyboard
     [textField resignFirstResponder];
@@ -118,9 +104,9 @@
 
 -(void)resignKeyboard
 {
-    [self.txtUsername resignFirstResponder];
-    [self.txtPwd resignFirstResponder];
     //resigns both keyboards
+    [self.txtUsername resignFirstResponder];
+    [self.txtPwd resignFirstResponder];    
 }
 
 - (void)didReceiveMemoryWarning

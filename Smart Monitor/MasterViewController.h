@@ -14,9 +14,4 @@
 // 储存用户名
 @property (nonatomic, strong) NSString *username;
 
--(void) SetAllSystemInformation;
-//downloads all the information needed from the webservice and inserts it into the allSystems NSmutable array
-
-
-
 @end

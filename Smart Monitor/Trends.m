@@ -37,7 +37,7 @@
 @synthesize Picker;
 @synthesize From,to;
 @synthesize PassedInfo;
-
+@synthesize btnSearch=_btnSearch;
 
 //**************Graph
 -(void)initPlot {
@@ -90,7 +90,7 @@
     if (Dates.count<=1)
     {
         //checks for error
-        UIAlertView *Error = [[UIAlertView alloc] initWithTitle:nil message:@"不够信息" delegate:Nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView *Error = [[UIAlertView alloc] initWithTitle:nil message:@"数据不足" delegate:Nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [Error show];
     }
     else
@@ -102,13 +102,10 @@
     smartlinkLines.lineWidth = 2.5;
     smartlinkLines.lineColor = trendColor;
     SmartLinkTrend.dataLineStyle = smartlinkLines;
-    
-    
 }
 
 -(void)configureAxes
 {
-    
     CPTGraph *Graph = self.GraphView.hostedGraph;
     CPTXYAxisSet *axisSet = (CPTXYAxisSet *) Graph.axisSet;
     //X and Y axis Set
@@ -123,7 +120,6 @@
     [self configureYAxes:yAxis];
 }
 
-
 //method to configure X Axis
 -(void) configureXAxis : (CPTXYAxis *) xAxis
 {
@@ -136,22 +132,15 @@
     NSNumber* min = [QTY valueForKeyPath:@"@min.self"];
     xAxis.orthogonalCoordinateDecimal = CPTDecimalFromInt([min intValue]);
     
-    
-    
     //label style
     CPTMutableTextStyle *labelStyle = [CPTMutableTextStyle textStyle];
     labelStyle.color = [CPTColor blackColor];
     labelStyle.fontName = @"Helvetica-Bold";
     labelStyle.fontSize = 10.0f;
     
-    
-    
     //using the default plot space
     CPTXYPlotSpace *Host = (CPTXYPlotSpace *) GraphView.hostedGraph.defaultPlotSpace;
-    
-    
-    
-    
+
     xAxis.labelingPolicy = CPTAxisLabelingPolicyNone;
     
     //fake data and locations
@@ -188,9 +177,7 @@
     //putting labels on graph
     xAxis.axisLabels = xLabels;
     xAxis.majorTickLocations = Locations;
-    
 }
-
 
 -(void) xAxisSettings: (CPTXYAxis *) xAxis YAxisSettings: (CPTXYAxis *) yAxis
 {
@@ -201,7 +188,6 @@
     yAxis.axisTitle = yAxisTitle;
     yAxis.titleOffset = 7.0f;
     
-    
     //axis tick things
     yAxis.majorTickLength = 5.0f;
     yAxis.minorTickLength = 0.0f;
@@ -209,9 +195,7 @@
     //x axis label stuff
     CPTAxisTitle *xTitle = [[CPTAxisTitle alloc] initWithText:@"日期" textStyle:xAxis.labelTextStyle];
     xAxis.axisTitle = xTitle;
-    
     xAxis.titleOffset = -15.0f;
-    
     xAxis.majorTickLength = 5.0f;
     xAxis.minorTickLength = 0.0f;
 }
@@ -219,21 +203,17 @@
 //method to configure Y Axis
 -(void) configureYAxes : (CPTXYAxis *) yAxis
 {
-    
     yAxis.labelingPolicy = CPTAxisLabelingPolicyNone;
-    
     
     //creating data label arrays
     NSMutableSet *Data = [[NSMutableSet alloc] initWithCapacity:Dates.count];
     NSMutableSet *Locations = [[NSMutableSet alloc] initWithCapacity:Dates.count];
-    
     
     //location of major tick
     for (int i=0; i<Dates.count; i++)
     {
         CoordinatePoint *point = [Dates objectAtIndex:i];
         NSNumber *locationOfTick = point._quantity;
-        
         
         //display the value at Quantity
         CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%i",[locationOfTick intValue]] textStyle:yAxis.labelTextStyle];
@@ -245,53 +225,10 @@
         //putting objects into array
         [Data addObject:label];
         [Locations addObject:locationOfTick];
-        
     }
     yAxis.axisLabels = Data;
     yAxis.majorTickLocations = Locations;
-    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -311,10 +248,8 @@
     self.startDate.text = [Formatter stringFromDate:SevenDaysPrior];
     self.EndDate.text = [Formatter stringFromDate:NewestDate];
     
-    
     GetCoordinatePoint *CoodinatePoint = [[GetCoordinatePoint alloc] initWithPropertiesTo:self.EndDate.text from:self.startDate.text];
     [CoodinatePoint GetCoordinatePoints:[PassedInfo systemID] DataType:[PassedInfo systemParameter]];
-    
     
     Dates = CoodinatePoint.CoordinatePoints;
 }
@@ -322,15 +257,29 @@
 -(void) initEverything
 {
     
-    [self.navigationItem setTitle:PassedInfo.systemParameter];
+    self.btnSearch.titleLabel.font=[UIFont fontWithName:@"宋体" size:6.0];
+    self.btnSearch.titleLabel.font=[self.btnSearch.titleLabel.font fontWithSize:17.0];
+    
+    // 设置 navigationBar内容  style
+    int height = self.navigationController.navigationBar.frame.size.height;
+    int width = self.navigationController.navigationBar.frame.size.width;
+    UILabel *navLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, height)];
+    navLabel.textColor = [UIColor whiteColor];
+    navLabel.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+    navLabel.text=self.PassedInfo.systemParameter;
+    [navLabel setFont:[UIFont fontWithName:@"宋体" size:35.0]];
+    navLabel.font=[navLabel.font fontWithSize:20];
+    navLabel.backgroundColor=[UIColor clearColor];
+    navLabel.textAlignment= NSTextAlignmentCenter;
+    self.navigationItem.titleView = navLabel;
+    // self.navigationItem.backBarButtonItem.title=@"返回";
+    
+//    [self.navigationItem setTitle:PassedInfo.systemParameter];
     Dates = [[NSMutableArray alloc] init];
     From = [[NSDate alloc] init];
     to = [[NSDate alloc] init];
     [self InitialPlotData];
 }
-
-
-
 
 - (void) viewDidAppear:(BOOL)animated
 {
@@ -345,22 +294,11 @@
     [self.view addGestureRecognizer:tap];
     [self initEverything];
     //hides the date picker
-    
-  
     [self initPlot];
-
 }
-
-
-
-
-
-
-
 
 - (void)viewDidLoad
 {
-    
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
@@ -370,16 +308,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
-
-
-
-
-
-
-
-
 
 //delegate
 -(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot
@@ -401,24 +329,13 @@
     }
 }
 
-
-
-
-
-
-
-
-
-
 //******User Interface
-
 - (IBAction)DateEntry:(id)sender
 {
     //set text color to black
 //    [self.EndDate setTextColor:[UIColor blackColor]];
 //    [self.startDate setTextColor:[UIColor blackColor]];
     [self HidePicker];
-    
     
     if (Picker.hidden)
     {
@@ -437,13 +354,11 @@
         [[Picker layer] removeAnimationForKey:@"transitionViewAnimation"];
         animation = nil;
     }
-    
     if ([sender tag]==1)
     {
         EndorStart = true;
         [Picker setMaximumDate:[NSDate dateWithTimeIntervalSinceNow:0]];
         [self.EndDate setTextColor:[UIColor grayColor]];
-        
     }
     else if ([sender tag] == 2)
     {
@@ -453,14 +368,8 @@
         NSDate *endDate = [formatter dateFromString:self.EndDate.text];
         [Picker setMaximumDate:[NSDate dateWithTimeInterval:-172800 sinceDate:endDate]];
         [self.startDate setTextColor:[UIColor grayColor]];
-        
-        
     }
-    
 }
-
-
-
 
 - (IBAction)plot:(id)sender
 {
@@ -480,13 +389,10 @@
     {
         CPTGraph *graph = self.GraphView.hostedGraph;
         [graph reloadData];
-    
-    
+
         //scalling plot
         CPTScatterPlot *Scatter =(CPTScatterPlot*)[graph plotAtIndex:0];
         [graph.defaultPlotSpace scaleToFitPlots:[NSArray arrayWithObjects:Scatter, nil]];
-    
-    
     
         //configuring both axis labels and such
         CPTXYAxisSet *AxisSet = (CPTXYAxisSet *) graph.axisSet;
@@ -501,12 +407,9 @@
 {
     NSDate *EnteredDateFromPicker = [sender date];
     NSDateFormatter *google = [[NSDateFormatter alloc] init];
-    
-    
     [google setDateFormat:@"yyyy-MM-dd"];
     
     //Entered date retreived
-    
     if (EndorStart) {
         //assign date to nsdate
         to=EnteredDateFromPicker;
@@ -518,12 +421,8 @@
         From=EnteredDateFromPicker;
         self.startDate.text = [google stringFromDate:EnteredDateFromPicker];
     }
-    
     EnteredDateFromPicker = nil;
-    
-    
 }
-
 
 -(void) HidePicker
 {
@@ -540,7 +439,6 @@
         [[Picker layer] addAnimation:animation forKey:@"transitionViewAnimation"];
         
         Picker.hidden = true;
-        
         [[Picker layer] removeAnimationForKey:@"transitionViewAnimation"];
         animation = nil;
         
@@ -550,6 +448,5 @@
     [self.EndDate setTextColor:[UIColor blackColor]];
     [self.startDate setTextColor:[UIColor blackColor]];
 }
-
 
 @end
