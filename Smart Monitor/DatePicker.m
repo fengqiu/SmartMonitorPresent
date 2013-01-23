@@ -34,8 +34,8 @@
     self.navigationController.navigationBarHidden=YES;
     
     //set data source
-    self.TableView.dataSource = self;
-    self.TableView.delegate = self;
+    //self.TableView.dataSource = self;
+    //self.TableView.delegate = self;
     
     [self AdjustTableViewSize];
     [self SettingDate];
@@ -71,7 +71,7 @@
     bounds.size.height = Height;
     
     //assign as tableview bounds
-    self.TableView.bounds = bounds;
+    //self.TableView.bounds = bounds;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

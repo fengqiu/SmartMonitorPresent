@@ -13,6 +13,7 @@
 
 @property (nonatomic,strong) SystemParameter *systemParameter;
 @property (nonatomic,strong) NSString *currentString;
+@property (nonatomic,strong) NSMutableString *datestring;
 @property (nonatomic) BOOL isparse;
 
 @end
@@ -23,6 +24,7 @@
 @synthesize systemParameter=_systemParameter;
 @synthesize currentString=_currentString;
 @synthesize isparse=_isparse;
+@synthesize datestring=_datestring;
 
 NSXMLParser	*parser;
 
@@ -56,7 +58,7 @@ NSXMLParser	*parser;
     NSURLResponse *response;
     NSData *urlData=[NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
     NSString *resultdata=[[NSString alloc]initWithData:urlData encoding:NSUTF8StringEncoding];
-    //NSLog(@"response data:%@",resultdata);
+    // NSLog(@"response data:%@",resultdata);
         
     parser=[[NSXMLParser alloc] initWithData:urlData];
     parser.delegate=self;
@@ -94,9 +96,13 @@ NSXMLParser	*parser;
         if (!self.systemParameter) {
             self.systemParameter=[[SystemParameter alloc] init];
         }
+        if (!self.datestring) {
+            self.datestring=[[NSMutableString alloc] init];
+            [self.datestring setString:@""];
+        }
     }
     // 当碰到需要的数据的节点
-    else if ([elementName isEqualToString:@"id"]||[elementName isEqualToString:@"sys_id"]||[elementName isEqualToString:@"type"]||[elementName isEqualToString:@"date"]||[elementName isEqualToString:@"qty"])
+    else if ([elementName isEqualToString:@"id"]||[elementName isEqualToString:@"sys_id"]||[elementName isEqualToString:@"type"]||[elementName isEqualToString:@"Year"]||[elementName isEqualToString:@"Month"]||[elementName isEqualToString:@"Day"]||[elementName isEqualToString:@"qty"])
     {
         // 设置是否需要解析的参数为正确
         self.isparse=YES;
@@ -127,9 +133,24 @@ NSXMLParser	*parser;
     {
         self.systemParameter.systemParameter=self.currentString;
     }
+    else if ([elementName isEqualToString:@"Year"]||[elementName isEqualToString:@"Month"])
+    {
+        // NSLog(@"currentstring: %@",self.currentString);
+        [self.datestring appendString:self.currentString];
+        [self.datestring appendString:@"-"];
+        // NSLog(@"date: %@",(NSString *)self.datestring);
+    }
+    else if ([elementName isEqualToString:@"Day"])
+    {        
+        [self.datestring appendString:self.currentString];
+        self.systemParameter.systemDate=(NSString *)self.datestring;
+
+        // NSLog(@"date: %@",self.systemParameter.systemDate);
+    }
     else if ([elementName isEqualToString:@"date"])
     {
-        self.systemParameter.systemDate=self.currentString;
+        [self.datestring  stringByAppendingString:@"-"];
+        self.systemParameter.systemParameter=self.currentString;
     }
     else if ([elementName isEqualToString:@"qty"])
     {
@@ -139,6 +160,7 @@ NSXMLParser	*parser;
     {
         [self.systemParameterArray addObject:self.systemParameter];
         self.systemParameter=nil;
+        self.datestring=nil;
     }
     self.isparse=NO;
 }

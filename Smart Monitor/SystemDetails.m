@@ -49,8 +49,9 @@
     UILabel *navLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, height)];
     navLabel.textColor = [UIColor whiteColor];
     navLabel.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
-    navLabel.text=@"系统详细信息";
+    
     [navLabel setFont:[UIFont fontWithName:@"宋体" size:35.0]];
+    navLabel.text=@"系统详细信息";
     navLabel.font=[navLabel.font fontWithSize:22];
     navLabel.backgroundColor=[UIColor clearColor];
     navLabel.textAlignment= NSTextAlignmentCenter;
