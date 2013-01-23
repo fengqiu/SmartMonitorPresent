@@ -139,9 +139,8 @@
     CPTXYPlotSpace *Host = (CPTXYPlotSpace *) GraphView.hostedGraph.defaultPlotSpace;
     
     
-    xAxis.titleOffset = -10.0f;
     
-
+    
     xAxis.labelingPolicy = CPTAxisLabelingPolicyNone;
     
     //fake data and locations
@@ -160,10 +159,8 @@
     for (NSDate *date in Dates)
     {
         CoordinatePoint *Point = [Dates objectAtIndex:i];
-
-        NSString *strDate =[[NSString alloc] initWithString:Point._systemDate];
         
-        //NSString *strDate =[[NSString alloc] initWithString:Point._systemDate];
+        NSString *strDate =[[NSString alloc] initWithString:Point._systemDate];
         
         //making the label for x axis
         CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:strDate textStyle:labelStyle];
@@ -211,10 +208,10 @@
 //method to configure Y Axis
 -(void) configureYAxes : (CPTXYAxis *) yAxis
 {
-    /*
+    
     yAxis.labelingPolicy = CPTAxisLabelingPolicyNone;
     
-
+    
     //creating data label arrays
     NSMutableSet *Data = [[NSMutableSet alloc] initWithCapacity:Dates.count];
     NSMutableSet *Locations = [[NSMutableSet alloc] initWithCapacity:Dates.count];
@@ -223,25 +220,25 @@
     //location of major tick
     for (int i=0; i<Dates.count; i++)
     {
-       // NSNumber *locationOfTick = point._quantity;
-         //  NSNumber *locationOfTick = point._quantity;
+        CoordinatePoint *point = [Dates objectAtIndex:i];
+        NSNumber *locationOfTick = point._quantity;
         
         
         //display the value at Quantity
         CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%i",[locationOfTick intValue]] textStyle:yAxis.labelTextStyle];
+        
         //label properties
         label.offset = 0.0f;
         label.tickLocation = [locationOfTick decimalValue];
-       // CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%i",[locationOfTick intValue]] textStyle:yAxis.labelTextStyle];
-        
         
         //putting objects into array
-      //  [Locations addObject:locationOfTick];
+        [Data addObject:label];
+        [Locations addObject:locationOfTick];
         
     }
     yAxis.axisLabels = Data;
     yAxis.majorTickLocations = Locations;
-    */
+    
 }
 
 
@@ -349,7 +346,7 @@
 
 - (void)viewDidLoad
 {
-
+    
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
@@ -437,9 +434,12 @@
 
 - (IBAction)plot:(id)sender
 {
-    /*
     GetCoordinatePoint *CoodinatePoint = [[GetCoordinatePoint alloc] initWithPropertiesTo:self.EndDate.text from:self.startDate.text];
     [CoodinatePoint GetCoordinatePoints:@"1" DataType:@"用户数"];
+    Dates = CoodinatePoint.CoordinatePoints;
+    
+    CPTGraph *graph = self.GraphView.hostedGraph;
+    [graph reloadData];
     
     
     //scalling plot
@@ -449,18 +449,14 @@
     
     
     //configuring both axis labels and such
-    CPTGraph *graph = self.GraphView.hostedGraph;
-    [graph reloadData];
-    //CPTScatterPlot *Scatter =(CPTScatterPlot*)[graph plotAtIndex:0];
-    //[graph.defaultPlotSpace scaleToFitPlots:[NSArray arrayWithObjects:Scatter, nil]];
     CPTXYAxisSet *AxisSet = (CPTXYAxisSet *) graph.axisSet;
     CPTXYAxis *xAxis = AxisSet.xAxis;
     CPTXYAxis *yAxis = AxisSet.yAxis;
-    xAxis.orthogonalCoordinateDecimal = CPTDecimalFromCGFloat(20.0f);
-
-    //[self configureAxes];
     [self configureXAxis:xAxis];
     [self configureYAxes:yAxis];
+}
+
+- (IBAction)PickerValueChanged:(id)sender
 {
     NSDate *EnteredDateFromPicker = [sender date];
     NSDateFormatter *google = [[NSDateFormatter alloc] init];
@@ -481,7 +477,7 @@
     }
     
     EnteredDateFromPicker = nil;
-    */
+    
 }
 
 
