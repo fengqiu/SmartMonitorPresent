@@ -31,6 +31,9 @@
 
 -(void)configureAxes;
 
+
+-(void) xAxisSettings: (CPTXYAxis *) xAxis YAxisSettings: (CPTXYAxis *) yAxis;
+
 -(void) configureXAxis : (CPTXYAxis *) xAxis;
 
 -(void) configureYAxes : (CPTXYAxis *) yAxis;

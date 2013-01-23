@@ -88,6 +88,9 @@
     //X and Y axis Set
     CPTXYAxis *xAxis = axisSet.xAxis;
     CPTXYAxis *yAxis = axisSet.yAxis;
+    
+    //settings for both axis
+    [self xAxisSettings:xAxis YAxisSettings:yAxis];
     //configuring X Axis
     [self configureXAxis:xAxis];
     //configuring Y Axis
@@ -121,14 +124,7 @@
     
     
     
-    //x axis label stuff
-    CPTAxisTitle *xTitle = [[CPTAxisTitle alloc] initWithText:@"日期" textStyle:xAxis.labelTextStyle];
-    xAxis.axisTitle = xTitle;
-    
-    xAxis.titleOffset = -15.0f;
-    
-    xAxis.majorTickLength = 5.0f;
-    xAxis.minorTickLength = 0.0f;
+
     xAxis.labelingPolicy = CPTAxisLabelingPolicyNone;
     
     //fake data and locations
@@ -168,8 +164,8 @@
     
 }
 
-//method to configure Y Axis
--(void) configureYAxes : (CPTXYAxis *) yAxis
+
+-(void) xAxisSettings: (CPTXYAxis *) xAxis YAxisSettings: (CPTXYAxis *) yAxis
 {
     //Axes Settings
     //setting axis title
@@ -182,10 +178,25 @@
     //axis tick things
     yAxis.majorTickLength = 5.0f;
     yAxis.minorTickLength = 0.0f;
+    
+    //x axis label stuff
+    CPTAxisTitle *xTitle = [[CPTAxisTitle alloc] initWithText:@"日期" textStyle:xAxis.labelTextStyle];
+    xAxis.axisTitle = xTitle;
+    
+    xAxis.titleOffset = -15.0f;
+    
+    xAxis.majorTickLength = 5.0f;
+    xAxis.minorTickLength = 0.0f;
+}
+
+//method to configure Y Axis
+-(void) configureYAxes : (CPTXYAxis *) yAxis
+{
+   
     yAxis.labelingPolicy = CPTAxisLabelingPolicyNone;
     
 
-    //create fake data
+    //creating data label arrays
     NSMutableSet *Data = [[NSMutableSet alloc] initWithCapacity:Dates.count];
     NSMutableSet *Locations = [[NSMutableSet alloc] initWithCapacity:Dates.count];
     
@@ -197,11 +208,14 @@
         NSNumber *locationOfTick = point._quantity;
         
         
-        
+        //display the value at Quantity
         CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%i",[locationOfTick intValue]] textStyle:yAxis.labelTextStyle];
-        label.offset = 0.0f;
         
+        //label properties
+        label.offset = 0.0f;
         label.tickLocation = [locationOfTick decimalValue];
+        
+        //putting objects into array
         [Data addObject:label];
         [Locations addObject:locationOfTick];
         
@@ -396,15 +410,20 @@
     
     CPTGraph *graph = self.GraphView.hostedGraph;
     [graph reloadData];
-    //CPTScatterPlot *Scatter =(CPTScatterPlot*)[graph plotAtIndex:0];
-    //[graph.defaultPlotSpace scaleToFitPlots:[NSArray arrayWithObjects:Scatter, nil]];
+    
+    
+    //scalling plot
+    CPTScatterPlot *Scatter =(CPTScatterPlot*)[graph plotAtIndex:0];
+    [graph.defaultPlotSpace scaleToFitPlots:[NSArray arrayWithObjects:Scatter, nil]];
+    
+    
+    
+    //configuring both axis labels and such
     CPTXYAxisSet *AxisSet = (CPTXYAxisSet *) graph.axisSet;
     CPTXYAxis *xAxis = AxisSet.xAxis;
     CPTXYAxis *yAxis = AxisSet.yAxis;
-
-    //[self configureAxes];
-    
-    
+    [self configureXAxis:xAxis];
+    [self configureYAxes:yAxis];
 }
 
 - (IBAction)PickerValueChanged:(id)sender
