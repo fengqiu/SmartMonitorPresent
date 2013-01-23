@@ -9,6 +9,7 @@
 #import "SystemDetails.h"
 #import "SystemParameter.h"
 #import "GetSystemParameter.h"
+#import "Trends.h"
 
 @interface SystemDetails ()
 
@@ -152,6 +153,18 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    //传变量给ShowDetail见面
+    if ([[segue identifier] isEqualToString:@"ShowTrend"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        SystemParameter *ParameterInfo= [self.systemParameterArray objectAtIndex:indexPath.row];
+        [[segue destinationViewController] setPassedInfo:ParameterInfo];
+    }
 }
 
 @end

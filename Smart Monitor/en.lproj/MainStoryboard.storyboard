@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -180,7 +180,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="lGc-eq-EIM" kind="push" id="u4N-QA-v3H"/>
+                                    <segue destination="lGc-eq-EIM" kind="push" identifier="ShowTrend" id="u4N-QA-v3H"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -322,6 +322,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     </view>
                     <navigationItem key="navigationItem" title="趋势" id="07r-Ta-QvC"/>
                     <connections>
+                        <outlet property="DatePicker" destination="8AV-uZ-FH5" id="JSI-Bh-hUB"/>
                         <outlet property="EndDate" destination="6rZ-mJ-bTX" id="c6h-Qi-uMi"/>
                         <outlet property="GraphView" destination="UUW-WM-11q" id="zJy-gG-bUi"/>
                         <outlet property="Picker" destination="8AV-uZ-FH5" id="fXV-1X-Bt1"/>
@@ -330,7 +331,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l5y-lz-DVQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1272" y="5"/>
+            <point key="canvasLocation" x="1318" y="-13"/>
         </scene>
     </scenes>
     <resources>
