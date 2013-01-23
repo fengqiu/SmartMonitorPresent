@@ -44,7 +44,9 @@
     
     [self configureGraph];
     [self configurePlots];
-    [self configureAxes];
+    //makes sure there is more than 1 point in dates so that we can plot a graph
+    if (Dates.count > 1)
+        [self configureAxes];
     //self.GraphView.allowPinchScaling = YES;
     
 }
@@ -57,7 +59,7 @@
     //applying plain black theme
     [Graph applyTheme:[CPTTheme themeNamed:kCPTPlainWhiteTheme]];
     //padding area
-    [Graph.plotAreaFrame setPaddingLeft:20.0f];
+    [Graph.plotAreaFrame setPaddingLeft:25.0f];
     [Graph.plotAreaFrame setPaddingRight:20.0f];
     [Graph.plotAreaFrame setPaddingTop:20.0f];
     [Graph.plotAreaFrame setPaddingBottom:50.0f];
@@ -85,7 +87,16 @@
     [graph addPlot:SmartLinkTrend toPlotSpace:plotspace];
     
     //scalling the plotspace, Also calls delegate functions
-    [plotspace scaleToFitPlots:[NSArray arrayWithObjects:SmartLinkTrend, nil]];
+    if (Dates.count<=1)
+    {
+        //checks for error
+        UIAlertView *Error = [[UIAlertView alloc] initWithTitle:nil message:@"不够信息" delegate:Nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [Error show];
+    }
+    else
+    {
+        [plotspace scaleToFitPlots:[NSArray arrayWithObjects:SmartLinkTrend, nil]];
+    }
     //line style and setting characteristics for it
     CPTMutableLineStyle *smartlinkLines = [SmartLinkTrend.dataLineStyle mutableCopy];
     smartlinkLines.lineWidth = 2.5;
@@ -151,7 +162,7 @@
     CGFloat length;
     length = CPTDecimalCGFloatValue(Host.xRange.length);
     //where every tick should be
-    NSInteger  division= Dates.count;
+    NSInteger  division= Dates.count-1;
     length = length/division;
     
     //creating labels
@@ -311,6 +322,7 @@
 -(void) initEverything
 {
     
+    [self.navigationItem setTitle:PassedInfo.systemParameter];
     Dates = [[NSMutableArray alloc] init];
     From = [[NSDate alloc] init];
     to = [[NSDate alloc] init];
@@ -324,7 +336,7 @@
 {
     [super viewDidAppear:animated];
     
-    
+    Picker.hidden = YES;
     //setting max date for Date picker
     self.DatePicker.maximumDate = [NSDate dateWithTimeIntervalSinceNow:0];
     //adding tap gesture to dismiss datepicker
@@ -333,8 +345,10 @@
     [self.view addGestureRecognizer:tap];
     [self initEverything];
     //hides the date picker
-    Picker.hidden = YES;
+    
+  
     [self initPlot];
+
 }
 
 
@@ -400,6 +414,12 @@
 
 - (IBAction)DateEntry:(id)sender
 {
+    //set text color to black
+//    [self.EndDate setTextColor:[UIColor blackColor]];
+//    [self.startDate setTextColor:[UIColor blackColor]];
+    [self HidePicker];
+    
+    
     if (Picker.hidden)
     {
         CATransition *animation = [CATransition animation];
@@ -421,10 +441,20 @@
     if ([sender tag]==1)
     {
         EndorStart = true;
+        [Picker setMaximumDate:[NSDate dateWithTimeIntervalSinceNow:0]];
+        [self.EndDate setTextColor:[UIColor grayColor]];
+        
     }
     else if ([sender tag] == 2)
     {
         EndorStart = false;
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy-MM-dd"];
+        NSDate *endDate = [formatter dateFromString:self.EndDate.text];
+        [Picker setMaximumDate:[NSDate dateWithTimeInterval:-172800 sinceDate:endDate]];
+        [self.startDate setTextColor:[UIColor grayColor]];
+        
+        
     }
     
 }
@@ -434,32 +464,45 @@
 
 - (IBAction)plot:(id)sender
 {
+    [self HidePicker];
+    
+    //download from webservice
     GetCoordinatePoint *CoodinatePoint = [[GetCoordinatePoint alloc] initWithPropertiesTo:self.EndDate.text from:self.startDate.text];
-    [CoodinatePoint GetCoordinatePoints:@"1" DataType:@"用户数"];
+    [CoodinatePoint GetCoordinatePoints:[PassedInfo systemID] DataType:[PassedInfo systemParameter]];
     Dates = CoodinatePoint.CoordinatePoints;
     
-    CPTGraph *graph = self.GraphView.hostedGraph;
-    [graph reloadData];
+    if (Dates.count<=1)
+    {
+        UIAlertView *Error = [[UIAlertView alloc] initWithTitle:nil message:@"不够信息" delegate:Nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [Error show];
+    }
+    else
+    {
+        CPTGraph *graph = self.GraphView.hostedGraph;
+        [graph reloadData];
     
     
-    //scalling plot
-    CPTScatterPlot *Scatter =(CPTScatterPlot*)[graph plotAtIndex:0];
-    [graph.defaultPlotSpace scaleToFitPlots:[NSArray arrayWithObjects:Scatter, nil]];
+        //scalling plot
+        CPTScatterPlot *Scatter =(CPTScatterPlot*)[graph plotAtIndex:0];
+        [graph.defaultPlotSpace scaleToFitPlots:[NSArray arrayWithObjects:Scatter, nil]];
     
     
     
-    //configuring both axis labels and such
-    CPTXYAxisSet *AxisSet = (CPTXYAxisSet *) graph.axisSet;
-    CPTXYAxis *xAxis = AxisSet.xAxis;
-    CPTXYAxis *yAxis = AxisSet.yAxis;
-    [self configureXAxis:xAxis];
-    [self configureYAxes:yAxis];
+        //configuring both axis labels and such
+        CPTXYAxisSet *AxisSet = (CPTXYAxisSet *) graph.axisSet;
+        CPTXYAxis *xAxis = AxisSet.xAxis;
+        CPTXYAxis *yAxis = AxisSet.yAxis;
+        [self configureXAxis:xAxis];
+        [self configureYAxes:yAxis];
+    }
 }
 
 - (IBAction)PickerValueChanged:(id)sender
 {
     NSDate *EnteredDateFromPicker = [sender date];
     NSDateFormatter *google = [[NSDateFormatter alloc] init];
+    
+    
     [google setDateFormat:@"yyyy-MM-dd"];
     
     //Entered date retreived
@@ -477,6 +520,7 @@
     }
     
     EnteredDateFromPicker = nil;
+    
     
 }
 
@@ -502,6 +546,9 @@
         
     }
     
+    //change text color to black
+    [self.EndDate setTextColor:[UIColor blackColor]];
+    [self.startDate setTextColor:[UIColor blackColor]];
 }
 
 
