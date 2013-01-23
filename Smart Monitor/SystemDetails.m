@@ -96,7 +96,7 @@
         SystemParameter *systemParameterObj = [self.systemParameterArray objectAtIndex:indexPath.row];
         [cell.textLabel setFont:[UIFont fontWithName:@"宋体" size:17.0]];
         cell.textLabel.text = systemParameterObj.systemParameter;
-        // NSLog(@"currentstringxxx: %@",systemParameterObj.systemParameter);
+        //NSLog(@"currentstringxxx: %@",systemParameterObj.systemDate);
         cell.detailTextLabel.text=systemParameterObj.quantity;
     }
     return cell;
