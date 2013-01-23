@@ -293,7 +293,7 @@
 
 -(void) InitialPlotData
 {
-    NSDateFormatter *Formatter = [[NSDateFormatter alloc] init];
+   NSDateFormatter *Formatter = [[NSDateFormatter alloc] init];
     [Formatter setDateFormat:@"yyyy-MM-dd"];
     NSDate *NewestDate = [Formatter dateFromString:[PassedInfo systemDate]];
     NSDate *SevenDaysPrior = [[NSDate alloc] initWithTimeInterval:-604800 sinceDate:NewestDate];
