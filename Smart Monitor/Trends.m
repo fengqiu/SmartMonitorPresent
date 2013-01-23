@@ -97,6 +97,7 @@
     [self configureYAxes:yAxis];
 }
 
+
 //method to configure X Axis
 -(void) configureXAxis : (CPTXYAxis *) xAxis
 {
