@@ -7,6 +7,7 @@
 //
 
 #import "Trends.h"
+#import "CoordinatePoint.h"
 
 @interface Trends ()
 {
@@ -19,121 +20,45 @@
 
 @synthesize GraphView,Dates;
 @synthesize Picker;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void) viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    Dates = [[NSMutableArray alloc] init];
-    NSDate *today = [[NSDate alloc] initWithTimeIntervalSinceNow:1728000];
-    for (int i=0; i<10; i++)
-    {
-        [Dates addObject:today];
-    }
-    //adding tap gesture to dismiss datepicker
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(HidePicker)];
-    //connect "tap" and "ViewController"
-    [self.view addGestureRecognizer:tap];
-    
-    //hides the date picker
-    Picker.hidden = YES;
-    [self initPlot];
-}
-
-
--(void) HidePicker
-{
-    if (!Picker.hidden)
-    {
-        CATransition *animation = [CATransition animation];
-        [animation setDelegate:self];
-        // Set the type and if appropriate direction of the transition,
-        [animation setType:kCATransitionMoveIn];
-        [animation setSubtype:kCATransitionFromBottom];
-        // Set the duration and timing function of the transtion -- duration is passed in as a parameter, use ease in/ease out as the timing function
-        [animation setDuration:0.5];
-        [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]];
-        [[Picker layer] addAnimation:animation forKey:@"transitionViewAnimation"];
-        
-        Picker.hidden = true;
-        
-        [[Picker layer] removeAnimationForKey:@"transitionViewAnimation"];
-        animation = nil;
-
-    }
-    
-}
+@synthesize From,to;
 
 
 
-
-- (void)viewDidLoad
-{
-
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-
-
-
-
+//**************Graph
 -(void)initPlot {
+    GetCoordinatePoint *CoodinatePoint = [[GetCoordinatePoint alloc] initWithPropertiesTo:self.EndDate.text from:self.startDate.text];
+    [CoodinatePoint GetCoordinatePoints:@"1" DataType:@"用户数"];
+    Dates = CoodinatePoint.CoordinatePoints;
     [self configureGraph];
     [self configurePlots];
-    [self configureAxes];
-    self.GraphView.allowPinchScaling = YES;
+   [self configureAxes];
+    //self.GraphView.allowPinchScaling = YES;
     
 }
 
-
--(void)configureGraph {
+-(void)configureGraph
+{
     //instantialise graph view
     CPTGraph *Graph = [[CPTXYGraph alloc] initWithFrame:self.GraphView.bounds];
     self.GraphView.hostedGraph = Graph;
     //applying plain black theme
     [Graph applyTheme:[CPTTheme themeNamed:kCPTPlainWhiteTheme]];
-    Graph.title = @"SMARTLINKS 曲线";
-    //setting Text style
-    CPTMutableTextStyle *titleStyle = [CPTMutableTextStyle textStyle];
-    //setting title to white
-    titleStyle.color = [CPTColor whiteColor];
-    titleStyle.fontName = @"Helvetica-Bold";
-    titleStyle.fontSize = 16.0f;
-    //setting graph attributes
-    Graph.titleTextStyle = titleStyle;
-    Graph.titlePlotAreaFrameAnchor = CPTRectAnchorTop;
-    Graph.titleDisplacement = CGPointMake(0.0f, 10.0f);
     //padding area
-    [Graph.plotAreaFrame setPaddingLeft:30.0f];
-    [Graph.plotAreaFrame setPaddingRight:15.0f];
-    [Graph.plotAreaFrame setPaddingTop:15.0f];
-    [Graph.plotAreaFrame setPaddingBottom:70.0f];
-        
+    [Graph.plotAreaFrame setPaddingLeft:20.0f];
+    [Graph.plotAreaFrame setPaddingRight:20.0f];
+    [Graph.plotAreaFrame setPaddingTop:20.0f];
+    [Graph.plotAreaFrame setPaddingBottom:50.0f];
+    
 }
 
 -(void)configurePlots
 {
-   
+    
     //Setting graph as the graph on the host
     CPTGraph *graph = self.GraphView.hostedGraph;
     //setting the plotspace
     CPTXYPlotSpace * plotspace = (CPTXYPlotSpace *) graph.defaultPlotSpace;
+    
     
     //Scatter Plot trend
     CPTScatterPlot *SmartLinkTrend = [[CPTScatterPlot alloc] init];
@@ -146,9 +71,8 @@
     //adding to the plot
     [graph addPlot:SmartLinkTrend toPlotSpace:plotspace];
     
-    //scalling the plotspace
+    //scalling the plotspace, Also calls delegate functions
     [plotspace scaleToFitPlots:[NSArray arrayWithObjects:SmartLinkTrend, nil]];
-    
     //line style and setting characteristics for it
     CPTMutableLineStyle *smartlinkLines = [SmartLinkTrend.dataLineStyle mutableCopy];
     smartlinkLines.lineWidth = 2.5;
@@ -196,7 +120,7 @@
     //fake data and locations
     NSMutableSet *xLabels = [[NSMutableSet alloc] initWithCapacity:Dates.count];
     NSMutableSet *Locations = [[NSMutableSet alloc] initWithCapacity:Dates.count];
-
+    
     //length of axis
     CGFloat length;
     length = CPTDecimalCGFloatValue(Host.xRange.length);
@@ -208,7 +132,9 @@
     int i=0;
     for (NSDate *date in Dates)
     {
-        NSString *strDate = [[NSString alloc] initWithString:[Formatter stringFromDate:date]];
+        CoordinatePoint *Point = [Dates objectAtIndex:i];
+        
+        NSString *strDate =[[NSString alloc] initWithString:Point._systemDate];
         
         //making the label for x axis
         CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:strDate textStyle:labelStyle];
@@ -223,7 +149,7 @@
     }
     xAxis.axisLabels = xLabels;
     xAxis.majorTickLocations = Locations;
-
+    
 }
 
 //method to configure Y Axis
@@ -245,9 +171,9 @@
     yAxis.minorTickLength = 0.0f;
     yAxis.labelingPolicy = CPTAxisLabelingPolicyNone;
     
-
+    
     //create fake data
-    NSMutableSet *FakeData = [[NSMutableSet alloc] initWithCapacity:Dates.count];
+    NSMutableSet *Data = [[NSMutableSet alloc] initWithCapacity:Dates.count];
     NSMutableSet *Locations = [[NSMutableSet alloc] initWithCapacity:Dates.count];
     
     //location of major tick
@@ -255,23 +181,159 @@
     length = CPTDecimalCGFloatValue(Host.yRange.length);
     length = length/Dates.count;
     
-    for (int i=0; i<Dates.count; i++) {
+    for (int i=0; i<Dates.count; i++)
+    {
         CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%i", i] textStyle:yAxis.labelTextStyle];
         
         
         NSNumber *locationOfTick = [NSNumber numberWithFloat:(length + length *i)];
         
-        label.offset = 4.0f;
         
         label.tickLocation = [locationOfTick decimalValue];
-        [FakeData addObject:label];
+        [Data addObject:label];
         [Locations addObject:locationOfTick];
         
     }
-    yAxis.axisLabels = FakeData;
+    yAxis.axisLabels = Data;
     yAxis.majorTickLocations = Locations;
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self)
+    {
+    }
+    return self;
+}
+
+
+-(void) initEverything
+{
+    Dates = [[NSMutableArray alloc] init];
+    From = [[NSDate alloc] init];
+    to = [[NSDate alloc] init];
+}
+
+
+
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    //adding tap gesture to dismiss datepicker
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(HidePicker)];
+    //connect "tap" and "ViewController"
+    [self.view addGestureRecognizer:tap];
+    [self initEverything];
+    //hides the date picker
+    Picker.hidden = YES;
+    [self initPlot];
+}
+
+
+
+
+
+
+
+
+- (void)viewDidLoad
+{
+
+    [super viewDidLoad];
+	// Do any additional setup after loading the view.
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+
+
+
+
+
+
+
+
+
+//delegate
+-(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot
+{
+    return Dates.count;
+}
+
+-(NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index
+{
+    if (fieldEnum == CPTScatterPlotFieldY)
+    {
+        CoordinatePoint *point =[Dates objectAtIndex:index];
+        NSNumber *quantity = point._quantity;
+        return quantity;
+    }
+    else
+    {
+        return [NSNumber numberWithInteger:index];
+    }
+}
+
+
+
+
+
+
+
+
+
+
+//******User Interface
 
 - (IBAction)DateEntry:(id)sender
 {
@@ -288,7 +350,7 @@
         [[Picker layer] addAnimation:animation forKey:@"transitionViewAnimation"];
         
         Picker.hidden = FALSE;
-    
+        
         [[Picker layer] removeAnimationForKey:@"transitionViewAnimation"];
         animation = nil;
     }
@@ -309,6 +371,21 @@
 
 - (IBAction)plot:(id)sender
 {
+    GetCoordinatePoint *CoodinatePoint = [[GetCoordinatePoint alloc] initWithPropertiesTo:self.EndDate.text from:self.startDate.text];
+    [CoodinatePoint GetCoordinatePoints:@"1" DataType:@"用户数"];
+    Dates = CoodinatePoint.CoordinatePoints;
+    
+    CPTGraph *graph = self.GraphView.hostedGraph;
+    [graph reloadData];
+    //CPTScatterPlot *Scatter =(CPTScatterPlot*)[graph plotAtIndex:0];
+    //[graph.defaultPlotSpace scaleToFitPlots:[NSArray arrayWithObjects:Scatter, nil]];
+    CPTXYAxisSet *AxisSet = (CPTXYAxisSet *) graph.axisSet;
+    CPTXYAxis *xAxis = AxisSet.xAxis;
+    CPTXYAxis *yAxis = AxisSet.yAxis;
+    xAxis.orthogonalCoordinateDecimal = CPTDecimalFromCGFloat(20.0f);
+
+    //[self configureAxes];
+    
     
 }
 
@@ -316,42 +393,49 @@
 {
     NSDate *EnteredDateFromPicker = [sender date];
     NSDateFormatter *google = [[NSDateFormatter alloc] init];
-    [google setDateFormat:@"yy-MM-dd"];
-
+    [google setDateFormat:@"yyyy-MM-dd"];
+    
     //Entered date retreived
     
     if (EndorStart) {
+        //assign date to nsdate
+        to=EnteredDateFromPicker;
         self.EndDate.text = [google stringFromDate:EnteredDateFromPicker];
     }
     else
+    {
+        //assign date to nsdate
+        From=EnteredDateFromPicker;
         self.startDate.text = [google stringFromDate:EnteredDateFromPicker];
+    }
     
     EnteredDateFromPicker = nil;
     
 }
 
 
-//delegate
--(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot {
-    return Dates.count;
-}
-
--(NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index
+-(void) HidePicker
 {
-    if (fieldEnum == CPTScatterPlotFieldY)
+    if (!Picker.hidden)
     {
-        if (index %2) {
-        return [NSNumber numberWithInteger:index*index];
-        }
-        else
-        {
-            return [NSNumber numberWithInteger:index];
-        }
+        CATransition *animation = [CATransition animation];
+        [animation setDelegate:self];
+        // Set the type and if appropriate direction of the transition,
+        [animation setType:kCATransitionMoveIn];
+        [animation setSubtype:kCATransitionFromBottom];
+        // Set the duration and timing function of the transtion -- duration is passed in as a parameter, use ease in/ease out as the timing function
+        [animation setDuration:0.5];
+        [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]];
+        [[Picker layer] addAnimation:animation forKey:@"transitionViewAnimation"];
+        
+        Picker.hidden = true;
+        
+        [[Picker layer] removeAnimationForKey:@"transitionViewAnimation"];
+        animation = nil;
+        
     }
-    else
-        return [NSNumber numberWithInteger:index];
+    
 }
-
 
 
 @end

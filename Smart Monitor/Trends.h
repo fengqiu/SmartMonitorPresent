@@ -8,15 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "CorePlot-CocoaTouch.h"
+#import "GetCoordinatePoint.h"
+#import "CoordinatePoint.h"
+#import "SystemParameter.h"
 
 
 @interface Trends : UIViewController<CPTScatterPlotDelegate,CPTPlotDataSource>
-@property (strong, nonatomic) IBOutlet CPTGraphHostingView *GraphView;
+@property (strong,nonatomic) IBOutlet CPTGraphHostingView *GraphView;
 @property (strong,nonatomic) NSMutableArray *Dates;
-@property (strong, nonatomic) IBOutlet UIDatePicker *Picker;
-@property (strong, nonatomic) IBOutlet UILabel *EndDate;
-@property (strong, nonatomic) IBOutlet UILabel *startDate;
-
+@property (strong,nonatomic) IBOutlet UIDatePicker *Picker;
+@property (strong,nonatomic) IBOutlet UILabel *EndDate;
+@property (strong,nonatomic) IBOutlet UILabel *startDate;
+@property (strong,nonatomic) NSDate *From;
+@property (strong,nonatomic) NSDate *to;
+@property (strong,nonatomic) SystemParameter *PassedInfo;
 
 -(void) initPlot;
 
