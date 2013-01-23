@@ -132,6 +132,7 @@ NSXMLParser	*parser;
     else if ([elementName isEqualToString:@"type"])
     {
         self.systemParameter.systemParameter=self.currentString;
+        // NSLog(@"currentstring: %@",self.currentString);
     }
     else if ([elementName isEqualToString:@"Year"]||[elementName isEqualToString:@"Month"])
     {
@@ -150,7 +151,7 @@ NSXMLParser	*parser;
     else if ([elementName isEqualToString:@"date"])
     {
         [self.datestring  stringByAppendingString:@"-"];
-        self.systemParameter.systemParameter=self.currentString;
+        self.systemParameter.systemDate=self.currentString;
     }
     else if ([elementName isEqualToString:@"qty"])
     {
