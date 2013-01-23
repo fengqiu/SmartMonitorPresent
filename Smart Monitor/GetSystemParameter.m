@@ -136,23 +136,23 @@ NSXMLParser	*parser;
     }
     else if ([elementName isEqualToString:@"Year"]||[elementName isEqualToString:@"Month"])
     {
-        // NSLog(@"currentstring: %@",self.currentString);
+        //NSLog(@"currentstring: %@",self.currentString);
         [self.datestring appendString:self.currentString];
         [self.datestring appendString:@"-"];
-        // NSLog(@"date: %@",(NSString *)self.datestring);
+        //NSLog(@"date: %@",(NSString *)self.datestring);
     }
     else if ([elementName isEqualToString:@"Day"])
     {        
         [self.datestring appendString:self.currentString];
         self.systemParameter.systemDate=(NSString *)self.datestring;
 
-        // NSLog(@"date: %@",self.systemParameter.systemDate);
+        //NSLog(@"date: %@",self.systemParameter.systemDate);
     }
-    else if ([elementName isEqualToString:@"date"])
-    {
-        [self.datestring  stringByAppendingString:@"-"];
-        self.systemParameter.systemDate=self.currentString;
-    }
+//    else if ([elementName isEqualToString:@"date"])
+//    {
+//        [self.datestring  stringByAppendingString:@"/"];
+//        self.systemParameter.systemDate=self.currentString;
+//    }
     else if ([elementName isEqualToString:@"qty"])
     {
         self.systemParameter.quantity=self.currentString;
