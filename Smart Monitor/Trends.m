@@ -151,7 +151,7 @@
     CGFloat length;
     length = CPTDecimalCGFloatValue(Host.xRange.length);
     //where every tick should be
-    NSInteger  division= Dates.count-1;
+    NSInteger  division= Dates.count;
     length = length/division;
     
     //creating labels
