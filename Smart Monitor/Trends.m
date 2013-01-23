@@ -26,12 +26,10 @@
 
 //**************Graph
 -(void)initPlot {
-    GetCoordinatePoint *CoodinatePoint = [[GetCoordinatePoint alloc] initWithPropertiesTo:self.EndDate.text from:self.startDate.text];
-    [CoodinatePoint GetCoordinatePoints:@"1" DataType:@"用户数"];
-    Dates = CoodinatePoint.CoordinatePoints;
+    
     [self configureGraph];
     [self configurePlots];
-   [self configureAxes];
+    [self configureAxes];
     //self.GraphView.allowPinchScaling = YES;
     
 }
@@ -111,7 +109,7 @@
     CPTAxisTitle *xTitle = [[CPTAxisTitle alloc] initWithText:@"日期" textStyle:xAxis.labelTextStyle];
     xAxis.axisTitle = xTitle;
     
-    xAxis.titleOffset = 50.0f;
+    xAxis.titleOffset = -10.0f;
     
     xAxis.majorTickLength = 5.0f;
     xAxis.minorTickLength = 0.0f;
@@ -139,7 +137,7 @@
         //making the label for x axis
         CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:strDate textStyle:labelStyle];
         label.rotation = 1.57f;
-        NSNumber *locationOfTick = [NSNumber numberWithFloat:(length + length *i)];
+        NSNumber *locationOfTick = [NSNumber numberWithFloat:length *i];
         label.offset = 1.0f;
         
         label.tickLocation = [locationOfTick decimalValue];
@@ -155,9 +153,6 @@
 //method to configure Y Axis
 -(void) configureYAxes : (CPTXYAxis *) yAxis
 {
-    CPTXYPlotSpace *Host =(CPTXYPlotSpace *) GraphView.hostedGraph.defaultPlotSpace;
-    
-    
     //Axes Settings
     //setting axis title
     CPTAxisTitle *yAxisTitle = [[CPTAxisTitle alloc] initWithText:@"数量" textStyle: yAxis.labelTextStyle];
@@ -171,22 +166,25 @@
     yAxis.minorTickLength = 0.0f;
     yAxis.labelingPolicy = CPTAxisLabelingPolicyNone;
     
-    
+
     //create fake data
     NSMutableSet *Data = [[NSMutableSet alloc] initWithCapacity:Dates.count];
     NSMutableSet *Locations = [[NSMutableSet alloc] initWithCapacity:Dates.count];
     
     //location of major tick
-    CGFloat length;
-    length = CPTDecimalCGFloatValue(Host.yRange.length);
-    length = length/Dates.count;
     
     for (int i=0; i<Dates.count; i++)
     {
-        CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%i", i] textStyle:yAxis.labelTextStyle];
+        CoordinatePoint *point = [Dates objectAtIndex:i];
+           NSNumber *locationOfTick = point._quantity;
         
         
-        NSNumber *locationOfTick = [NSNumber numberWithFloat:(length + length *i)];
+        
+        CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%i",[locationOfTick intValue]] textStyle:yAxis.labelTextStyle];
+        
+        
+        
+     
         
         
         label.tickLocation = [locationOfTick decimalValue];
@@ -252,9 +250,13 @@
 
 -(void) initEverything
 {
+    
     Dates = [[NSMutableArray alloc] init];
     From = [[NSDate alloc] init];
     to = [[NSDate alloc] init];
+    GetCoordinatePoint *CoodinatePoint = [[GetCoordinatePoint alloc] initWithPropertiesTo:self.EndDate.text from:self.startDate.text];
+    [CoodinatePoint GetCoordinatePoints:@"1" DataType:@"用户数"];
+    Dates = CoodinatePoint.CoordinatePoints;
 }
 
 
@@ -263,6 +265,9 @@
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    
+    
     
     //adding tap gesture to dismiss datepicker
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(HidePicker)];
