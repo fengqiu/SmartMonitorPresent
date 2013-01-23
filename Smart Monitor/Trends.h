@@ -22,21 +22,9 @@
 @property (strong,nonatomic) NSDate *From;
 @property (strong,nonatomic) NSDate *to;
 @property (strong,nonatomic) SystemParameter *PassedInfo;
+@property (strong, nonatomic) IBOutlet UIDatePicker *DatePicker;
 
 -(void) initPlot;
-
--(void)configureGraph;
-
--(void)configurePlots;
-
--(void)configureAxes;
-
-
--(void) xAxisSettings: (CPTXYAxis *) xAxis YAxisSettings: (CPTXYAxis *) yAxis;
-
--(void) configureXAxis : (CPTXYAxis *) xAxis;
-
--(void) configureYAxes : (CPTXYAxis *) yAxis;
 
 - (IBAction)DateEntry:(id)sender;
 

@@ -14,6 +14,21 @@
     bool EndorStart;
 }
 
+-(void)configureGraph;
+
+-(void)configurePlots;
+
+-(void)configureAxes;
+
+-(void) xAxisSettings: (CPTXYAxis *) xAxis YAxisSettings: (CPTXYAxis *) yAxis;
+
+-(void) configureXAxis : (CPTXYAxis *) xAxis;
+
+-(void) configureYAxes : (CPTXYAxis *) yAxis;
+
+-(void) InitialPlotData;
+
+
 @end
 
 @implementation Trends
@@ -21,7 +36,7 @@
 @synthesize GraphView,Dates;
 @synthesize Picker;
 @synthesize From,to;
-
+@synthesize PassedInfo;
 
 
 //**************Graph
@@ -276,6 +291,22 @@
     return self;
 }
 
+-(void) InitialPlotData
+{
+    NSDateFormatter *Formatter = [[NSDateFormatter alloc] init];
+    [Formatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate *NewestDate = [Formatter dateFromString:[PassedInfo systemDate]];
+    NSDate *SevenDaysPrior = [[NSDate alloc] initWithTimeInterval:-604800 sinceDate:NewestDate];
+    self.startDate.text = [Formatter stringFromDate:SevenDaysPrior];
+    self.EndDate.text = [Formatter stringFromDate:NewestDate];
+    
+    
+    GetCoordinatePoint *CoodinatePoint = [[GetCoordinatePoint alloc] initWithPropertiesTo:self.EndDate.text from:self.startDate.text];
+    [CoodinatePoint GetCoordinatePoints:[PassedInfo systemID] DataType:[PassedInfo systemParameter]];
+    
+    
+    Dates = CoodinatePoint.CoordinatePoints;
+}
 
 -(void) initEverything
 {
@@ -283,9 +314,7 @@
     Dates = [[NSMutableArray alloc] init];
     From = [[NSDate alloc] init];
     to = [[NSDate alloc] init];
-    GetCoordinatePoint *CoodinatePoint = [[GetCoordinatePoint alloc] initWithPropertiesTo:self.EndDate.text from:self.startDate.text];
-    [CoodinatePoint GetCoordinatePoints:@"1" DataType:@"用户数"];
-    Dates = CoodinatePoint.CoordinatePoints;
+    [self InitialPlotData];
 }
 
 
@@ -296,8 +325,8 @@
     [super viewDidAppear:animated];
     
     
-    
-    
+    //setting max date for Date picker
+    self.DatePicker.maximumDate = [NSDate dateWithTimeIntervalSinceNow:0];
     //adding tap gesture to dismiss datepicker
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(HidePicker)];
     //connect "tap" and "ViewController"
