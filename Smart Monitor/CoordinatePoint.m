@@ -12,6 +12,7 @@
 
 @synthesize _systemDate,_quantity;
 
+//setting properties to be initialised
 -(id)initWithQuantity:(NSString *)quantity systemDate:(NSString *)systemDate
 {
     if ((self=[super init]))

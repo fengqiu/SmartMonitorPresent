@@ -45,8 +45,9 @@
     [self configureGraph];
     [self configurePlots];
     //makes sure there is more than 1 point in dates so that we can plot a graph
-    if (Dates.count > 1)
-        [self configureAxes];
+    [self configureAxes];
+
+        
     //self.GraphView.allowPinchScaling = YES;
     
 }
@@ -97,7 +98,6 @@
     {
         //scale plot
         [plotspace scaleToFitPlots:[NSArray arrayWithObjects:SmartLinkTrend, nil]];
-
     }
     //line style and setting characteristics for it
     CPTMutableLineStyle *smartlinkLines = [SmartLinkTrend.dataLineStyle mutableCopy];
@@ -116,11 +116,13 @@
     
     //settings for both axis
     [self xAxisSettings:xAxis YAxisSettings:yAxis];
-    //configuring X Axis
-    [self configureXAxis:xAxis];
-    //configuring Y Axis
-    [self configureYAxes:yAxis];
-
+    if (Dates.count > 1)
+    {
+        //configuring X Axis
+        [self configureXAxis:xAxis];
+        //configuring Y Axis
+        [self configureYAxes:yAxis];
+    }
 
 }
 
@@ -178,27 +180,30 @@
 
 -(void) xAxisSettings: (CPTXYAxis *) xAxis YAxisSettings: (CPTXYAxis *) yAxis
 {
-    //getting minimum value from the quantity in dates
-    NSMutableArray *QTY = [[NSMutableArray alloc] initWithCapacity:Dates.count];
-    for (CoordinatePoint *date in Dates) {
-        NSNumber *quantity = date._quantity;
-        [QTY addObject:quantity];
+    if (Dates.count > 1)
+    {
+        //getting minimum value from the quantity in dates
+        NSMutableArray *QTY = [[NSMutableArray alloc] initWithCapacity:Dates.count];
+        for (CoordinatePoint *date in Dates) {
+            NSNumber *quantity = date._quantity;
+            [QTY addObject:quantity];
+        }
+    
+        //min and max values
+        NSNumber* min = [QTY valueForKeyPath:@"@min.self"];
+        NSNumber* Max = [QTY valueForKeyPath:@"@max.self"];
+    
+        //calculate which point to move x Axis to
+        int MoveXtoPoint = [min intValue] - [min intValue]/10;
+        //length of Yaxis
+        int Ylength = [Max intValue] - [min intValue]+2*([min intValue]-MoveXtoPoint);
+        //shift axis up
+        xAxis.orthogonalCoordinateDecimal = CPTDecimalFromInt(MoveXtoPoint);
+        //setting pointer to plotspace
+        CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) GraphView.hostedGraph.defaultPlotSpace;
+        //scalling Yrange
+        plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromInt(MoveXtoPoint) length:CPTDecimalFromInt(Ylength)];
     }
-    
-    //min and max values
-    NSNumber* min = [QTY valueForKeyPath:@"@min.self"];
-    NSNumber* Max = [QTY valueForKeyPath:@"@max.self"];
-    
-    //calculate which point to move x Axis to
-    int MoveXtoPoint = [min intValue] - [min intValue]/10;
-    //length of Yaxis
-    int Ylength = [Max intValue] - [min intValue]+2*([min intValue]-MoveXtoPoint);
-    //shift axis up
-    xAxis.orthogonalCoordinateDecimal = CPTDecimalFromInt(MoveXtoPoint);
-    //setting pointer to plotspace
-    CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) GraphView.hostedGraph.defaultPlotSpace;
-    //scalling Yrange
-    plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromInt(MoveXtoPoint) length:CPTDecimalFromInt(Ylength)];
     
     //Axes Settings
     //setting axis title
@@ -419,7 +424,7 @@
     //if there is less than 1 piece of data report an error
     if (Dates.count<=1)
     {
-        UIAlertView *Error = [[UIAlertView alloc] initWithTitle:nil message:@"不够信息" delegate:Nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView *Error = [[UIAlertView alloc] initWithTitle:nil message:@"数据不足" delegate:Nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
         [Error show];
     }
     //else reload the data of the graph and plot it

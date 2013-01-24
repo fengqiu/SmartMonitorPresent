@@ -131,8 +131,9 @@
 
 -(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
 {
-    //element name is read and isparse is set
+    //element name is read and isparse is set to a number to be used in a switch statement
     if ([elementName isEqualToString:@"Year"]) {
+        //initialise the variaible which is about to be used and set isparse
         year = [[NSString alloc] init];
         isparse = 1;
     }
@@ -153,6 +154,7 @@
     }
     else
     {
+        //5 is a empty switch statement
         isparse = 5;
     }
 }
