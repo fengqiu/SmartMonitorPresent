@@ -94,6 +94,7 @@
 {
     //clears textfield when editing begins
     textField.placeholder=@"";
+    //self.view.bounds.size.height
 }
 
 -(BOOL) textFieldShouldReturn:(UITextField *)textField
