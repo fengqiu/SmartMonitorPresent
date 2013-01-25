@@ -29,11 +29,11 @@
 @property (strong,nonatomic) SystemParameter *PassedInfo;
 //iboutlet for the search button
 @property (weak, nonatomic) IBOutlet UIButton *btnSearch;
-
+//initialise plot, contains all information for plot to plot at start up of the interface
 - (void) initPlot;
-
-- (IBAction) DateEntry:(id)sender;
-
+//after a date entry button is pushed
+- (IBAction)DateEntry:(id)sender;
+//after the datepicker value has been changed
 - (IBAction)PickerValueChanged:(id)sender;
 //after the search button has been pushed
 - (IBAction)plot:(id)sender;
