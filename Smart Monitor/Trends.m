@@ -28,7 +28,6 @@
 
 -(void) InitialPlotData;
 
-
 @end
 
 @implementation Trends

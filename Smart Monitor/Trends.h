@@ -24,9 +24,9 @@
 @property (strong, nonatomic) IBOutlet UIDatePicker *DatePicker;
 @property (weak, nonatomic) IBOutlet UIButton *btnSearch;
 
--(void) initPlot;
+- (void) initPlot;
 
-- (IBAction)DateEntry:(id)sender;
+- (IBAction) DateEntry:(id)sender;
 
 - (IBAction)PickerValueChanged:(id)sender;
 
