@@ -41,7 +41,7 @@
 	// Do any additional setup after loading the view.
     
     // 添加背景图片
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"53640.jpg"]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Deep-Blue.jpg"]];
 
     // 设置登录按钮的字体大小
     self.btnLogin.titleLabel.font=[UIFont fontWithName:@"宋体" size:6.0];
@@ -151,6 +151,41 @@
         [[segue destinationViewController] setUsername:self.txtUsername.text];
     }
 }
+
+//-(BOOL)shouldAutorotate
+//{
+//    return NO;
+//}
+//
+//-(NSUInteger)supportedInterfaceOrientations
+//{
+//    return UIInterfaceOrientationMaskAll;
+//}
+//
+//- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+//{
+//    return UIInterfaceOrientationMaskPortrait;
+//}
+
+//-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+//{
+//    NSString *str=@"sdfsf";
+//    
+//}
+
+//-(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+//{
+//    if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft) {
+//        backgroundImage.transform = CGAffineTransformMakeRotation(M_PI / 2);
+//    }
+//    else if (toInterfaceOrientation == UIInterfaceOrientationLandscapeRight){
+//        backgroundImage.transform = CGAffineTransformMakeRotation(-M_PI / 2);
+//    }
+//    else {
+//        backgroundImage.transform = CGAffineTransformMakeRotation(0.0);
+//    }
+//}
+
 
 //-(BOOL)shouldAutomaticallyForwardRotationMethods
 //{
