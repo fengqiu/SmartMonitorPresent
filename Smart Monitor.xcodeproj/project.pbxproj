@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39196FF416B25A9C00F18959 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 39196FF116B25A9C00F18959 /* Icon@2x.png */; };
+		39196FF516B25A9C00F18959 /* 57.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 39196FF216B25A9C00F18959 /* 57.jpg */; };
+		39196FF616B25A9C00F18959 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 39196FF316B25A9C00F18959 /* Icon.png */; };
 		39B8A2F0169FF09E00B3FEB8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39B8A2EF169FF09E00B3FEB8 /* UIKit.framework */; };
 		39B8A2F2169FF09E00B3FEB8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39B8A2F1169FF09E00B3FEB8 /* Foundation.framework */; };
 		39B8A2F4169FF09E00B3FEB8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39B8A2F3169FF09E00B3FEB8 /* CoreGraphics.framework */; };
@@ -65,6 +68,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		39196FF116B25A9C00F18959 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		39196FF216B25A9C00F18959 /* 57.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 57.jpg; sourceTree = "<group>"; };
+		39196FF316B25A9C00F18959 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		39B8A2EB169FF09D00B3FEB8 /* Smart Monitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Smart Monitor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		39B8A2EF169FF09E00B3FEB8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		39B8A2F1169FF09E00B3FEB8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -271,12 +277,9 @@
 		39B8A2F6169FF09E00B3FEB8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				CE03895F16B2710C00CD4F30 /* 27.png */,
-				CE03896016B2710C00CD4F30 /* 114.png */,
-				CE03896116B2710C00CD4F30 /* 72.png */,
-				CE03896216B2710C00CD4F30 /* 50.png */,
-				CE03896316B2710C00CD4F30 /* 58.png */,
-				CE03895316B26A8A00CD4F30 /* logo.png */,
+				39196FF116B25A9C00F18959 /* Icon@2x.png */,
+				39196FF216B25A9C00F18959 /* 57.jpg */,
+				39196FF316B25A9C00F18959 /* Icon.png */,
 				39B8A2F7169FF09E00B3FEB8 /* Smart Monitor-Info.plist */,
 				39B8A2F8169FF09E00B3FEB8 /* InfoPlist.strings */,
 				39B8A2FB169FF09E00B3FEB8 /* main.m */,
@@ -525,15 +528,9 @@
 				39B8A306169FF09E00B3FEB8 /* Default-568h@2x.png in Resources */,
 				CE03D54A16A3DA4600C846C9 /* MainStoryboard.storyboard in Resources */,
 				CE8900DD16AE557F0030365D /* 53640.jpg in Resources */,
-				CE03895116B258FF00CD4F30 /* logo_indeed.jpg in Resources */,
-				CE03895416B26A8A00CD4F30 /* logo.png in Resources */,
-				CE03896516B2710C00CD4F30 /* 27.png in Resources */,
-				CE03896616B2710C00CD4F30 /* 114.png in Resources */,
-				CE03896716B2710C00CD4F30 /* 72.png in Resources */,
-				CE03896816B2710C00CD4F30 /* 50.png in Resources */,
-				CE03896916B2710C00CD4F30 /* 58.png in Resources */,
-				CE03896D16B27F0C00CD4F30 /* back.png in Resources */,
-				CE03896F16B27FCC00CD4F30 /* Deep-Blue.jpg in Resources */,
+				39196FF416B25A9C00F18959 /* Icon@2x.png in Resources */,
+				39196FF516B25A9C00F18959 /* 57.jpg in Resources */,
+				39196FF616B25A9C00F18959 /* Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
