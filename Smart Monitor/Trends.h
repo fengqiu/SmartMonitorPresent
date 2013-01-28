@@ -30,6 +30,9 @@
 //iboutlet for the search button
 @property (weak, nonatomic) IBOutlet UIButton *btnSearch;
 //initialise plot, contains all information for plot to plot at start up of the interface
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activity;
+
+
 - (void) initPlot;
 //after a date entry button is pushed
 - (IBAction)DateEntry:(id)sender;

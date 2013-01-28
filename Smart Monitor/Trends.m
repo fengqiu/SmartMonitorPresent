@@ -95,6 +95,7 @@
     }
     else
     {
+        //disable activity
         //scale plot
         [plotspace scaleToFitPlots:[NSArray arrayWithObjects:SmartLinkTrend, nil]];
     }
@@ -277,9 +278,13 @@
     self.EndDate.text = [Formatter stringFromDate:NewestDate];
     //obtain data from webservice by initializing an object of "GetCoordinatePoint"
     GetCoordinatePoint *CoodinatePoint = [[GetCoordinatePoint alloc] initWithPropertiesTo:self.EndDate.text from:self.startDate.text];
+    //start activity indicator
+    [self.activity startAnimating];
     [CoodinatePoint GetCoordinatePoints:[PassedInfo systemID] DataType:[PassedInfo systemParameter]];
     //setting the dates variable
     Dates = CoodinatePoint.CoordinatePoints;
+    //stop activity
+    [self.activity stopAnimating];
 }
 
 -(void) initEverything
@@ -415,12 +420,15 @@
 {
     //hide picker
     [self HidePicker];
-    
+    //start activity indicator
+    [self.activity startAnimating];
     //download from webservice by initialising "GetCoordinatePoint" Object
     GetCoordinatePoint *CoodinatePoint = [[GetCoordinatePoint alloc] initWithPropertiesTo:self.EndDate.text from:self.startDate.text];
     [CoodinatePoint GetCoordinatePoints:[PassedInfo systemID] DataType:[PassedInfo systemParameter]];
     Dates = CoodinatePoint.CoordinatePoints;
     //if there is less than 1 piece of data report an error
+    [self.activity stopAnimating];
+    
     if (Dates.count<=1)
     {
         UIAlertView *Error = [[UIAlertView alloc] initWithTitle:nil message:@"数据不足" delegate:Nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
