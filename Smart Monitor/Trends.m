@@ -28,7 +28,6 @@
 //initial data for the plot, obtains data from webservice
 -(void) InitialPlotData;
 
-
 @end
 
 @implementation Trends
