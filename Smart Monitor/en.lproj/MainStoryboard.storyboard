@@ -153,7 +153,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="17" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="384" y="-1"/>
+            <point key="canvasLocation" x="402" y="224"/>
         </scene>
         <!--System Details-->
         <scene sceneID="glX-Nj-mh3">
@@ -201,7 +201,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IYt-Jh-2sX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="797" y="-13"/>
+            <point key="canvasLocation" x="1107" y="224"/>
         </scene>
         <!--Trends-->
         <scene sceneID="lev-ox-Lmc">
@@ -360,49 +360,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l5y-lz-DVQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1273" y="-13"/>
+            <point key="canvasLocation" x="1775" y="217"/>
         </scene>
     </scenes>
     <resources>
         <image name="logo_indeed.jpg" width="250" height="100"/>
     </resources>
-    <classes>
-        <class className="CPTGraphHostingView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CPTGraphHostingView.h"/>
-        </class>
-        <class className="LoginDetails" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginDetails.h"/>
-            <relationships>
-                <relationship kind="outlet" name="btnLogin" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="logoImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
-                <relationship kind="outlet" name="txtPwd" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtUsername" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="MasterViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MasterViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="SystemDetails" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SystemDetails.h"/>
-        </class>
-        <class className="Trends" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/Trends.h"/>
-            <relationships>
-                <relationship kind="action" name="DateEntry:"/>
-                <relationship kind="action" name="PickerValueChanged:"/>
-                <relationship kind="action" name="plot:"/>
-                <relationship kind="outlet" name="EndDate" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="GraphView" candidateClass="CPTGraphHostingView"/>
-                <relationship kind="outlet" name="Picker" candidateClass="UIDatePicker"/>
-                <relationship kind="outlet" name="btnSearch" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="startDate" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
