@@ -11,7 +11,7 @@
 @implementation CoordinatePoint
 
 @synthesize _systemDate,_quantity;
-
+@synthesize SystemDate;
 //setting properties to be initialised
 -(id)initWithQuantity:(NSString *)quantity systemDate:(NSString *)systemDate
 {
@@ -19,10 +19,13 @@
     {
         _quantity = [[NSNumber alloc]init];
         _systemDate = [[NSString alloc] init];
-
+        SystemDate = [[NSDate alloc] init];
         _systemDate=systemDate;
         //convert to nsnumber type to be used later
         _quantity= [NSNumber numberWithInt:[quantity intValue]];
+        NSDateFormatter *turnToString = [[NSDateFormatter alloc]init];
+        [turnToString setDateFormat:@"yyyy-MM-dd"];
+        SystemDate = [turnToString dateFromString:_systemDate];
     }
     return self;
 }

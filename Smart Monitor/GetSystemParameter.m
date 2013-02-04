@@ -102,7 +102,7 @@ NSXMLParser	*parser;
         }
     }
     // 当碰到需要的数据的节点
-    else if ([elementName isEqualToString:@"id"]||[elementName isEqualToString:@"sys_id"]||[elementName isEqualToString:@"type"]||[elementName isEqualToString:@"Year"]||[elementName isEqualToString:@"Month"]||[elementName isEqualToString:@"Day"]||[elementName isEqualToString:@"qty"])
+    else if ([elementName isEqualToString:@"id"]||[elementName isEqualToString:@"sys_id"]||[elementName isEqualToString:@"type"]||[elementName isEqualToString:@"Year"]||[elementName isEqualToString:@"Month"]||[elementName isEqualToString:@"Day"]||[elementName isEqualToString:@"qty"]||[elementName isEqualToString:@"value"])
     {
         // 设置是否需要解析的参数为正确
         self.isparse=YES;
@@ -133,6 +133,10 @@ NSXMLParser	*parser;
     {
         self.systemParameter.systemParameter=self.currentString;
         // NSLog(@"currentstring: %@",self.currentString);
+    }
+    else if ([elementName isEqualToString:@"value"])
+    {
+        self.systemParameter.ParameterID = self.currentString;
     }
     else if ([elementName isEqualToString:@"Year"]||[elementName isEqualToString:@"Month"])
     {

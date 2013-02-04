@@ -31,6 +31,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnSearch;
 //initialise plot, contains all information for plot to plot at start up of the interface
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activity;
+@property (strong, nonatomic) IBOutlet UIButton *endButton;
+@property (strong, nonatomic) IBOutlet UIButton *startButton;
+
 
 
 - (void) initPlot;
