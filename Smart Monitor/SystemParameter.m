@@ -16,13 +16,14 @@
 @synthesize quantity=_quantity;
 
 // 初始化方法
--(id)initWithSystemID:(NSString *)systemID systemParameter:(NSString *)systemParameter systemDate:(NSString *)systemDate quantity:(NSString *)quantity
+-(id)initWithSystemID:(NSString *)systemID systemParameter:(NSString *)systemParameter systemDate:(NSString *)systemDate quantity:(NSString *)quantity ParameterID:(NSString *) Parameter
 {
     if ((self=[super init])) {
         self.systemID=systemID;
         self.systemParameter=systemParameter;
         self.systemDate=systemDate;
         self.quantity=quantity;
+        self.ParameterID = Parameter;
     }
     return self;
 }

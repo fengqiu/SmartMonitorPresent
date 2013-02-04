@@ -13,6 +13,9 @@
 {
     //decides where it "end date" is selected
     bool WhetherEnd;
+    
+    int minimum;
+    int maximum;
 }
 //configures the graph (title, linestyle ...), used in initplot
 -(void)configureGraph;
@@ -57,7 +60,6 @@
     CPTGraph *Graph = [[CPTXYGraph alloc] initWithFrame:self.GraphView.bounds];
     self.GraphView.hostedGraph = Graph;
     //applying plain black theme
-    [Graph applyTheme:[CPTTheme themeNamed:kCPTStocksTheme]];
     //padding area
     [Graph.plotAreaFrame setPaddingLeft:35.0f];
     [Graph.plotAreaFrame setPaddingRight:10.0f];
@@ -75,14 +77,22 @@
     CPTXYPlotSpace * plotspace = (CPTXYPlotSpace *) graph.defaultPlotSpace;
     
     
+    
     //Scatter Plot trend
     CPTScatterPlot *SmartLinkTrend = [[CPTScatterPlot alloc] init];
     
+    // Add the plot symbol.
+    CPTPlotSymbol *plotSymbol = [CPTPlotSymbol ellipsePlotSymbol];
+    plotSymbol.fill = [CPTFill fillWithColor:[CPTColor whiteColor]];
+    plotSymbol.size = CGSizeMake(8.0, 8.0);
+    SmartLinkTrend.plotSymbol = plotSymbol;
+    
+    //setting plot properties
     SmartLinkTrend.dataSource = self;
     SmartLinkTrend.identifier = @"Trends";
     
     //set trend color to blue
-    CPTColor *trendColor = [CPTColor redColor];
+    CPTColor *trendColor = [CPTColor whiteColor];
     //adding to the plot
     [graph addPlot:SmartLinkTrend toPlotSpace:plotspace];
     
@@ -101,7 +111,7 @@
     }
     //line style and setting characteristics for it
     CPTMutableLineStyle *smartlinkLines = [SmartLinkTrend.dataLineStyle mutableCopy];
-    smartlinkLines.lineWidth = 2.5;
+    smartlinkLines.lineWidth = 1;
     smartlinkLines.lineColor = trendColor;
     SmartLinkTrend.dataLineStyle = smartlinkLines;
 }
@@ -116,6 +126,7 @@
     
     //settings for both axis
     [self xAxisSettings:xAxis YAxisSettings:yAxis];
+    
     if (Dates.count > 1)
     {
         //configuring X Axis
@@ -124,6 +135,55 @@
         [self configureYAxes:yAxis];
     }
 
+
+}
+
+-(void) xAxisSettings: (CPTXYAxis *) xAxis YAxisSettings: (CPTXYAxis *) yAxis
+{
+    xAxis.axisLineStyle = nil;
+    yAxis.axisLineStyle = nil;
+    if (Dates.count > 1)
+    {
+        //getting minimum value from the quantity in dates
+        NSMutableArray *QTY = [[NSMutableArray alloc] initWithCapacity:Dates.count];
+        for (CoordinatePoint *date in Dates) {
+            NSNumber *quantity = date._quantity;
+            [QTY addObject:quantity];
+        }
+        
+        //min and max values
+        NSNumber* min = [QTY valueForKeyPath:@"@min.self"];
+        NSNumber* Max = [QTY valueForKeyPath:@"@max.self"];
+        minimum = [min intValue];
+        maximum = [Max intValue];
+        //calculate which point to move x Axis to
+        float intemediate = maximum - minimum;
+        float MoveXtoPoint = [min floatValue] - (maximum-minimum)/10;
+        if (intemediate<=10)
+        {
+            MoveXtoPoint = [min floatValue] - 2;
+        }
+        //length of Yaxis
+        int Ylength = [Max intValue] - [min intValue]+2*([min intValue]-MoveXtoPoint);
+        //length of Xaxis
+        float a = Dates.count;
+        a=a/10;
+        CGFloat Xlength = Dates.count;
+        //shift axis up
+        xAxis.orthogonalCoordinateDecimal = CPTDecimalFromInt(MoveXtoPoint);
+        
+        //setting pointer to plotspace
+        CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) GraphView.hostedGraph.defaultPlotSpace;
+        //scalling Yrange
+        plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromInt(MoveXtoPoint) length:CPTDecimalFromInt(Ylength)];
+        plotSpace.xRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromFloat(-a) length:CPTDecimalFromFloat(Xlength+a)];
+    }
+    
+    //axis tick things
+    yAxis.majorTickLength = 0.0f;
+    yAxis.minorTickLength = 0.0f;
+    xAxis.majorTickLength = 0.0f;
+    xAxis.minorTickLength = 0.0f;
 }
 
 //method to configure X Axis
@@ -133,8 +193,12 @@
     //label style
     CPTMutableTextStyle *labelStyle = [CPTMutableTextStyle textStyle];
     labelStyle.color = [CPTColor whiteColor];
-    labelStyle.fontName = @"Helvetica-Bold";
+    labelStyle.fontName = @"Noteworthy-Bold";
     labelStyle.fontSize = 10.0f;
+    
+    xAxis.title = @"日期";
+    xAxis.titleTextStyle = labelStyle;
+    
     
     //using the default plot space
     CPTXYPlotSpace *Host = (CPTXYPlotSpace *) GraphView.hostedGraph.defaultPlotSpace;
@@ -149,28 +213,32 @@
     CGFloat length;
     length = CPTDecimalCGFloatValue(Host.xRange.length);
     //where every tick should be
-    NSInteger  division= Dates.count-1;
-    length = length/division;
     
     //creating labels
     int i=0;
-    for (NSDate *date in Dates)
+    
+ 
+    
+    for (CoordinatePoint *Point in Dates)
     {
-        CoordinatePoint *Point = [Dates objectAtIndex:i];
+    
+        NSDateFormatter *Formatter = [[NSDateFormatter alloc]init];
+        [Formatter setDateFormat:@"dd"];
         
-        NSString *strDate =[[NSString alloc] initWithString:Point._systemDate];
+        NSString *strDate =[[NSString alloc] initWithString:[Formatter stringFromDate:Point.SystemDate]];
         
         //making the label for x axis
         CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:strDate textStyle:labelStyle];
         //setting label properties
-        label.rotation = 1.57f;
-        NSNumber *locationOfTick = [NSNumber numberWithFloat:length *i];
+        
+        NSNumber *locationOfTick = [NSNumber numberWithFloat:i];
         label.offset = 5.0f;
         //location where each label is places
         label.tickLocation = [locationOfTick decimalValue];
         [xLabels addObject:label];
         [Locations addObject:locationOfTick];
         i++;
+        
     }
     
     //putting labels on graph
@@ -178,73 +246,48 @@
     xAxis.majorTickLocations = Locations;
 }
 
--(void) xAxisSettings: (CPTXYAxis *) xAxis YAxisSettings: (CPTXYAxis *) yAxis
-{
-    if (Dates.count > 1)
-    {
-        //getting minimum value from the quantity in dates
-        NSMutableArray *QTY = [[NSMutableArray alloc] initWithCapacity:Dates.count];
-        for (CoordinatePoint *date in Dates) {
-            NSNumber *quantity = date._quantity;
-            [QTY addObject:quantity];
-        }
-    
-        //min and max values
-        NSNumber* min = [QTY valueForKeyPath:@"@min.self"];
-        NSNumber* Max = [QTY valueForKeyPath:@"@max.self"];
-    
-        //calculate which point to move x Axis to
-        int MoveXtoPoint = [min intValue] - [min intValue]/10;
-        //length of Yaxis
-        int Ylength = [Max intValue] - [min intValue]+2*([min intValue]-MoveXtoPoint);
-        //shift axis up
-        xAxis.orthogonalCoordinateDecimal = CPTDecimalFromInt(MoveXtoPoint);
-        //setting pointer to plotspace
-        CPTXYPlotSpace *plotSpace = (CPTXYPlotSpace *) GraphView.hostedGraph.defaultPlotSpace;
-        //scalling Yrange
-        plotSpace.yRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromInt(MoveXtoPoint) length:CPTDecimalFromInt(Ylength)];
-    }
-    
-    //Axes Settings
-    //setting axis title
-    CPTAxisTitle *yAxisTitle = [[CPTAxisTitle alloc] initWithText:@"数量" textStyle: yAxis.labelTextStyle];
-    yAxisTitle.rotation = 1.57f;
-    yAxis.axisTitle = yAxisTitle;
-    yAxis.titleOffset = 15.0f;
-    
-    //axis tick things
-    yAxis.majorTickLength = 5.0f;
-    yAxis.minorTickLength = 0.0f;
-    
-    //x axis label stuff
-    CPTAxisTitle *xTitle = [[CPTAxisTitle alloc] initWithText:@"日期" textStyle:xAxis.labelTextStyle];
-    xAxis.axisTitle = xTitle;
-    xAxis.titleOffset = -20.0f;
-    xAxis.majorTickLength = 5.0f;
-    xAxis.minorTickLength = 0.0f;
-}
+
 
 //method to configure Y Axis
 -(void) configureYAxes : (CPTXYAxis *) yAxis
 {
-    //yAxis.orthogonalCoordinateDecimal = CPTDecimalFromCGFloat(-2.0f);
+    //labelstyle
+    CPTMutableTextStyle *labelStyle = [CPTMutableTextStyle textStyle];
+    labelStyle.color = [CPTColor whiteColor];
+    labelStyle.fontName = @"Helvetica-Bold";
+    labelStyle.fontSize = 10.0f;
+    
     yAxis.labelingPolicy = CPTAxisLabelingPolicyNone;
     
     //creating data label arrays
     NSMutableSet *Data = [[NSMutableSet alloc] initWithCapacity:Dates.count];
     NSMutableSet *Locations = [[NSMutableSet alloc] initWithCapacity:Dates.count];
+    //creating grid lines
+    CPTMutableLineStyle *GridLineStyle = [[CPTMutableLineStyle alloc] init];
+    GridLineStyle.lineColor = [CPTColor blueColor];
+    GridLineStyle.lineWidth = 0.5f;
+    yAxis.majorGridLineStyle = GridLineStyle;
+    float addition = 1;
+    int maxMinusMin = maximum-minimum;
     
+    if ((maximum-minimum) >= 20) {
+        float intermediate = maxMinusMin/10.0f;
+        addition = intermediate * 2.5f;
+    }
     //location of major tick
-    for (int i=0; i<Dates.count; i++)
+    for (int i=0; i<(maximum-minimum+1); i++)
     {
-        CoordinatePoint *point = [Dates objectAtIndex:i];
-        NSNumber *locationOfTick = point._quantity;
+        //CoordinatePoint *point = [Dates objectAtIndex:i];
+        int scalefactor = (i*addition);
+        NSNumber *locationOfTick = [[NSNumber alloc] initWithInt:(minimum+scalefactor)];
         
         //display the value at Quantity
-        CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%i",[locationOfTick intValue]] textStyle:yAxis.labelTextStyle];
+        CPTAxisLabel *label = [[CPTAxisLabel alloc] initWithText:[NSString stringWithFormat:@"%i",[locationOfTick intValue]] textStyle:labelStyle];
+        
         
         //label properties
-        label.offset = 0.0f;
+        
+        label.offset = 4.0f;
         label.tickLocation = [locationOfTick decimalValue];
         
         //putting objects into array
@@ -273,6 +316,8 @@
     NSDate *NewestDate = [Formatter dateFromString:[PassedInfo systemDate]];
     //rewind 7 days
     NSDate *SevenDaysPrior = [[NSDate alloc] initWithTimeInterval:-604800 sinceDate:NewestDate];
+    
+    //NewestDate = [NewestDate dateByAddingTimeInterval:86400];
     //set end and start dates
     self.startDate.text = [Formatter stringFromDate:SevenDaysPrior];
     self.EndDate.text = [Formatter stringFromDate:NewestDate];
@@ -282,7 +327,17 @@
     [self.activity startAnimating];
     [CoodinatePoint GetCoordinatePoints:[PassedInfo systemID] DataType:[PassedInfo systemParameter]];
     //setting the dates variable
+    //CoordinatePoint *fake = [[CoordinatePoint alloc] initWithQuantity:@"280" systemDate:@"2013-02-05"];
     Dates = CoodinatePoint.CoordinatePoints;
+    //[Dates addObject:fake];
+    
+    //sorting coordinate point with respect to ns date object
+    NSSortDescriptor *dateDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"SystemDate"
+                                                                     ascending:YES];
+    NSArray *sortDescriptors = [NSArray arrayWithObject:dateDescriptor];
+    NSArray *sortedEventArray = [Dates sortedArrayUsingDescriptors:sortDescriptors];
+    Dates =(NSMutableArray*) sortedEventArray;
+    
     //stop activity
     [self.activity stopAnimating];
 }
@@ -293,6 +348,10 @@
     self.btnSearch.titleLabel.font=[UIFont fontWithName:@"宋体" size:6.0];
     self.btnSearch.titleLabel.font=[self.btnSearch.titleLabel.font fontWithSize:17.0];
     
+    //setting background image
+    UIColor *background = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"DarkBlue.jpg"]];
+    self.view.backgroundColor = background;
+    
     // 设置 navigationBar内容  style
     int height = self.navigationController.navigationBar.frame.size.height;
     int width = self.navigationController.navigationBar.frame.size.width;
@@ -301,7 +360,7 @@
     //setting properties of navLabel
     navLabel.textColor = [UIColor whiteColor];
     navLabel.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
-    navLabel.text=self.PassedInfo.systemParameter;
+    navLabel.text=self.PassedInfo.ParameterID;
     [navLabel setFont:[UIFont fontWithName:@"宋体" size:35.0]];
     navLabel.font=[navLabel.font fontWithSize:20];
     navLabel.backgroundColor=[UIColor clearColor];
@@ -320,8 +379,8 @@
 - (void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    //initiate with picker as hidden
-    Picker.hidden = YES;
+    
+
     //setting max date for Date picker
     self.Picker.maximumDate = [NSDate dateWithTimeIntervalSinceNow:0];
     //adding tap gesture to dismiss datepicker
@@ -333,10 +392,15 @@
     [self initPlot];
 }
 
+
+
 - (void)viewDidLoad
 {
+
+    
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -353,9 +417,12 @@
 
 -(NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index
 {
+
+    
     //if y axis
     if (fieldEnum == CPTScatterPlotFieldY)
     {
+        
         //set point as Quantity given by webservice
         CoordinatePoint *point =[Dates objectAtIndex:index];
         NSNumber *quantity = point._quantity;
@@ -439,7 +506,7 @@
     {
         CPTGraph *graph = self.GraphView.hostedGraph;
         [graph reloadData];
-
+        
         //scalling plot
         CPTScatterPlot *Scatter =(CPTScatterPlot*)[graph plotAtIndex:0];
         [graph.defaultPlotSpace scaleToFitPlots:[NSArray arrayWithObjects:Scatter, nil]];
@@ -451,6 +518,8 @@
         [self configureXAxis:xAxis];
         [self configureYAxes:yAxis];
         [self xAxisSettings:xAxis YAxisSettings:yAxis];
+        //stops annimation
+        [self.activity stopAnimating];
     }
 }
 //once picker value has been changed
