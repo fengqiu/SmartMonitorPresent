@@ -498,7 +498,7 @@
     
     if (Dates.count<=1)
     {
-        UIAlertView *Error = [[UIAlertView alloc] initWithTitle:nil message:@"数据不足" delegate:Nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        UIAlertView *Error = [[UIAlertView alloc] initWithTitle:nil message:@"数据不足" delegate:Nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
         [Error show];
     }
     //else reload the data of the graph and plot it
