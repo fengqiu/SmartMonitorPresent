@@ -332,14 +332,19 @@
     //[Dates addObject:fake];
     
     //sorting coordinate point with respect to ns date object
+    [self OrderDates];
+    
+    //stop activity
+    [self.activity stopAnimating];
+}
+
+-(void) OrderDates
+{
     NSSortDescriptor *dateDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"SystemDate"
                                                                      ascending:YES];
     NSArray *sortDescriptors = [NSArray arrayWithObject:dateDescriptor];
     NSArray *sortedEventArray = [Dates sortedArrayUsingDescriptors:sortDescriptors];
     Dates =(NSMutableArray*) sortedEventArray;
-    
-    //stop activity
-    [self.activity stopAnimating];
 }
 
 -(void) initEverything
@@ -506,7 +511,7 @@
     {
         CPTGraph *graph = self.GraphView.hostedGraph;
         [graph reloadData];
-        
+        [self OrderDates];
         //scalling plot
         CPTScatterPlot *Scatter =(CPTScatterPlot*)[graph plotAtIndex:0];
         [graph.defaultPlotSpace scaleToFitPlots:[NSArray arrayWithObjects:Scatter, nil]];
